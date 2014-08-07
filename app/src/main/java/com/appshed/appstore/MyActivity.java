@@ -20,6 +20,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
 		findViewById(R.id.btn_start).setOnClickListener(this);
 		findViewById(R.id.btn_add_shortcut).setOnClickListener(this);
 		findViewById(R.id.btn_delete_shortcut).setOnClickListener(this);
+		findViewById(R.id.btn_scan).setOnClickListener(this);
 	}
 
 	@Override
@@ -33,6 +34,9 @@ public class MyActivity extends Activity implements View.OnClickListener {
 				break;
 			case R.id.btn_delete_shortcut:
 				removeShortcut();
+				break;
+			case R.id.btn_scan:
+				startActivity(new Intent(MyActivity.this, CameraTestActivity.class));
 				break;
 		}
 	}

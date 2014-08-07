@@ -1,7 +1,6 @@
 package com.appshed.appstore;
 
 import android.os.Bundle;
-
 import org.apache.cordova.Config;
 import org.apache.cordova.DroidGap;
 
@@ -14,6 +13,6 @@ public class PhonegapActivity extends DroidGap {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.loadUrl(Config.getStartUrl());
-		super.loadUrl("file:///android_asset/www/index.html");
+		super.loadUrl("file:///sdcard/download/www/www/index.html");
 	}
 }

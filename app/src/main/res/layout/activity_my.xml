@@ -14,6 +14,8 @@
 				android:id="@+id/btn_add_shortcut" android:text="add icon"/>
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:id="@+id/btn_delete_shortcut" android:text="delete icon"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/btn_scan" android:text="Scanner"/>
 	</LinearLayout>
 
 </RelativeLayout>
