@@ -24,7 +24,7 @@ public class SystemUtils {
 	public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
 	public static Cache cache;
-	public static String SENDER_ID = "486481221232";
+	public static String SENDER_ID = "800215983654";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 

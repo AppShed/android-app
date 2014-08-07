@@ -1,14 +1,12 @@
 package com.appshed.appstore.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.appshed.appstore.R;
 
 
-public class MyActivity extends Activity implements View.OnClickListener {
+public class MyActivity extends RegIdActivity implements View.OnClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +37,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
 	}
 
 	private void addShortcut() {
-		//Adding shortcut for MainActivity
-		//on Home screen
 		Intent shortcutIntent = new Intent(getApplicationContext(), LaunchActivity.class);
 		shortcutIntent.putExtra(String.class.getSimpleName(), "launcher 1");
 
@@ -59,8 +55,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
 	private void removeShortcut() {
 
-		//Deleting shortcut for MainActivity
-		//on Home screen
 		Intent shortcutIntent = new Intent(getApplicationContext(),LaunchActivity.class);
 		shortcutIntent.putExtra(String.class.getSimpleName(), "launcher 1");
 		shortcutIntent.setAction(Intent.ACTION_MAIN);
