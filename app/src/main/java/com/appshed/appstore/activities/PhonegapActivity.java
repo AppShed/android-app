@@ -1,4 +1,4 @@
-package com.appshed.appstore;
+package com.appshed.appstore.activities;
 
 import android.os.Bundle;
 import org.apache.cordova.Config;

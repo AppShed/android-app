@@ -4,7 +4,7 @@
  * 
  * Created by lisah0 on 2012-02-24
  */
-package com.appshed.appstore;
+package com.appshed.appstore.activities;
 
 
 import android.app.Activity;
@@ -24,6 +24,8 @@ import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 
 import android.widget.TextView;
+
+import com.appshed.appstore.R;
 
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;

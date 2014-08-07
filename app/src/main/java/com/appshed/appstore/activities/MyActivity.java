@@ -1,14 +1,11 @@
-package com.appshed.appstore;
+package com.appshed.appstore.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import org.apache.cordova.Config;
-import org.apache.cordova.DroidGap;
+import com.appshed.appstore.R;
 
 
 public class MyActivity extends Activity implements View.OnClickListener {

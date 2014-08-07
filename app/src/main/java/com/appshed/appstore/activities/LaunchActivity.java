@@ -1,8 +1,10 @@
-package com.appshed.appstore;
+package com.appshed.appstore.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.appshed.appstore.R;
 
 /**
  * Created by Anton Maniskevich on 8/7/14.

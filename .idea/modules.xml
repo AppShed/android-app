@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AppStore.iml" filepath="$PROJECT_DIR$/AppStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rightutils/rightutils.iml" filepath="$PROJECT_DIR$/rightutils/rightutils.iml" />
     </modules>
   </component>
 </project>
