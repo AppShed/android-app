@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+    <head>
+        <title>background</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no">
+					<meta name="apple-mobile-web-app-capable" content="yes">
+			<meta name="HandheldFriendly" content="true">
+			<meta name="mobile-web-app-capable" content="yes">
+                        
+                        
+			<link rel="icon" href="favicon.ico">
+			<link rel="shortcut icon" href="favicon.ico">
+                        <link rel="icon" sizes="196x196" href="android-home-screen-icon.png">
+			
+			<link rel="apple-touch-icon" href="Icon.png" />
+							<link rel="apple-touch-icon" sizes="57x57" href="Icon.png" />
+				<link rel="apple-touch-icon" sizes="114x114" href="Icon2x.png" />
+						
+			<link rel="apple-touch-startup-image" href="apple-touch-startup-image.png" />
+							<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="apple-touch-startup-image-x2.png" />
+				<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="apple-touch-startup-image-iphone5-x2.png" />
+						
+			<meta property="og:title" content="background"/>
+			<meta property="og:image" content="Icon.png"/>
+			<meta property="og:site_name" content="AppBuilder"/>
+			<meta property="og:type" content="product"/>
+			<meta property="og:url" content="http://apps.appshed.com/4183"/>
+		<link rel="stylesheet" type="text/css" href="6.css" />    </head>
+    <body>
+		<script src="5.js"></script>		<script>
+			appbuilder.app.ready = function() {
+								var phone = new appbuilder.app.Phone({"app":4183,"request":{"url":"http:\/\/ec2-54-73-200-138.eu-west-1.compute.amazonaws.com\/index.php","data":{"secret":"LBiqqThZ","published":true}},"fullscreen":true,"background":false,"statusbar":false,"storage":true,"files":true,"update":true,"updateSingle":false,"browserHistory":false,"published":"2014-04-14 21:51:48"});
+				document.id(phone).inject(document.id(document.body));
+			};
+        </script>
+		    </body>
+</html>
