@@ -35,8 +35,23 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".activities.PhonegapActivity"></activity>
-		<activity android:name=".activities.LaunchActivity" android:exported="true"></activity>
-		<activity android:name=".activities.CameraTestActivity"/>
+		<activity android:name=".activities.LaunchActivity" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data
+					android:host="appshed.com"
+					android:pathPrefix="/appbuilder/"
+					android:scheme="http" />
+				<data
+					android:host="www.appshed.com"
+					android:pathPrefix="/appbuilder/"
+					android:scheme="http" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".activities.CameraTestActivity">
+		</activity>
 
 		<receiver
 			android:name=".services.GcmBroadcastReceiver"
