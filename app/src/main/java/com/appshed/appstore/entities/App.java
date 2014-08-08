@@ -16,6 +16,10 @@ public class App implements Serializable {
 	public App() {
 	}
 
+	public App(long id) {
+		this.id = id;
+	}
+
 	public App(long id, String name, String description, String zip, String icon) {
 		this.id = id;
 		this.name = name;

@@ -13,6 +13,7 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveApps;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.rightutils.activities.RightFragmentActivityNew;
 import com.rightutils.collections.RightList;
 
 /**
@@ -40,12 +41,7 @@ public class AppsFragment extends Fragment {
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				if (refreshView.getCurrentMode().showHeaderLoadingLayout()) {
-//					new RetrieveTopics(getActivity(), TopicsFragment.this, company).setTimestampTop(timestampTop).execute();
-				} else {
-//					new RetrieveTopics(getActivity(), TopicsFragment.this, company).setTimestampBottom(timestampBottom).execute();
-					new RetrieveApps(getActivity(), null, AppsFragment.this).execute();
-				}
+				new RetrieveApps(getActivity(), null, AppsFragment.this).execute();
 			}
 		});
 		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
@@ -58,7 +54,7 @@ public class AppsFragment extends Fragment {
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				((RightFragmentActivityNew) getActivity()).pushFragment(PostsFragment.newInstance(company, topics.get(position - 1)));
+				((RightFragmentActivityNew) getActivity()).pushFragment(AppDetailFragment.newInstance(apps.get(position-1)));
 			}
 		});
 		if (apps.isEmpty()) {

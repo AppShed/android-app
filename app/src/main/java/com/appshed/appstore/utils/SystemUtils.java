@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.appshed.appstore.entities.Cache;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -29,6 +30,7 @@ public class SystemUtils {
 	public static final String APPS_URL = BASE_URL + "app.json";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	public static ImageLoader IMAGELOADER;
 
 	private SystemUtils() {
 	}

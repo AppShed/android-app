@@ -39,4 +39,5 @@ dependencies {
 	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
 	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 	compile 'com.github.chrisbanes.pulltorefresh:library:2.1.2-SNAPSHOT@aar'
+	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
 }
