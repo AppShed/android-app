@@ -15,8 +15,6 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my);
 		findViewById(R.id.btn_start).setOnClickListener(this);
-		findViewById(R.id.btn_add_shortcut).setOnClickListener(this);
-		findViewById(R.id.btn_delete_shortcut).setOnClickListener(this);
 		findViewById(R.id.btn_scan).setOnClickListener(this);
 		findViewById(R.id.btn_open).setOnClickListener(this);
 		findViewById(R.id.btn_apps).setOnClickListener(this);
@@ -27,12 +25,6 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 		switch (v.getId()) {
 			case R.id.btn_start:
 				startActivity(new Intent(MyActivity.this, PhonegapActivity.class));
-				break;
-			case R.id.btn_add_shortcut:
-//				SystemUtils.addAppShortcut();
-				break;
-			case R.id.btn_delete_shortcut:
-//				SystemUtils.removeAppShortcut();
 				break;
 			case R.id.btn_scan:
 				startActivity(new Intent(MyActivity.this, CameraTestActivity.class));

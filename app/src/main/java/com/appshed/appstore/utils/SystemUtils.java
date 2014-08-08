@@ -3,6 +3,8 @@ package com.appshed.appstore.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
@@ -82,9 +84,8 @@ public class SystemUtils {
 		Intent addIntent = new Intent();
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-				Intent.ShortcutIconResource.fromContext(context,
-						R.drawable.ic_launcher));
+		Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/download/appstore/"+appId+"/icon.png");
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, Bitmap.createScaledBitmap(bitmap, 128, 128, true));
 
 		addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
 		context.sendBroadcast(addIntent);
