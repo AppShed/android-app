@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.appshed.appstore.entities.App;
+import com.appshed.appstore.utils.ZipUtils;
 import com.rightutils.collections.RightList;
 
 import org.apache.http.HttpResponse;
@@ -74,11 +75,12 @@ public class RetrieveAppService extends IntentService {
 					int count = 0;
 					while ((count = is.read(buffer)) != -1) {
 						fos.write(buffer, 0, count);
-						Log.i(TAG, "Loading..."+progress);
+						Log.i(TAG, "Loading..." + progress);
 						progress += count;
 					}
 					fos.close();
 					is.close();
+					ZipUtils.unZipIt(PATH+appsPool.get(0).getId()+".zip",PATH+appsPool.get(0).getId());
 
 					//added info about file to base and static list
 //					appsPool.get(0).setPhonePath(PATH + appsPool.get(0).getId()+".mp3");
