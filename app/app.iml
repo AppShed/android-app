@@ -66,6 +66,7 @@
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-5.0.77" level="project" />
     <orderEntry type="library" exported="" name="cordova-3.0.0" level="project" />
+    <orderEntry type="library" exported="" name="library-2.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="zbar" level="project" />
     <orderEntry type="module" module-name="rightutils" exported="" />
   </component>

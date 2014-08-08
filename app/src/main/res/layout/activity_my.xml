@@ -18,6 +18,8 @@
 				android:id="@+id/btn_scan" android:text="Scanner"/>
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:id="@+id/btn_open" android:text="Open Url"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/btn_apps" android:text="Apps"/>
 	</LinearLayout>
 
 </RelativeLayout>

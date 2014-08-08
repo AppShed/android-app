@@ -8,13 +8,13 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	<uses-permission android:name="android.permission.WAKE_LOCK"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.CAMERA" />
-	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
 
 	<uses-feature android:name="android.hardware.camera"/>
 	<uses-feature android:name="android.hardware.camera.autofocus"/>
@@ -37,21 +37,22 @@
 		<activity android:name=".activities.PhonegapActivity"></activity>
 		<activity android:name=".activities.LaunchActivity" android:exported="true">
 			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
 				<data
 					android:host="appshed.com"
 					android:pathPrefix="/appbuilder/"
-					android:scheme="http" />
+					android:scheme="http"/>
 				<data
 					android:host="www.appshed.com"
 					android:pathPrefix="/appbuilder/"
-					android:scheme="http" />
+					android:scheme="http"/>
 			</intent-filter>
 		</activity>
 		<activity android:name=".activities.CameraTestActivity">
 		</activity>
+		<activity android:name=".activities.AppsActivity" android:screenOrientation="portrait"/>
 
 		<receiver
 			android:name=".services.GcmBroadcastReceiver"

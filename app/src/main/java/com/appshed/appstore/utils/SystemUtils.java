@@ -25,6 +25,8 @@ public class SystemUtils {
 
 	public static Cache cache;
 	public static String SENDER_ID = "800215983654";
+	private static final String BASE_URL = "http://fred.ekreative.com/~mcfedr/";
+	public static final String APPS_URL = BASE_URL + "app.json";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
