@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.appshed.appstore.entities.App;
+import com.appshed.appstore.utils.SystemUtils;
 import com.appshed.appstore.utils.ZipUtils;
 import com.rightutils.collections.RightList;
 
@@ -80,7 +81,10 @@ public class RetrieveAppService extends IntentService {
 					}
 					fos.close();
 					is.close();
+					//unzip
 					ZipUtils.unZipIt(PATH+appsPool.get(0).getId()+".zip",PATH+appsPool.get(0).getId());
+					//add icon for app
+					SystemUtils.addAppShortcut(getApplicationContext(), appsPool.get(0).getName(), appsPool.get(0).getId());
 
 					//added info about file to base and static list
 //					appsPool.get(0).setPhonePath(PATH + appsPool.get(0).getId()+".mp3");

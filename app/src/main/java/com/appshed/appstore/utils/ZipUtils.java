@@ -53,6 +53,7 @@ public class ZipUtils {
 
 			zis.closeEntry();
 			zis.close();
+			new File(zipFile).delete();
 
 			System.out.println("Done");
 

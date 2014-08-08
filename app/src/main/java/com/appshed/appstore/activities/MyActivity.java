@@ -1,12 +1,11 @@
 package com.appshed.appstore.activities;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.appshed.appstore.R;
-import com.appshed.appstore.fragments.AppsFragment;
+import com.appshed.appstore.utils.SystemUtils;
 
 
 public class MyActivity extends RegIdActivity implements View.OnClickListener {
@@ -30,10 +29,10 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 				startActivity(new Intent(MyActivity.this, PhonegapActivity.class));
 				break;
 			case R.id.btn_add_shortcut:
-				addShortcut();
+//				SystemUtils.addAppShortcut();
 				break;
 			case R.id.btn_delete_shortcut:
-				removeShortcut();
+//				SystemUtils.removeAppShortcut();
 				break;
 			case R.id.btn_scan:
 				startActivity(new Intent(MyActivity.this, CameraTestActivity.class));
@@ -49,33 +48,4 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 		}
 	}
 
-	private void addShortcut() {
-		Intent shortcutIntent = new Intent(getApplicationContext(), LaunchActivity.class);
-		shortcutIntent.putExtra(String.class.getSimpleName(), "launcher 1");
-
-		shortcutIntent.setAction(Intent.ACTION_MAIN);
-
-		Intent addIntent = new Intent();
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "launcher 1");
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-				Intent.ShortcutIconResource.fromContext(getApplicationContext(),
-						R.drawable.ic_launcher));
-
-		addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-		getApplicationContext().sendBroadcast(addIntent);
-	}
-
-	private void removeShortcut() {
-
-		Intent shortcutIntent = new Intent(getApplicationContext(),LaunchActivity.class);
-		shortcutIntent.putExtra(String.class.getSimpleName(), "launcher 1");
-		shortcutIntent.setAction(Intent.ACTION_MAIN);
-
-		Intent addIntent = new Intent();
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "launcher 1");
-		addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
-		getApplicationContext().sendBroadcast(addIntent);
-	}
 }

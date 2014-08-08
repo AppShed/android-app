@@ -34,7 +34,7 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".activities.PhonegapActivity"></activity>
+		<activity android:name=".activities.PhonegapActivity" android:exported="true"></activity>
 		<activity android:name=".activities.LaunchActivity" android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW"/>

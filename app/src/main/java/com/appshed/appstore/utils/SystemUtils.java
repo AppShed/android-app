@@ -1,12 +1,17 @@
 package com.appshed.appstore.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.appshed.appstore.R;
+import com.appshed.appstore.activities.LaunchActivity;
+import com.appshed.appstore.activities.PhonegapActivity;
+import com.appshed.appstore.entities.App;
 import com.appshed.appstore.entities.Cache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -66,5 +71,35 @@ public class SystemUtils {
 			return true;
 		}
 		return false;
+	}
+
+	public static void addAppShortcut(Context context, String name, long appId) {
+		Intent shortcutIntent = new Intent(context, PhonegapActivity.class);
+		shortcutIntent.putExtra(App.class.getSimpleName(), appId);
+
+		shortcutIntent.setAction(Intent.ACTION_MAIN);
+
+		Intent addIntent = new Intent();
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+				Intent.ShortcutIconResource.fromContext(context,
+						R.drawable.ic_launcher));
+
+		addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+		context.sendBroadcast(addIntent);
+	}
+
+	public static void removeAppShortcut(Context context, String name, long appId) {
+
+		Intent shortcutIntent = new Intent(context, PhonegapActivity.class);
+		shortcutIntent.putExtra(App.class.getSimpleName(), appId);
+		shortcutIntent.setAction(Intent.ACTION_MAIN);
+
+		Intent addIntent = new Intent();
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
+		addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
+		context.sendBroadcast(addIntent);
 	}
 }
