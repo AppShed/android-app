@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:orientation="vertical"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent">
+
+	<RadioGroup
+		android:background="#305EDA"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:layout_height="wrap_content"
+		android:paddingTop="15dp"
+		android:paddingBottom="15dp">
+
+		<RadioButton
+			android:textColor="@android:color/white"
+			android:button="@null"
+			android:gravity="center"
+			android:text="FEATURED"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"/>
+
+		<RadioButton
+			android:textColor="@android:color/white"
+			android:button="@null"
+			android:gravity="center"
+			android:text="CATEGORIES"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"/>
+
+		<RadioButton
+			android:textColor="@android:color/white"
+			android:button="@null"
+			android:gravity="center"
+			android:text="SEARCH"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"/>
+	</RadioGroup>
+
+	<com.viewpagerindicator.UnderlinePageIndicator
+		android:id="@+id/indicator"
+		android:layout_height="3dp"
+		android:layout_width="fill_parent"/>
+
+	<android.support.v4.view.ViewPager
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/pager"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.ekreative.stockdog.activities.HomeActivity"/>
+</LinearLayout>

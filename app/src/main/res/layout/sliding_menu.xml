@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/white"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ScrollView
+		android:layout_centerVertical="true"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_height="wrap_content">
+
+
+			<TextView
+				style="@style/menu_text_style"
+				android:layout_marginLeft="15dp"
+				android:layout_centerVertical="true"
+				android:id="@+id/txt_appshed_gallery"
+				android:text="Appshed App Galery"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+			<TextView
+				style="@style/menu_text_style"
+				android:layout_marginLeft="15dp"
+				android:layout_centerVertical="true"
+				android:id="@+id/txt_my_saved_apps"
+				android:text="My Saved Apps"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+			<TextView
+				android:layout_marginLeft="15dp"
+				android:layout_centerVertical="true"
+				android:id="@+id/txt_created_by_me"
+				android:text="Apps Createed by Me"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" style="@style/menu_text_style"/>
+
+			<TextView
+				style="@style/menu_text_style"
+				android:layout_marginLeft="15dp"
+				android:layout_centerVertical="true"
+				android:id="@+id/txt_app_creator"
+				android:text="Appshed App Creator"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+		</LinearLayout>
+	</ScrollView>
+</RelativeLayout>

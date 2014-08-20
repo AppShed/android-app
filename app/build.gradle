@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 repositories {
+	maven { url "http://dl.bintray.com/populov/maven" }
 	mavenCentral()
 	maven { url 'https://github.com/dahlgren/pulltorefresh-aar/raw/master' }
 	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
@@ -9,7 +10,7 @@ repositories {
 android {
 	useOldManifestMerger true
 	compileSdkVersion 20
-	buildToolsVersion "20.0.0"
+	buildToolsVersion '20.0.0'
 
 	defaultConfig {
 		applicationId "com.appshed.appstore"
@@ -43,4 +44,6 @@ dependencies {
 	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
 	compile 'com.rightutils:app:1.1.0-SNAPSHOT@aar'
 	compile 'com.github.itsmechlark.android-sliding-menu:android-sliding-menu:1.0.1'
+	compile 'com.viewpagerindicator:library:2.4.1@aar'
+	compile 'com.android.support:support-v13:20.0.0'
 }

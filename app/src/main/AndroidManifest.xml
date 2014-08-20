@@ -26,13 +26,18 @@
 		android:label="@string/appstore_app_name"
 		android:theme="@style/AppTheme">
 		<activity
-			android:name=".activities.MyActivity"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:name=".activities.MainActivity"
 			android:label="@string/appstore_app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
+		</activity>
+		<activity
+			android:name=".activities.MyActivity"
+			android:label="@string/appstore_app_name">
 		</activity>
 		<activity android:name=".activities.PhonegapActivity" android:exported="true"></activity>
 		<activity android:name=".activities.LaunchActivity" android:exported="true">
