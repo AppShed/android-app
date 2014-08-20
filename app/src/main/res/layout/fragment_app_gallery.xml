@@ -4,13 +4,38 @@
 			  android:orientation="vertical"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
-	<RelativeLayout android:layout_width="match_parent"
-					android:background="#2C81FF"
-					android:layout_height="80dp">
-		<View
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="20dp"
+		android:background="#3462D7"/>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:background="#2C81FF"
+		android:layout_height="60dp">
+
+		<ImageView
 			android:layout_width="match_parent"
-			android:layout_height="20dp"
-			android:background="#8C3B47B4"/>
+			android:scaleType="centerCrop"
+			android:layout_height="match_parent"
+			android:src="@drawable/top_net"/>
+
+		<ImageView
+			android:layout_marginLeft="20dp"
+			android:layout_centerVertical="true"
+			android:id="@+id/img_menu"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/menu_icon"/>
+		<TextView
+			android:layout_toRightOf="@+id/img_menu"
+			android:layout_marginLeft="20dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="20sp"
+			android:layout_centerVertical="true"
+			android:textColor="@android:color/white"
+			android:text="Appshed App Store"/>
+
 	</RelativeLayout>
 
 	<RadioGroup
