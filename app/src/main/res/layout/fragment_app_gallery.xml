@@ -4,6 +4,14 @@
 			  android:orientation="vertical"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
+	<RelativeLayout android:layout_width="match_parent"
+					android:background="#2C81FF"
+					android:layout_height="80dp">
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="20dp"
+			android:background="#8C3B47B4"/>
+	</RelativeLayout>
 
 	<RadioGroup
 		android:background="#305EDA"
