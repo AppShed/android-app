@@ -8,7 +8,7 @@ import android.util.Log;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SystemUtils;
 import com.appshed.appstore.utils.ZipUtils;
-import com.rightutils.collections.RightList;
+import com.rightutils.rightutils.collections.RightList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;

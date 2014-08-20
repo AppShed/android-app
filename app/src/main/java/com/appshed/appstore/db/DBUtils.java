@@ -2,7 +2,7 @@ package com.appshed.appstore.db;
 
 import android.content.Context;
 
-import com.rightutils.db.RightDBUtils;
+import com.rightutils.rightutils.db.RightDBUtils;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.

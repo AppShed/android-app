@@ -8,14 +8,13 @@ import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.AppsFragment;
-import com.appshed.appstore.utils.RequestUtils;
-import com.rightutils.collections.RightList;
+import com.rightutils.rightutils.collections.RightList;
+import com.rightutils.rightutils.tasks.BaseTask;
+import com.rightutils.rightutils.utils.RequestUtils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.util.EntityUtils;
-
-import java.net.URLDecoder;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.

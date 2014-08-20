@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.appshed.appstore.R;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SystemUtils;
-import com.rightutils.collections.RightList;
+import com.rightutils.rightutils.collections.RightList;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.

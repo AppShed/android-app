@@ -13,8 +13,8 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveApps;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.rightutils.activities.RightFragmentActivityNew;
-import com.rightutils.collections.RightList;
+import com.rightutils.rightutils.activities.RightFragmentActivityNew;
+import com.rightutils.rightutils.collections.RightList;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.

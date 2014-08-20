@@ -1,1 +1,1 @@
-include ':app', ':rightutils'
+include ':app'

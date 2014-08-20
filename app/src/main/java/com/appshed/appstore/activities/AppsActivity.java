@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.fragments.AppsFragment;
-import com.rightutils.activities.RightFragmentActivityNew;
+import com.rightutils.rightutils.activities.RightFragmentActivityNew;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.

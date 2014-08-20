@@ -3,9 +3,11 @@ apply plugin: 'com.android.application'
 repositories {
 	mavenCentral()
 	maven { url 'https://github.com/dahlgren/pulltorefresh-aar/raw/master' }
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 android {
+	useOldManifestMerger true
 	compileSdkVersion 20
 	buildToolsVersion "20.0.0"
 
@@ -34,10 +36,11 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile project(':rightutils')
-	compile 'com.google.android.gms:play-services:+'
+	compile 'com.google.android.gms:play-services:5.0.89'
 	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
 	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 	compile 'com.github.chrisbanes.pulltorefresh:library:2.1.2-SNAPSHOT@aar'
 	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
+	compile 'com.rightutils:app:1.1.0-SNAPSHOT@aar'
+	compile 'com.github.itsmechlark.android-sliding-menu:android-sliding-menu:1.0.1'
 }
