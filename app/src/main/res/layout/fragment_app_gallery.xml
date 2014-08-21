@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:font="http://schemas.android.com/apk/res-auto"
 			  android:orientation="vertical"
+			  android:background="#FAFAFA"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
 	<View
@@ -11,7 +13,7 @@
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:background="#2C81FF"
-		android:layout_height="60dp">
+		android:layout_height="70dp">
 
 		<ImageView
 			android:layout_width="match_parent"
@@ -26,15 +28,17 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@drawable/menu_icon"/>
-		<TextView
+
+		<com.rightutils.rightutils.widgets.TypefacedTextView
 			android:layout_toRightOf="@+id/img_menu"
 			android:layout_marginLeft="20dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textSize="20sp"
+			android:textSize="22sp"
 			android:layout_centerVertical="true"
 			android:textColor="@android:color/white"
-			android:text="Appshed App Store"/>
+			android:text="Appshed App Store"
+			font:typeface="fonts/Roboto-Regular.ttf"/>
 
 	</RelativeLayout>
 
@@ -43,13 +47,14 @@
 		android:layout_width="match_parent"
 		android:orientation="horizontal"
 		android:layout_height="wrap_content"
-		android:paddingTop="15dp"
-		android:paddingBottom="15dp">
+		android:paddingTop="13dp"
+		android:paddingBottom="10dp">
 
 		<RadioButton
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
+			android:textSize="20sp"
 			android:text="FEATURED"
 			android:layout_width="0dp"
 			android:layout_weight="1"
@@ -59,6 +64,7 @@
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
+			android:textSize="20sp"
 			android:text="CATEGORIES"
 			android:layout_width="0dp"
 			android:layout_weight="1"
@@ -68,6 +74,7 @@
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
+			android:textSize="20sp"
 			android:text="SEARCH"
 			android:layout_width="0dp"
 			android:layout_weight="1"
@@ -78,6 +85,12 @@
 		android:id="@+id/indicator"
 		android:layout_height="3dp"
 		android:layout_width="fill_parent"/>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="@drawable/top_action_bar_shadow"/>
+
 
 	<android.support.v4.view.ViewPager
 		xmlns:android="http://schemas.android.com/apk/res/android"

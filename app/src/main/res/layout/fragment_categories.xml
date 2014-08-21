@@ -7,60 +7,162 @@
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
 
-	<LinearLayout
-		android:padding="2.5dp"
-		android:layout_width="match_parent"
-		android:orientation="vertical"
-		android:layout_height="wrap_content">
-		<LinearLayout android:layout_width="match_parent"
-					  android:orientation="horizontal"
-					  android:layout_height="wrap_content">
-			<RelativeLayout
-				android:padding="2.5dp"
-				android:layout_width="0dp"
-				android:layout_weight="1"
+	<ScrollView android:layout_width="match_parent"
+				android:scrollbars="none"
 				android:layout_height="wrap_content">
+		<LinearLayout
+			android:padding="2.5dp"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_height="wrap_content">
+			<LinearLayout android:layout_width="match_parent"
+						  android:orientation="horizontal"
+						  android:layout_height="wrap_content">
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
 
-				<ImageView
-					android:id="@+id/img_general"
-					android:layout_centerInParent="true"
-					android:layout_width="match_parent"
-					android:scaleType="centerCrop"
-					android:layout_height="wrap_content"
-					android:src="@drawable/general_icon"/>
+					<ImageView
+						android:id="@+id/img_general"
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:layout_height="wrap_content"
+						android:src="@drawable/general_icon"/>
 
-				<com.rightutils.rightutils.widgets.TypefacedTextView
-					android:layout_alignBottom="@+id/img_general"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="GENERAL"
-					font:typeface="fonts/Roboto-Medium.ttf"
-					style="@style/category_name"/>
-			</RelativeLayout>
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_general"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="GENERAL"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
 
-			<RelativeLayout
-				android:padding="2.5dp"
-				android:layout_width="0dp"
-				android:layout_weight="1"
-				android:layout_height="wrap_content">
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
 
-				<ImageView
-					android:layout_centerInParent="true"
-					android:layout_width="match_parent"
-					android:scaleType="centerCrop"
-					android:id="@+id/img_education"
-					android:layout_height="wrap_content"
-					android:src="@drawable/general_icon"/>
+					<ImageView
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:id="@+id/img_education"
+						android:layout_height="wrap_content"
+						android:src="@drawable/education_icon"/>
 
-				<com.rightutils.rightutils.widgets.TypefacedTextView
-					android:layout_alignBottom="@+id/img_education"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="EDUCATION"
-					font:typeface="fonts/Roboto-Medium.ttf"
-					style="@style/category_name"/>
-			</RelativeLayout>
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_education"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="EDUCATION"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
+			</LinearLayout>
+			<LinearLayout android:layout_width="match_parent"
+						  android:orientation="horizontal"
+						  android:layout_height="wrap_content">
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:id="@+id/img_business"
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:layout_height="wrap_content"
+						android:src="@drawable/business_icon"/>
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_business"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="BUSINESS"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
+
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:id="@+id/img_fun"
+						android:layout_height="wrap_content"
+						android:src="@drawable/fun_icon"/>
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_fun"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="FUN"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
+			</LinearLayout>
+			<LinearLayout android:layout_width="match_parent"
+						  android:orientation="horizontal"
+						  android:layout_height="wrap_content">
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:id="@+id/img_events"
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:layout_height="wrap_content"
+						android:src="@drawable/events_icon"/>
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_events"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="EVENTS"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
+
+				<RelativeLayout
+					android:padding="2.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:layout_centerInParent="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:id="@+id/img_other"
+						android:layout_height="wrap_content"
+						android:src="@drawable/other_icon"/>
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignBottom="@+id/img_other"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="OTHER"
+						font:typeface="fonts/Roboto-Medium.ttf"
+						style="@style/category_name"/>
+				</RelativeLayout>
+			</LinearLayout>
 		</LinearLayout>
-	</LinearLayout>
+	</ScrollView>
 
 </LinearLayout>
