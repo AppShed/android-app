@@ -25,6 +25,12 @@ import org.codehaus.jackson.map.ObjectMapper;
  */
 public class SystemUtils {
 
+	public static final String GENERAL = "general";
+	public static final String EDUCATION = "education";
+	public static final String BUSINESS = "business";
+	public static final String FUN = "fun";
+	public static final String EVENTS = "events";
+	public static final String OTHER = "other";
 	private static final String TAG = SystemUtils.class.getSimpleName();
 
 	public static final String PROPERTY_REG_ID = "registration_id";

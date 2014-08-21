@@ -17,6 +17,7 @@
 		android:layout_height="170dp">
 
 		<ImageView
+			android:id="@+id/img_category_icon"
 			android:layout_width="match_parent"
 			android:scaleType="centerCrop"
 			android:layout_height="match_parent"
@@ -28,20 +29,11 @@
 			android:layout_height="match_parent"
 			android:src="@drawable/top_net"/>
 
-		<ImageView
-			android:layout_marginTop="20dp"
-			android:layout_marginLeft="20dp"
-			android:id="@+id/img_menu"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:src="@drawable/menu_icon"/>
-
 		<com.rightutils.rightutils.widgets.TypefacedTextView
 			android:id="@+id/txt_title"
 			android:layout_above="@+id/txt_category"
-			android:layout_toRightOf="@+id/img_menu"
 			android:layout_marginLeft="20dp"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:textSize="22sp"
 			android:shadowColor="#A6000000"
@@ -55,9 +47,9 @@
 
 		<com.rightutils.rightutils.widgets.TypefacedTextView
 			android:id="@+id/txt_category"
-			android:layout_toRightOf="@+id/img_menu"
+			android:textAllCaps="true"
 			android:layout_marginLeft="20dp"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:textSize="22sp"
 			android:shadowColor="#A6000000"

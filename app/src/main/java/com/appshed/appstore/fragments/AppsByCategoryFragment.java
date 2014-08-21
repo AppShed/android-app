@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.appshed.appstore.R;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
@@ -41,6 +44,8 @@ public class AppsByCategoryFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_by_category, null);
+		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
+		((TextView) view.findViewById(R.id.txt_category)).setText(category);
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {

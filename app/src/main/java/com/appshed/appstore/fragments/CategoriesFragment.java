@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.AppsByCategoryActivity;
+import com.appshed.appstore.utils.SystemUtils;
 
 /**
  * Created by Anton Maniskevich on 8/21/14.
@@ -38,11 +39,27 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 		switch (v.getId()) {
 			case R.id.general_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.general_icon);
-				intent.putExtra(String.class.getSimpleName(), "general");
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.GENERAL);
 				break;
 			case R.id.education_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.education_icon);
-				intent.putExtra(String.class.getSimpleName(), "education");
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.EDUCATION);
+				break;
+			case R.id.business_container:
+				intent.putExtra(Integer.class.getSimpleName(), R.drawable.business_icon);
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.BUSINESS);
+				break;
+			case R.id.fun_container:
+				intent.putExtra(Integer.class.getSimpleName(), R.drawable.fun_icon);
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.FUN);
+				break;
+			case R.id.events_container:
+				intent.putExtra(Integer.class.getSimpleName(), R.drawable.events_icon);
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.EVENTS);
+				break;
+			case R.id.other_container:
+				intent.putExtra(Integer.class.getSimpleName(), R.drawable.other_icon);
+				intent.putExtra(String.class.getSimpleName(), SystemUtils.OTHER);
 				break;
 		}
 		startActivity(intent);

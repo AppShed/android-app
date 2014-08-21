@@ -15,7 +15,9 @@ public class AppsByCategoryActivity extends RightFragmentActivityNew {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		initActivity(R.id.fragment_container, AppsByCategoryFragment.newInstance(R.drawable.education_icon, "EDUCATION"));
+		int categoryIcon = getIntent().getExtras().getInt(Integer.class.getSimpleName());
+		String categoryName = getIntent().getExtras().getString(String.class.getSimpleName());
+		initActivity(R.id.fragment_container, AppsByCategoryFragment.newInstance(categoryIcon, categoryName));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_apps);
 	}
