@@ -37,7 +37,7 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 //		menu.setShadowWidthRes(R.dimen.shadow_width);
 		menu.setShadowDrawable(android.R.color.transparent);
 		menu.setBehindOffset(countWidth(context));
-		menu.setFadeDegree(0.35f);
+		menu.setFadeEnabled(false);
 //		menu.setShadowDrawable(R.drawable.menu_shadow);
 		menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
 		menu.setMenu(R.layout.sliding_menu);

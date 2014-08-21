@@ -10,4 +10,15 @@
 		<item name="android:textColor">@android:color/black</item>
 	</style>
 
+	<style name="category_name">
+		<item name="android:paddingBottom">25dp</item>
+		<item name="android:layout_marginLeft">10dp</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:shadowColor">#A6000000</item>
+		<item name="android:shadowRadius">5</item>
+		<item name="android:shadowDx">5</item>
+		<item name="android:shadowDy">5</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
 </resources>

@@ -41,6 +41,10 @@ public class AppGalleryFragment extends Fragment {
 
 		@Override
 		public Fragment getItem(int position) {
+			switch (position) {
+				case 1:
+					return CategoriesFragment.newInstance();
+			}
 			return new PlaceholderFragment();
 		}
 

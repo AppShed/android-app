@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:font="http://schemas.android.com/apk/res-auto"
+			  android:orientation="vertical"
+			  android:background="#FAFAFA"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent">
+
+	<LinearLayout
+		android:padding="2.5dp"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:layout_height="wrap_content">
+		<LinearLayout android:layout_width="match_parent"
+					  android:orientation="horizontal"
+					  android:layout_height="wrap_content">
+			<RelativeLayout
+				android:padding="2.5dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:id="@+id/img_general"
+					android:layout_centerInParent="true"
+					android:layout_width="match_parent"
+					android:scaleType="centerCrop"
+					android:layout_height="wrap_content"
+					android:src="@drawable/general_icon"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:layout_alignBottom="@+id/img_general"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="GENERAL"
+					font:typeface="fonts/Roboto-Medium.ttf"
+					style="@style/category_name"/>
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:padding="2.5dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_centerInParent="true"
+					android:layout_width="match_parent"
+					android:scaleType="centerCrop"
+					android:id="@+id/img_education"
+					android:layout_height="wrap_content"
+					android:src="@drawable/general_icon"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:layout_alignBottom="@+id/img_education"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="EDUCATION"
+					font:typeface="fonts/Roboto-Medium.ttf"
+					style="@style/category_name"/>
+			</RelativeLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>
