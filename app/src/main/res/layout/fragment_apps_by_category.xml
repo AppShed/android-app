@@ -11,74 +11,93 @@
 		android:layout_height="20dp"
 		android:background="#3462D7"/>
 
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:background="#2C81FF"
-		android:layout_height="170dp">
-
-		<ImageView
-			android:id="@+id/img_category_icon"
+	<RelativeLayout android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+		<LinearLayout
+			android:id="@+id/top_container"
 			android:layout_width="match_parent"
-			android:scaleType="centerCrop"
-			android:layout_height="match_parent"
-			android:src="@drawable/education_icon"/>
+			android:orientation="vertical"
+			android:layout_height="170dp">
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:background="#2C81FF"
+				android:layout_height="match_parent">
 
-		<ImageView
-			android:layout_width="match_parent"
-			android:scaleType="centerCrop"
-			android:layout_height="match_parent"
-			android:src="@drawable/top_net"/>
+				<ImageView
+					android:id="@+id/img_category_icon"
+					android:layout_width="match_parent"
+					android:scaleType="centerCrop"
+					android:layout_height="match_parent"
+					android:src="@drawable/education_icon"/>
 
-		<com.rightutils.rightutils.widgets.TypefacedTextView
-			android:id="@+id/txt_title"
-			android:layout_above="@+id/txt_category"
-			android:layout_marginLeft="20dp"
+				<ImageView
+					android:layout_width="match_parent"
+					android:scaleType="centerCrop"
+					android:layout_height="match_parent"
+					android:src="@drawable/top_net"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:id="@+id/txt_title"
+					android:layout_above="@+id/txt_category"
+					android:layout_marginLeft="80dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="22sp"
+					android:shadowColor="#A6000000"
+					android:shadowRadius="5"
+					android:shadowDx="5"
+					android:shadowDy="5"
+					android:layout_centerVertical="true"
+					android:textColor="@android:color/white"
+					android:text="Appshed App Store"
+					font:typeface="fonts/Roboto-Regular.ttf"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:id="@+id/txt_category"
+					android:textAllCaps="true"
+					android:layout_marginLeft="80dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="22sp"
+					android:shadowColor="#A6000000"
+					android:shadowRadius="5"
+					android:shadowDx="5"
+					android:shadowDy="5"
+					android:layout_alignParentBottom="true"
+					android:layout_marginBottom="20dp"
+					android:textColor="@android:color/white"
+					android:text="EDUCATION"
+					font:typeface="fonts/Roboto-Medium.ttf"/>
+			</RelativeLayout>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="3dp"
+				android:background="@drawable/top_action_bar_shadow"/>
+		</LinearLayout>
+
+		<com.handmark.pulltorefresh.library.PullToRefreshListView
+			android:id="@+id/pull_refresh_list"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:textSize="22sp"
-			android:shadowColor="#A6000000"
-			android:shadowRadius="5"
-			android:shadowDx="5"
-			android:shadowDy="5"
-			android:layout_centerVertical="true"
-			android:textColor="@android:color/white"
-			android:text="Appshed App Store"
-			font:typeface="fonts/Roboto-Regular.ttf"/>
-
-		<com.rightutils.rightutils.widgets.TypefacedTextView
-			android:id="@+id/txt_category"
-			android:textAllCaps="true"
-			android:layout_marginLeft="20dp"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:textSize="22sp"
-			android:shadowColor="#A6000000"
-			android:shadowRadius="5"
-			android:shadowDx="5"
-			android:shadowDy="5"
+			android:layout_below="@+id/top_container"
 			android:layout_alignParentBottom="true"
-			android:layout_marginBottom="20dp"
-			android:textColor="@android:color/white"
-			android:text="EDUCATION"
-			font:typeface="fonts/Roboto-Medium.ttf"/>
-	</RelativeLayout>
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="3dp"
-		android:background="@drawable/top_action_bar_shadow"/>
+			android:cacheColorHint="#00000000"
+			android:divider="#00000000"
+			android:dividerHeight="3dp"
+			android:fadingEdge="none"
+			android:fastScrollEnabled="false"
+			android:footerDividersEnabled="false"
+			android:headerDividersEnabled="false"
+			android:smoothScrollbar="true"/>
 
-	<com.handmark.pulltorefresh.library.PullToRefreshListView
-		android:id="@+id/pull_refresh_list"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:cacheColorHint="#00000000"
-		android:divider="#00000000"
-		android:dividerHeight="3dp"
-		android:fadingEdge="none"
-		android:fastScrollEnabled="false"
-		android:footerDividersEnabled="false"
-		android:headerDividersEnabled="false"
-		android:smoothScrollbar="true"/>
+		<ImageView
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="-20dp"
+			android:layout_below="@+id/top_container"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:src="@drawable/category_mini_icon_bg"/>
+	</RelativeLayout>
 
 	<include layout="@layout/progress_view"/>
 

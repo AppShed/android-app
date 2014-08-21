@@ -39,8 +39,8 @@ public class SystemUtils {
 
 	public static Cache cache;
 	public static String SENDER_ID = "800215983654";
-	private static final String BASE_URL = "http://fred.ekreative.com/~mcfedr/";
-	public static final String APPS_URL = BASE_URL + "app.json";
+	private static final String BASE_URL = "http://appshed-api.fred.ekreative.com/";
+	public static final String APPS_URL = BASE_URL + "apps";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	public static ImageLoader IMAGELOADER;
@@ -70,15 +70,6 @@ public class SystemUtils {
 		if (cache == null) {
 			cache = new Cache();
 		}
-	}
-
-	public static boolean isOnline(Context context) {
-		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-			return true;
-		}
-		return false;
 	}
 
 	public static void addAppShortcut(Context context, String name, long appId) {
