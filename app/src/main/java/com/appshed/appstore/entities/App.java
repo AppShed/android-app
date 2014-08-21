@@ -12,6 +12,8 @@ public class App implements Serializable {
 	private String description;
 	private String zip;
 	private String icon;
+	private boolean ads;
+	private int version;
 
 	public App() {
 	}
@@ -20,12 +22,14 @@ public class App implements Serializable {
 		this.id = id;
 	}
 
-	public App(long id, String name, String description, String zip, String icon) {
+	public App(long id, String name, String description, String zip, String icon, boolean ads, int version) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.zip = zip;
 		this.icon = icon;
+		this.ads = ads;
+		this.version = version;
 	}
 
 	@Override
@@ -36,6 +40,8 @@ public class App implements Serializable {
 				", description='" + description + '\'' +
 				", zip='" + zip + '\'' +
 				", icon='" + icon + '\'' +
+				", ads=" + ads +
+				", version=" + version +
 				'}';
 	}
 
@@ -77,5 +83,21 @@ public class App implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public boolean isAds() {
+		return ads;
+	}
+
+	public void setAds(boolean ads) {
+		this.ads = ads;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 }

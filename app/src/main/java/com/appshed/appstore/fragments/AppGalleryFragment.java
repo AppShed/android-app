@@ -17,11 +17,12 @@ import com.viewpagerindicator.UnderlinePageIndicator;
  */
 public class AppGalleryFragment extends Fragment {
 
+	private FragmentPagerAdapter adapter;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_app_gallery, null);
-		FragmentPagerAdapter adapter = new GoogleMusicAdapter(getFragmentManager());
-
+		adapter = new GoogleMusicAdapter(getFragmentManager());
 		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.setAdapter(adapter);
 

@@ -28,6 +28,7 @@
 		<activity
 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
 			android:name=".activities.MainActivity"
+			android:screenOrientation="portrait"
 			android:label="@string/appstore_app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -35,6 +36,11 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+
+		<activity android:name=".activities.AppsByCategoryActivity"
+				  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+				  android:screenOrientation="portrait"/>
+
 		<activity
 			android:name=".activities.MyActivity"
 			android:label="@string/appstore_app_name">
@@ -57,7 +63,7 @@
 		</activity>
 		<activity android:name=".activities.CameraTestActivity">
 		</activity>
-		<activity android:name=".activities.AppsActivity" android:screenOrientation="portrait"/>
+
 
 		<receiver
 			android:name=".services.GcmBroadcastReceiver"

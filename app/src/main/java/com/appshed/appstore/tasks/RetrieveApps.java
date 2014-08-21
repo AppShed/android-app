@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
-import com.appshed.appstore.fragments.AppsFragment;
+import com.appshed.appstore.fragments.AppsByCategoryFragment;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 import com.rightutils.rightutils.utils.RequestUtils;
@@ -22,11 +22,11 @@ import org.apache.http.util.EntityUtils;
 public class RetrieveApps extends BaseTask {
 
 	private static final String TAG = RetrieveApps.class.getSimpleName();
-	private AppsFragment fragment;
+	private AppsByCategoryFragment fragment;
 	private String error;
 	private AppData appData;
 
-	public RetrieveApps(Context context, View progressBar, AppsFragment fragment) {
+	public RetrieveApps(Context context, View progressBar, AppsByCategoryFragment fragment) {
 		super(context, progressBar);
 		this.fragment = fragment;
 	}

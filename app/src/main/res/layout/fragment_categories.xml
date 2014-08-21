@@ -19,6 +19,7 @@
 						  android:orientation="horizontal"
 						  android:layout_height="wrap_content">
 				<RelativeLayout
+					android:id="@+id/general_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -42,6 +43,7 @@
 				</RelativeLayout>
 
 				<RelativeLayout
+					android:id="@+id/education_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -68,6 +70,7 @@
 						  android:orientation="horizontal"
 						  android:layout_height="wrap_content">
 				<RelativeLayout
+					android:id="@+id/business_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -91,6 +94,7 @@
 				</RelativeLayout>
 
 				<RelativeLayout
+					android:id="@+id/fun_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -117,6 +121,7 @@
 						  android:orientation="horizontal"
 						  android:layout_height="wrap_content">
 				<RelativeLayout
+					android:id="@+id/events_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"
@@ -140,6 +145,7 @@
 				</RelativeLayout>
 
 				<RelativeLayout
+					android:id="@+id/other_container"
 					android:padding="2.5dp"
 					android:layout_width="0dp"
 					android:layout_weight="1"

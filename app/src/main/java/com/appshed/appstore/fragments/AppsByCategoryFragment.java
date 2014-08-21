@@ -19,29 +19,34 @@ import com.rightutils.rightutils.collections.RightList;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class AppsFragment extends Fragment {
+public class AppsByCategoryFragment extends Fragment {
 
-	private static final String TAG = AppsFragment.class.getSimpleName();
+	private static final String TAG = AppsByCategoryFragment.class.getSimpleName();
+
 	private RightList<App> apps = new RightList<App>();
 	private PullToRefreshListView pullToRefreshListView;
 	private ListView actualListView;
 	private AppAdapter adapter;
 	private View progressBar;
+	private int bgDrawable;
+	private String category;
 
-	public static AppsFragment newInstance() {
-		AppsFragment fragment = new AppsFragment();
+	public static AppsByCategoryFragment newInstance(int bgDrawable, String category) {
+		AppsByCategoryFragment fragment = new AppsByCategoryFragment();
+		fragment.setBgDrawable(bgDrawable);
+		fragment.setCategory(category);
 		return fragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = View.inflate(getActivity(), R.layout.fragment_apps, null);
+		View view = View.inflate(getActivity(), R.layout.fragment_apps_by_category, null);
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new RetrieveApps(getActivity(), null, AppsFragment.this).execute();
+				new RetrieveApps(getActivity(), null, AppsByCategoryFragment.this).execute();
 			}
 		});
 		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
@@ -58,7 +63,7 @@ public class AppsFragment extends Fragment {
 			}
 		});
 		if (apps.isEmpty()) {
-			new RetrieveApps(getActivity(), progressBar, AppsFragment.this).execute();
+			new RetrieveApps(getActivity(), progressBar, AppsByCategoryFragment.this).execute();
 		}
 		return view;
 	}
@@ -80,5 +85,13 @@ public class AppsFragment extends Fragment {
 				pullToRefreshListView.onRefreshComplete();
 			}
 		});
+	}
+
+	public void setBgDrawable(int bgDrawable) {
+		this.bgDrawable = bgDrawable;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }

@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.appshed.appstore.R;
-import com.appshed.appstore.utils.SystemUtils;
 
 
 public class MyActivity extends RegIdActivity implements View.OnClickListener {
@@ -35,7 +34,7 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 				startActivity(browserIntent);
 				break;
 			case R.id.btn_apps:
-				startActivity(new Intent(MyActivity.this, AppsActivity.class));
+				startActivity(new Intent(MyActivity.this, AppsByCategoryActivity.class));
 				break;
 		}
 	}
