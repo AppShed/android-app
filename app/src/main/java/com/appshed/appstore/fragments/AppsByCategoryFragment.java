@@ -2,6 +2,7 @@ package com.appshed.appstore.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.adapters.AppAdapter;
+import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveApps;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -33,6 +35,7 @@ public class AppsByCategoryFragment extends Fragment {
 	private View progressBar;
 	private int bgDrawable;
 	private String category;
+	private View appDetailView;
 
 	public static AppsByCategoryFragment newInstance(int bgDrawable, String category) {
 		AppsByCategoryFragment fragment = new AppsByCategoryFragment();
@@ -47,11 +50,12 @@ public class AppsByCategoryFragment extends Fragment {
 		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
 		((TextView) view.findViewById(R.id.txt_category)).setText(category);
 		progressBar = view.findViewById(R.id.progress_bar);
+		appDetailView = view.findViewById(R.id.dialog_app_detail);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new RetrieveApps(getActivity(), null, AppsByCategoryFragment.this).execute();
+				new RetrieveApps(getActivity(), null, AppsByCategoryFragment.this).setCategory(category).execute();
 			}
 		});
 		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
@@ -64,11 +68,13 @@ public class AppsByCategoryFragment extends Fragment {
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				((RightFragmentActivityNew) getActivity()).pushFragment(AppDetailFragment.newInstance(apps.get(position-1)));
+//				((RightFragmentActivityNew) getActivity()).pushFragment(AppDetailFragment.newInstance(apps.get(position-1)));
+//				AppDetailDialog.newInstance(apps.get(position - 1)).show(getFragmentManager(), "showAppDetail");
+				showAppDetail(apps.get(position - 1));
 			}
 		});
 		if (apps.isEmpty()) {
-			new RetrieveApps(getActivity(), progressBar, AppsByCategoryFragment.this).execute();
+			new RetrieveApps(getActivity(), progressBar, AppsByCategoryFragment.this).setCategory(category).execute();
 		}
 		return view;
 	}
@@ -92,6 +98,10 @@ public class AppsByCategoryFragment extends Fragment {
 		});
 	}
 
+	public void showAppDetail(App app) {
+		appDetailView.setVisibility(View.VISIBLE);
+	};
+
 	public void setBgDrawable(int bgDrawable) {
 		this.bgDrawable = bgDrawable;
 	}
@@ -99,4 +109,6 @@ public class AppsByCategoryFragment extends Fragment {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+
 }

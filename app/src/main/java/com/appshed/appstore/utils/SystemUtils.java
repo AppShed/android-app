@@ -17,8 +17,23 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.entities.Cache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
+
+import java.security.KeyStore;
 
 /**
  * Created by Anton Maniskevich on 8/7/14.
@@ -100,4 +115,5 @@ public class SystemUtils {
 		addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
 		context.sendBroadcast(addIntent);
 	}
+
 }

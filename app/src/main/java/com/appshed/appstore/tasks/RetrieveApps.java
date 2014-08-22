@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.AppsByCategoryFragment;
+import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 import com.rightutils.rightutils.utils.RequestUtils;
@@ -25,6 +26,7 @@ public class RetrieveApps extends BaseTask {
 	private AppsByCategoryFragment fragment;
 	private String error;
 	private AppData appData;
+	private String category;
 
 	public RetrieveApps(Context context, View progressBar, AppsByCategoryFragment fragment) {
 		super(context, progressBar);
@@ -34,8 +36,12 @@ public class RetrieveApps extends BaseTask {
 	@Override
 	protected Boolean doInBackground(String... params) {
 		try {
-			Log.i(TAG, APPS_URL);
-			HttpResponse response = RequestUtils.getHttpResponse(APPS_URL);
+			String resultUrl = APPS_URL;
+//			if (!category.equals(SystemUtils.GENERAL)) {
+//				resultUrl += "?category="+category;
+//			}
+			Log.i(TAG, resultUrl);
+			HttpResponse response = RequestUtils.getHttpResponse(resultUrl);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {
@@ -67,5 +73,10 @@ public class RetrieveApps extends BaseTask {
 			}
 		}
 		super.onPostExecute(result);
+	}
+
+	public RetrieveApps setCategory(String category) {
+		this.category = category;
+		return this;
 	}
 }

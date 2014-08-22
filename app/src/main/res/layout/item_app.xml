@@ -8,21 +8,23 @@
 	<RelativeLayout
 		android:layout_marginLeft="20dp"
 		android:id="@+id/img_icon_container"
-		android:layout_width="52dp"
+		android:layout_width="51dp"
 		android:layout_centerVertical="true"
-		android:layout_height="52dp">
-
+		android:layout_height="51dp">
 		<ImageView
-			android:layout_centerInParent="true"
-			android:id="@+id/img_icon_bg"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
-
-		<ImageView
+			android:scaleType="centerCrop"
 			android:layout_centerInParent="true"
 			android:id="@+id/img_icon"
 			android:layout_width="50dp"
 			android:layout_height="50dp"/>
+
+		<ImageView
+			android:layout_centerInParent="true"
+			android:id="@+id/img_icon_bg"
+			android:src="@drawable/black_circle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
 	</RelativeLayout>
 
 	<LinearLayout

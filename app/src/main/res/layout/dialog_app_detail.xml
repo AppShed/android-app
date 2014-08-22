@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:font="http://schemas.android.com/apk/res-auto"
+				android:orientation="vertical"
+				android:visibility="gone"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+	<RelativeLayout android:layout_width="match_parent"
+					android:paddingRight="20dp"
+					android:paddingLeft="20dp"
+					android:paddingTop="20dp"
+					android:paddingBottom="30dp"
+					android:layout_centerInParent="true"
+					android:background="@drawable/dialog_shadow"
+					android:layout_height="400dp">
+
+		<LinearLayout
+			android:layout_centerInParent="true"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#FAFAFA">
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:background="#0000FF"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:id="@+id/txt_title"
+				android:padding="20dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="20sp"
+				android:textColor="@android:color/black"
+				android:text="O2 THINK BIG"
+				font:typeface="fonts/Roboto-Medium.ttf"/>
+
+		</LinearLayout>
+	</RelativeLayout>
+
+</RelativeLayout>

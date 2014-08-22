@@ -26,7 +26,7 @@
 		android:label="@string/appstore_app_name"
 		android:theme="@style/AppTheme">
 		<activity
-			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
 			android:name=".activities.MainActivity"
 			android:screenOrientation="portrait"
 			android:label="@string/appstore_app_name">
@@ -38,7 +38,7 @@
 		</activity>
 
 		<activity android:name=".activities.AppsByCategoryActivity"
-				  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+				  android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
 				  android:screenOrientation="portrait"/>
 
 		<activity
