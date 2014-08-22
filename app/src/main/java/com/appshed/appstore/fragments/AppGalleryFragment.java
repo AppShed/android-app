@@ -45,6 +45,8 @@ public class AppGalleryFragment extends Fragment {
 			switch (position) {
 				case 1:
 					return CategoriesFragment.newInstance();
+				case 2:
+					return SearchFragment.newInstance();
 			}
 			return new PlaceholderFragment();
 		}

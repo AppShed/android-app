@@ -22,6 +22,7 @@ import java.io.File;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
+@Deprecated
 public class AppDetailFragment extends Fragment implements View.OnClickListener{
 
 	private static final String TAG = AppDetailFragment.class.getSimpleName();

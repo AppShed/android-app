@@ -3,6 +3,7 @@ package com.appshed.appstore.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ public class AppsByCategoryFragment extends Fragment {
 		fragment.setCategory(category);
 		return fragment;
 	}
+
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -98,6 +101,14 @@ public class AppsByCategoryFragment extends Fragment {
 		});
 	}
 
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		if (appDetailView.getVisibility() == View.VISIBLE) {
+			appDetailView.setVisibility(View.GONE);
+		}
+	}
+
 	public void showAppDetail(App app) {
 		appDetailView.setVisibility(View.VISIBLE);
 	};
@@ -109,6 +120,5 @@ public class AppsByCategoryFragment extends Fragment {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
 
 }
