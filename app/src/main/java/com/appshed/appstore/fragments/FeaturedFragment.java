@@ -19,6 +19,7 @@ import com.appshed.appstore.R;
 import com.appshed.appstore.activities.AppDetailDialog;
 import com.appshed.appstore.activities.PhonegapActivity;
 import com.appshed.appstore.adapters.AppAdapter;
+import com.appshed.appstore.adapters.FeaturedAppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.services.RetrieveAppService;
 import com.appshed.appstore.tasks.RetrieveCategoriesApps;
@@ -41,7 +42,7 @@ public class FeaturedFragment extends Fragment {
 	private RightList<App> apps = new RightList<App>();
 	private PullToRefreshListView pullToRefreshListView;
 	private ListView actualListView;
-	private AppAdapter adapter;
+	private FeaturedAppAdapter adapter;
 	private View progressBar;
 	private View appDetailView;
 
@@ -68,7 +69,7 @@ public class FeaturedFragment extends Fragment {
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
 
-		adapter = new AppAdapter(getActivity(), apps);
+		adapter = new FeaturedAppAdapter(getActivity(), apps);
 		actualListView.setAdapter(adapter);
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
