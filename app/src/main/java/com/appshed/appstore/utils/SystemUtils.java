@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -57,6 +58,7 @@ public class SystemUtils {
 	private static final String BASE_URL = "http://appshed-api.fred.ekreative.com/";
 //	private static final String BASE_URL = "https://api.appshed.com/";
 	public static final String APPS_URL = BASE_URL + "apps";
+	public static final String FEATURED_APPS_URL = BASE_URL + "apps?featured=1";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	public static ImageLoader IMAGELOADER;
@@ -98,7 +100,9 @@ public class SystemUtils {
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
 		Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/download/appstore/"+appId+"/icon.png");
-		addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, Bitmap.createScaledBitmap(bitmap, 128, 128, true));
+		if (bitmap != null) {
+			addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, Bitmap.createScaledBitmap(bitmap, 128, 128, true));
+		}
 
 		addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
 		context.sendBroadcast(addIntent);
@@ -117,4 +121,7 @@ public class SystemUtils {
 		context.sendBroadcast(addIntent);
 	}
 
+	public  static String getAppFolder(App app) {
+		return Environment.getExternalStorageDirectory() + "/download/appstore/"+app.getId();
+	}
 }

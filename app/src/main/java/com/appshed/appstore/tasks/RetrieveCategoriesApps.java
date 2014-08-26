@@ -20,15 +20,15 @@ import org.apache.http.util.EntityUtils;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class RetrieveApps extends BaseTask {
+public class RetrieveCategoriesApps extends BaseTask {
 
-	private static final String TAG = RetrieveApps.class.getSimpleName();
+	private static final String TAG = RetrieveCategoriesApps.class.getSimpleName();
 	private AppsByCategoryFragment fragment;
 	private String error;
 	private AppData appData;
 	private String category;
 
-	public RetrieveApps(Context context, View progressBar, AppsByCategoryFragment fragment) {
+	public RetrieveCategoriesApps(Context context, View progressBar, AppsByCategoryFragment fragment) {
 		super(context, progressBar);
 		this.fragment = fragment;
 	}
@@ -75,7 +75,7 @@ public class RetrieveApps extends BaseTask {
 		super.onPostExecute(result);
 	}
 
-	public RetrieveApps setCategory(String category) {
+	public RetrieveCategoriesApps setCategory(String category) {
 		this.category = category;
 		return this;
 	}

@@ -13,9 +13,8 @@ import android.widget.ListView;
 import com.appshed.appstore.R;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
-import com.appshed.appstore.tasks.SearchApps;
+import com.appshed.appstore.tasks.RetrieveSearchApps;
 import com.rightutils.rightutils.collections.RightList;
-import com.rightutils.rightutils.utils.RightUtils;
 
 /**
  * Created by Anton Maniskevich on 8/22/14.
@@ -43,7 +42,7 @@ public class SearchFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				if (!s.toString().trim().isEmpty()) {
-					new SearchApps(getActivity(), null, SearchFragment.this).setQuery(s.toString().trim()).execute();
+					new RetrieveSearchApps(getActivity(), null, SearchFragment.this).setQuery(s.toString().trim()).execute();
 				}
 			}
 

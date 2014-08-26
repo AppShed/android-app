@@ -78,12 +78,14 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		@Override
 		public Fragment getItem(int position) {
 			switch (position) {
+				case 0:
+					return FeaturedFragment.newInstance();
 				case 1:
 					return CategoriesFragment.newInstance();
 				case 2:
 					return SearchFragment.newInstance();
 			}
-			return new PlaceholderFragment();
+			return null;
 		}
 
 		@Override

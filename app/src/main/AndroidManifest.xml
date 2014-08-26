@@ -41,6 +41,9 @@
 				  android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
 				  android:screenOrientation="portrait"/>
 
+		<activity android:name=".activities.AppDetailDialog"
+			android:theme="@style/Theme.UserDialog"/>
+
 		<activity
 			android:name=".activities.MyActivity"
 			android:label="@string/appstore_app_name">

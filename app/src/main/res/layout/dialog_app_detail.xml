@@ -2,7 +2,6 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				xmlns:font="http://schemas.android.com/apk/res-auto"
-				android:visibility="visible"
 				android:paddingLeft="5dp"
 				android:paddingRight="5dp"
 				android:layout_width="match_parent"

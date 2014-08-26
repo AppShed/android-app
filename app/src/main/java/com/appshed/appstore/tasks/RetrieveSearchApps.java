@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
-import com.appshed.appstore.fragments.AppsByCategoryFragment;
 import com.appshed.appstore.fragments.SearchFragment;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
@@ -22,15 +21,15 @@ import static com.appshed.appstore.utils.SystemUtils.MAPPER;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class SearchApps extends BaseTask {
+public class RetrieveSearchApps extends BaseTask {
 
-	private static final String TAG = SearchApps.class.getSimpleName();
+	private static final String TAG = RetrieveSearchApps.class.getSimpleName();
 	private SearchFragment fragment;
 	private String error;
 	private AppData appData;
 	private String query;
 
-	public SearchApps(Context context, View progressBar, SearchFragment fragment) {
+	public RetrieveSearchApps(Context context, View progressBar, SearchFragment fragment) {
 		super(context, progressBar);
 		this.fragment = fragment;
 	}
@@ -75,7 +74,7 @@ public class SearchApps extends BaseTask {
 		super.onPostExecute(result);
 	}
 
-	public SearchApps setQuery(String query) {
+	public RetrieveSearchApps setQuery(String query) {
 		this.query = query;
 		return this;
 	}

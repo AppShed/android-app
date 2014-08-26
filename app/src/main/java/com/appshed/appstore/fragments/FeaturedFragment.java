@@ -22,6 +22,7 @@ import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.services.RetrieveAppService;
 import com.appshed.appstore.tasks.RetrieveCategoriesApps;
+import com.appshed.appstore.tasks.RetrieveFeaturedApps;
 import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -34,37 +35,32 @@ import java.util.Comparator;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class AppsByCategoryFragment extends Fragment {
+public class FeaturedFragment extends Fragment {
 
-	private static final String TAG = AppsByCategoryFragment.class.getSimpleName();
-
+	private static final String TAG = FeaturedFragment.class.getSimpleName();
 	private RightList<App> apps = new RightList<App>();
 	private PullToRefreshListView pullToRefreshListView;
 	private ListView actualListView;
 	private AppAdapter adapter;
 	private View progressBar;
-	private int bgDrawable;
-	private String category;
+	private View appDetailView;
 
 
-	public static AppsByCategoryFragment newInstance(int bgDrawable, String category) {
-		AppsByCategoryFragment fragment = new AppsByCategoryFragment();
-		fragment.setBgDrawable(bgDrawable);
-		fragment.setCategory(category);
+
+	public static FeaturedFragment newInstance() {
+		FeaturedFragment fragment = new FeaturedFragment();
 		return fragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = View.inflate(getActivity(), R.layout.fragment_apps_by_category, null);
-		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
-		((TextView) view.findViewById(R.id.txt_category)).setText(category);
+		View view = View.inflate(getActivity(), R.layout.fragment_featured, null);
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new RetrieveCategoriesApps(getActivity(), null, AppsByCategoryFragment.this).setCategory(category).execute();
+				new RetrieveFeaturedApps(getActivity(), null, FeaturedFragment.this).execute();
 			}
 		});
 		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
@@ -81,7 +77,7 @@ public class AppsByCategoryFragment extends Fragment {
 			}
 		});
 		if (apps.isEmpty()) {
-			new RetrieveCategoriesApps(getActivity(), progressBar, AppsByCategoryFragment.this).setCategory(category).execute();
+			new RetrieveFeaturedApps(getActivity(), progressBar, FeaturedFragment.this).execute();
 		}
 		return view;
 	}
@@ -105,11 +101,4 @@ public class AppsByCategoryFragment extends Fragment {
 		});
 	}
 
-	public void setBgDrawable(int bgDrawable) {
-		this.bgDrawable = bgDrawable;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
 }

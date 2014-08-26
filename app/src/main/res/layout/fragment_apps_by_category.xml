@@ -103,9 +103,6 @@
 				android:src="@drawable/category_mini_icon_bg"/>
 		</RelativeLayout>
 	</LinearLayout>
-	<include
-		android:id="@+id/dialog_app_detail"
-		layout="@layout/dialog_app_detail"/>
 
 	<include layout="@layout/progress_view"/>
 </RelativeLayout>
