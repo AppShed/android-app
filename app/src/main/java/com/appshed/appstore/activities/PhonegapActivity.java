@@ -38,8 +38,6 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(App.class.getSimpleName())) {
 			url = "file:///sdcard/download/appstore/"+getIntent().getExtras().getLong(App.class.getSimpleName())+"/index.html";
 		}
-//		super.loadUrl(Config.getStartUrl());
-//		super.loadUrl(url);
 		cwv = (CordovaWebView) findViewById(R.id.tutorialView);
 		Config.init(this);
 		cwv.loadUrl(Config.getStartUrl());

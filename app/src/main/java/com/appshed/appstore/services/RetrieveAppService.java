@@ -98,15 +98,15 @@ public class RetrieveAppService extends IntentService {
 		}
 	}
 
-	public static long getProgress(long podcastId) {
-		Log.i(TAG, " " + podcastId);
-		if (appsPool.isEmpty()) {
-			return -1;
-		}
-		if (appsPool.get(0).getId() == podcastId) {
-			return progress;
-		}
-		if (appsPool.contains(new App(podcastId))) {
+	public static long getProgress(long appId) {
+		Log.i(TAG, " " + appId);
+//		if (appsPool.isEmpty()) {
+//			return -1;
+//		}
+//		if (appsPool.get(0).getId() == appId) {
+//			return progress;
+//		}
+		if (appsPool.contains(new App(appId))) {
 			return 0;
 		}
 		return -1;
