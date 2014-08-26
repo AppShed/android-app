@@ -15,15 +15,16 @@ import com.viewpagerindicator.UnderlinePageIndicator;
 /**
  * Created by Anton Maniskevich on 8/20/14.
  */
-public class AppGalleryFragment extends Fragment {
+public class AppGalleryFragment extends Fragment implements View.OnClickListener{
 
 	private FragmentPagerAdapter adapter;
+	private ViewPager pager;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_app_gallery, null);
 		adapter = new GoogleMusicAdapter(getFragmentManager());
-		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
+		pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.setAdapter(adapter);
 
 		UnderlinePageIndicator indicator = (UnderlinePageIndicator)view.findViewById(R.id.indicator);
@@ -32,7 +33,41 @@ public class AppGalleryFragment extends Fragment {
 		indicator.setBackgroundColor(0xFF305EDA);
 		indicator.setMinimumHeight(20);
 		indicator.setFades(false);
+
+		view.findViewById(R.id.rbtn_featured).setOnClickListener(this);
+		view.findViewById(R.id.rbtn_categories).setOnClickListener(this);
+		view.findViewById(R.id.rbtn_search).setOnClickListener(this);
 		return view;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.rbtn_featured:
+				pager.post(new Runnable() {
+					@Override
+					public void run() {
+						pager.setCurrentItem(0);
+					}
+				});
+				break;
+			case R.id.rbtn_categories:
+				pager.post(new Runnable() {
+					@Override
+					public void run() {
+						pager.setCurrentItem(1);
+					}
+				});
+				break;
+			case R.id.rbtn_search:
+				pager.post(new Runnable() {
+					@Override
+					public void run() {
+						pager.setCurrentItem(2);
+					}
+				});
+				break;
+		}
 	}
 
 	class GoogleMusicAdapter extends FragmentPagerAdapter {

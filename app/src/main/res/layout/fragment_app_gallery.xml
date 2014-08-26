@@ -51,30 +51,33 @@
 		android:paddingBottom="10dp">
 
 		<RadioButton
+			android:id="@+id/rbtn_featured"
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
-			android:textSize="20sp"
+			android:textSize="18sp"
 			android:text="FEATURED"
 			android:layout_width="0dp"
 			android:layout_weight="1"
 			android:layout_height="wrap_content"/>
 
 		<RadioButton
+			android:id="@+id/rbtn_categories"
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
-			android:textSize="20sp"
+			android:textSize="18sp"
 			android:text="CATEGORIES"
 			android:layout_width="0dp"
 			android:layout_weight="1"
 			android:layout_height="wrap_content"/>
 
 		<RadioButton
+			android:id="@+id/rbtn_search"
 			android:textColor="@android:color/white"
 			android:button="@null"
 			android:gravity="center"
-			android:textSize="20sp"
+			android:textSize="18sp"
 			android:text="SEARCH"
 			android:layout_width="0dp"
 			android:layout_weight="1"

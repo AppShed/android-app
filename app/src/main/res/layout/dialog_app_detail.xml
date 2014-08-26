@@ -2,7 +2,6 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				xmlns:font="http://schemas.android.com/apk/res-auto"
-				android:orientation="vertical"
 				android:visibility="gone"
 				android:paddingLeft="5dp"
 				android:paddingRight="5dp"
@@ -13,25 +12,31 @@
 					android:paddingRight="20dp"
 					android:paddingLeft="20dp"
 					android:paddingTop="20dp"
-					android:paddingBottom="30dp"
+					android:paddingBottom="20dp"
 					android:layout_centerInParent="true"
 					android:background="@drawable/dialog_shadow"
-					android:layout_height="400dp">
+					android:layout_height="450dp">
 
-		<LinearLayout
-			android:layout_centerInParent="true"
+		<RelativeLayout
+			android:layout_marginBottom="10dp"
 			android:orientation="vertical"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:background="#FAFAFA">
+			android:background="@drawable/dialog_bg">
+
 			<ImageView
+				android:layout_margin="1dp"
+				android:id="@+id/img_app_icon"
+				android:scaleType="centerCrop"
 				android:layout_width="match_parent"
-				android:layout_height="150dp"
-				android:background="#0000FF"/>
+				android:layout_height="150dp"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:layout_below="@+id/img_app_icon"
 				android:id="@+id/txt_title"
-				android:padding="20dp"
+				android:paddingTop="20dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textSize="20sp"
@@ -39,7 +44,59 @@
 				android:text="O2 THINK BIG"
 				font:typeface="fonts/Roboto-Medium.ttf"/>
 
-		</LinearLayout>
+			<ScrollView
+				android:layout_below="@+id/txt_title"
+				android:layout_above="@+id/bottom_container"
+				android:layout_width="match_parent"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp"
+				android:layout_height="wrap_content">
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:layout_marginTop="10dp"
+					android:id="@+id/txt_description"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="12sp"
+					android:textColor="@android:color/black"
+					font:typeface="fonts/Roboto-Regular.ttf"/>
+			</ScrollView>
+
+			<LinearLayout
+				android:layout_alignParentBottom="true"
+				android:paddingBottom="20dp"
+				android:id="@+id/bottom_container"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:id="@+id/txt_share_app"
+					android:textColor="#99CCFF"
+					android:text="SHARE APP"
+					android:textSize="20sp"
+					android:gravity="center"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					font:typeface="fonts/Roboto-Medium.ttf"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:id="@+id/txt_get_this_app"
+					android:textColor="#264FC3"
+					android:textSize="20sp"
+					android:gravity="center"
+					android:text="GET THIS APP"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					font:typeface="fonts/Roboto-Medium.ttf"/>
+			</LinearLayout>
+			<View android:layout_width="match_parent" android:layout_height="match_parent"
+				  android:background="@drawable/dialog_bg_overlay"/>
+		</RelativeLayout>
+
+
 	</RelativeLayout>
 
 </RelativeLayout>

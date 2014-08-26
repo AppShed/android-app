@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.fragments.AppsByCategoryFragment;
+import com.appshed.appstore.fragments.OnBackPressed;
 import com.rightutils.rightutils.activities.RightFragmentActivityNew;
 
 /**
@@ -27,8 +28,11 @@ public class AppsByCategoryActivity extends RightFragmentActivityNew {
 	@Override
 	public void onBackPressed() {
 		Fragment lastFragment = getLastFragment();
-		if (lastFragment instanceof AppsByCategoryFragment) {
-			///TODO think about that
+		if (lastFragment instanceof OnBackPressed) {
+			boolean result = ((OnBackPressed) lastFragment).onBackPressed();
+			if (result) {
+				super.onBackPressed();
+			}
 		} else {
 			super.onBackPressed();
 		}

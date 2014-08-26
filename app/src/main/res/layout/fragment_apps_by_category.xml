@@ -15,6 +15,22 @@
 
 		<RelativeLayout android:layout_width="match_parent"
 						android:layout_height="wrap_content">
+
+			<com.handmark.pulltorefresh.library.PullToRefreshListView
+				android:id="@+id/pull_refresh_list"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/top_container"
+				android:layout_alignParentBottom="true"
+				android:cacheColorHint="#00000000"
+				android:divider="#00000000"
+				android:dividerHeight="3dp"
+				android:fadingEdge="none"
+				android:fastScrollEnabled="false"
+				android:footerDividersEnabled="false"
+				android:headerDividersEnabled="false"
+				android:smoothScrollbar="true"/>
+
 			<LinearLayout
 				android:id="@+id/top_container"
 				android:layout_width="match_parent"
@@ -71,26 +87,12 @@
 						android:text="EDUCATION"
 						font:typeface="fonts/Roboto-Medium.ttf"/>
 				</RelativeLayout>
-				<RelativeLayout
-					android:layout_width="match_parent"
-					android:layout_height="3dp"
-					android:background="@drawable/top_action_bar_shadow"/>
 			</LinearLayout>
-
-			<com.handmark.pulltorefresh.library.PullToRefreshListView
-				android:id="@+id/pull_refresh_list"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+			<RelativeLayout
 				android:layout_below="@+id/top_container"
-				android:layout_alignParentBottom="true"
-				android:cacheColorHint="#00000000"
-				android:divider="#00000000"
-				android:dividerHeight="3dp"
-				android:fadingEdge="none"
-				android:fastScrollEnabled="false"
-				android:footerDividersEnabled="false"
-				android:headerDividersEnabled="false"
-				android:smoothScrollbar="true"/>
+				android:layout_width="match_parent"
+				android:layout_height="3dp"
+				android:background="@drawable/top_action_bar_shadow"/>
 
 			<ImageView
 				android:layout_marginLeft="21dp"

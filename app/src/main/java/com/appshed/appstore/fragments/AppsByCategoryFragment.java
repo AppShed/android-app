@@ -1,9 +1,8 @@
 package com.appshed.appstore.fragments;
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,22 @@ import android.widget.TextView;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.adapters.AppAdapter;
-import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveApps;
+import com.appshed.appstore.utils.BitmapUtils;
+import com.appshed.appstore.utils.ImageLoadingListenerImpl;
+import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.rightutils.rightutils.activities.RightFragmentActivityNew;
 import com.rightutils.rightutils.collections.RightList;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class AppsByCategoryFragment extends Fragment {
+public class AppsByCategoryFragment extends Fragment implements OnBackPressed {
 
 	private static final String TAG = AppsByCategoryFragment.class.getSimpleName();
 
@@ -53,7 +56,7 @@ public class AppsByCategoryFragment extends Fragment {
 		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
 		((TextView) view.findViewById(R.id.txt_category)).setText(category);
 		progressBar = view.findViewById(R.id.progress_bar);
-		appDetailView = view.findViewById(R.id.dialog_app_detail);
+		setUpDialog(view);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
@@ -72,8 +75,8 @@ public class AppsByCategoryFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //				((RightFragmentActivityNew) getActivity()).pushFragment(AppDetailFragment.newInstance(apps.get(position-1)));
-//				AppDetailDialog.newInstance(apps.get(position - 1)).show(getFragmentManager(), "showAppDetail");
-				showAppDetail(apps.get(position - 1));
+//				AppDetailDialog.newInstance(apps.get(position - 1)).show(getFragmentManager(), "showDialog");
+				showDialog(apps.get(position - 1));
 			}
 		});
 		if (apps.isEmpty()) {
@@ -85,12 +88,12 @@ public class AppsByCategoryFragment extends Fragment {
 	public void addApps(RightList<App> newApps) {
 		if (newApps.size() > 0) {
 			apps.addAll(newApps);
-//			Collections.sort(this.topics, new Comparator<Topic>() {
-//				@Override
-//				public int compare(Topic lhs, Topic rhs) {
-//					return (int) (rhs.getCreated() - lhs.getCreated());
-//				}
-//			});
+			Collections.sort(this.apps, new Comparator<App>() {
+				@Override
+				public int compare(App lhs, App rhs) {
+					return (int) (rhs.getId() - lhs.getId());
+				}
+			});
 		}
 		pullToRefreshListView.post(new Runnable() {
 			@Override
@@ -101,17 +104,24 @@ public class AppsByCategoryFragment extends Fragment {
 		});
 	}
 
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		if (appDetailView.getVisibility() == View.VISIBLE) {
-			appDetailView.setVisibility(View.GONE);
-		}
+	public void setUpDialog(View view) {
+		appDetailView = view.findViewById(R.id.dialog_app_detail);
 	}
 
-	public void showAppDetail(App app) {
+	public void showDialog(App app) {
+		appDetailView.setOnClickListener(null);
+		SystemUtils.IMAGELOADER.displayImage(app.getIcon(), ((ImageView) appDetailView.findViewById(R.id.img_app_icon)));
+		((TextView) appDetailView.findViewById(R.id.txt_title)).setText(app.getName());
+		((TextView) appDetailView.findViewById(R.id.txt_description)).setText(app.getDescription());
 		appDetailView.setVisibility(View.VISIBLE);
 	};
+
+	public void hideDialog() {
+		appDetailView.setVisibility(View.GONE);
+	}
+	public boolean isDialogShowing() {
+		return appDetailView.getVisibility() == View.VISIBLE;
+	}
 
 	public void setBgDrawable(int bgDrawable) {
 		this.bgDrawable = bgDrawable;
@@ -121,4 +131,12 @@ public class AppsByCategoryFragment extends Fragment {
 		this.category = category;
 	}
 
+	@Override
+	public boolean onBackPressed() {
+		if (isDialogShowing()) {
+			hideDialog();
+			return false;
+		}
+		return true;
+	}
 }
