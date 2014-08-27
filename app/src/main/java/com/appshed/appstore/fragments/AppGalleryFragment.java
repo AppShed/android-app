@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.activities.MainActivity;
 import com.viewpagerindicator.UnderlinePageIndicator;
 
 /**
@@ -37,6 +38,7 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		view.findViewById(R.id.rbtn_featured).setOnClickListener(this);
 		view.findViewById(R.id.rbtn_categories).setOnClickListener(this);
 		view.findViewById(R.id.rbtn_search).setOnClickListener(this);
+		view.findViewById(R.id.img_menu).setOnClickListener(this);
 		return view;
 	}
 
@@ -66,6 +68,9 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 						pager.setCurrentItem(2);
 					}
 				});
+				break;
+			case R.id.img_menu:
+				((MainActivity) getActivity()).toggleMenu();
 				break;
 		}
 	}

@@ -42,13 +42,18 @@
 				  android:screenOrientation="portrait"/>
 
 		<activity android:name=".activities.AppDetailDialog"
-			android:theme="@style/Theme.UserDialog"/>
+				  android:theme="@style/Theme.UserDialog"/>
 
 		<activity
 			android:name=".activities.MyActivity"
 			android:label="@string/appstore_app_name">
 		</activity>
-		<activity android:name=".activities.PhonegapActivity" android:exported="true"></activity>
+		<activity
+			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+			android:name=".activities.PhonegapActivity"
+			android:exported="true"
+			android:screenOrientation="portrait"/>
+
 		<activity android:name=".activities.LaunchActivity" android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW"/>

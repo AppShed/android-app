@@ -13,7 +13,6 @@ import org.apache.cordova.Config;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.DroidGap;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,7 +23,7 @@ import java.util.concurrent.Executors;
 public class PhonegapActivity extends Activity implements CordovaInterface {
 
 	private static final String TAG = PhonegapActivity.class.getSimpleName();
-	private CordovaWebView cwv;
+	private CordovaWebView cordovaWebView;
 	protected CordovaPlugin activityResultCallback = null;
 	protected boolean activityResultKeepRunning;
 	protected boolean keepRunning = true;
@@ -38,10 +37,10 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(App.class.getSimpleName())) {
 			url = "file:///sdcard/download/appstore/"+getIntent().getExtras().getLong(App.class.getSimpleName())+"/index.html";
 		}
-		cwv = (CordovaWebView) findViewById(R.id.tutorialView);
+		cordovaWebView = (CordovaWebView) findViewById(R.id.tutorialView);
 		Config.init(this);
-		cwv.loadUrl(Config.getStartUrl());
-		cwv.loadUrl(url);
+		cordovaWebView.loadUrl(Config.getStartUrl());
+		cordovaWebView.loadUrl(url);
 
 		AdView adView = (AdView)this.findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder().build();

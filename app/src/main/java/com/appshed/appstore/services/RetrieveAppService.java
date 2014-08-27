@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Environment;
 import android.util.Log;
 
+import com.appshed.appstore.applications.AppStoreApplication;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SystemUtils;
 import com.appshed.appstore.utils.ZipUtils;
@@ -25,38 +26,39 @@ import java.io.InputStream;
 public class RetrieveAppService extends IntentService {
 
 	private static final String TAG = RetrieveAppService.class.getSimpleName();
-	public static final String RETRATIVE_TYPE = "retrative_type";
+	public static final String RETRIEVE_TYPE = "retrieve_type";
 	public static final int LOAD_APP = 100;
 	private static RightList<App> appsPool = new RightList<App>();
-	private static RetrativeFile retrativeFile;
+	private static RetrieveFile retrieveFile;
 
 	private static long progress = 0;
 
 	public RetrieveAppService() {
 		super(RetrieveAppService.class.getName());
-		retrativeFile = new RetrativeFile();
+		retrieveFile = new RetrieveFile();
 	}
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		if (intent.getExtras() != null) {
-			int retrativeType = intent.getExtras().getInt(RETRATIVE_TYPE);
+			int retrativeType = intent.getExtras().getInt(RETRIEVE_TYPE);
 			switch (retrativeType) {
 				case LOAD_APP:
 					appsPool.add((App) intent.getSerializableExtra(App.class.getSimpleName()));
 					if (appsPool.size() == 1) {
-						retrativeFile.start();
+						retrieveFile.start();
 					}
 					break;
 			}
 		}
 	}
 
-	private class RetrativeFile extends Thread {
+	private class RetrieveFile extends Thread {
 
 		@Override
 		public void run() {
 			while (!appsPool.isEmpty()) {
+				Log.i(TAG, "poolSize"+appsPool.size());
 				try {
 					progress = 0;
 					Log.i(TAG, appsPool.get(0).getZip());
@@ -83,14 +85,11 @@ public class RetrieveAppService extends IntentService {
 					is.close();
 					//unzip
 					ZipUtils.unZipIt(PATH+appsPool.get(0).getId()+".zip",PATH+appsPool.get(0).getId());
+					AppStoreApplication.dbUtils.add(appsPool.get(0));
 					//add icon for app
 					SystemUtils.addAppShortcut(getApplicationContext(), appsPool.get(0).getName(), appsPool.get(0).getId());
-
-					//added info about file to base and static list
-//					appsPool.get(0).setPhonePath(PATH + appsPool.get(0).getId()+".mp3");
-//					dbUtils.checkAsDownloaded(appsPool.get(0));
 				} catch (IOException e) {
-					Log.e(TAG, "RetrativeFile", e);
+					Log.e(TAG, "RetrieveFile", e);
 				} finally {
 					appsPool.remove(0);
 				}
@@ -99,7 +98,7 @@ public class RetrieveAppService extends IntentService {
 	}
 
 	public static long getProgress(long appId) {
-		Log.i(TAG, " " + appId);
+		Log.i(TAG, "getProgress" + appId);
 //		if (appsPool.isEmpty()) {
 //			return -1;
 //		}

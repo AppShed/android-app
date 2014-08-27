@@ -55,8 +55,8 @@ public class SystemUtils {
 
 	public static Cache cache;
 	public static String SENDER_ID = "800215983654";
-	private static final String BASE_URL = "http://appshed-api.fred.ekreative.com/";
-//	private static final String BASE_URL = "https://api.appshed.com/";
+//	private static final String BASE_URL = "http://appshed-api.fred.ekreative.com/";
+	private static final String BASE_URL = "https://api.appshed.com/";
 	public static final String APPS_URL = BASE_URL + "apps";
 	public static final String FEATURED_APPS_URL = BASE_URL + "apps?featured=1";
 

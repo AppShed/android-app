@@ -9,6 +9,7 @@
 		android:id="@+id/tutorialView"
 		android:layout_width="match_parent"
 		android:layout_alignParentTop="true"
+		android:layout_above="@+id/bottom_bar"
 		android:layout_height="match_parent"/>
 
 	<LinearLayout
@@ -17,6 +18,7 @@
 		android:layout_height="50dp"
 		android:orientation="vertical"
 		android:layout_alignParentBottom="true">
+
 		<com.google.android.gms.ads.AdView
 			android:id="@+id/adView"
 			android:layout_gravity="center"
@@ -24,6 +26,7 @@
 			android:layout_height="wrap_content"
 			ads:adUnitId="ca-app-pub-2894744064984577/1658585444"
 			ads:adSize="BANNER"/>
+
 	</LinearLayout>
 
 </RelativeLayout>

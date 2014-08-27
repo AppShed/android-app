@@ -23,7 +23,7 @@ import java.io.File;
 /**
  * Created by Anton Maniskevich on 8/26/14.
  */
-public class AppDetailDialog extends Activity implements View.OnClickListener{
+public class AppDetailDialog extends Activity {
 
 	private static final String TAG = AppDetailDialog.class.getSimpleName();
 
@@ -83,22 +83,22 @@ public class AppDetailDialog extends Activity implements View.OnClickListener{
 					startActivity(new Intent(AppDetailDialog.this, PhonegapActivity.class).putExtra(App.class.getSimpleName(), selectedApp.getId()));
 				} else {
 					startService(new Intent(AppDetailDialog.this, RetrieveAppService.class)
-							.putExtra(RetrieveAppService.RETRATIVE_TYPE, RetrieveAppService.LOAD_APP)
+							.putExtra(RetrieveAppService.RETRIEVE_TYPE, RetrieveAppService.LOAD_APP)
 							.putExtra(App.class.getSimpleName(), selectedApp));
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
 		progressHandler.sendEmptyMessageDelayed(0, 0);
 	}
 
 	@Override
-	public void onClick(View v) {
-
-	}
-
-	@Override
-	protected void onDestroy() {
+	protected void onPause() {
 		progressHandler.removeMessages(0);
-		super.onDestroy();
+		super.onPause();
 	}
 }
