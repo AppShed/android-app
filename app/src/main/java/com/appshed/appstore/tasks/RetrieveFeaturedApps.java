@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.FeaturedFragment;
-import com.appshed.appstore.utils.SniRequestsUtils;
+import com.appshed.appstore.utils.SniRequestUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 import ch.boye.httpclientandroidlib.HttpResponse;
@@ -34,7 +34,7 @@ public class RetrieveFeaturedApps extends BaseTask {
 	protected Boolean doInBackground(String... params) {
 		try {
 			Log.i(TAG, FEATURED_APPS_URL);
-			HttpResponse response = SniRequestsUtils.getHttpResponse(FEATURED_APPS_URL);
+			HttpResponse response = SniRequestUtils.getHttpResponse(FEATURED_APPS_URL);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {

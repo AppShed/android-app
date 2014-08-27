@@ -8,14 +8,14 @@ import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.AppsByCategoryFragment;
+import com.appshed.appstore.utils.SniRequestUtils;
 import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
-import com.rightutils.rightutils.utils.RequestUtils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.util.EntityUtils;
+import ch.boye.httpclientandroidlib.HttpResponse;
+import ch.boye.httpclientandroidlib.HttpStatus;
+import ch.boye.httpclientandroidlib.util.EntityUtils;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.
@@ -41,7 +41,7 @@ public class RetrieveCategoriesApps extends BaseTask {
 				resultUrl += "?category="+category;
 			}
 			Log.i(TAG, resultUrl);
-			HttpResponse response = RequestUtils.getHttpResponse(resultUrl);
+			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {

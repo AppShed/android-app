@@ -31,7 +31,7 @@ public class FeaturedAppAdapter extends ArrayAdapter<App> {
 		((TextView) view.findViewById(R.id.txt_title)).setText(app.getName());
 		((TextView) view.findViewById(R.id.txt_description)).setText(app.getDescription());
 		final ImageView appBg = (ImageView) view.findViewById(R.id.img_app_bg);
-		SystemUtils.IMAGELOADER.displayImage(app.getIcon(), appBg);
+		SystemUtils.IMAGELOADER.displayImage(app.getFeaturedImage(), appBg);
 		final ImageView icon = (ImageView) view.findViewById(R.id.img_icon);
 		SystemUtils.IMAGELOADER.displayImage(app.getIcon(), icon, new ImageLoadingListenerImpl() {
 

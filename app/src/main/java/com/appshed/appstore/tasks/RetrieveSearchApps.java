@@ -4,17 +4,14 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.SearchFragment;
+import com.appshed.appstore.utils.SniRequestUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
-import com.rightutils.rightutils.utils.RequestUtils;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.util.EntityUtils;
-
+import ch.boye.httpclientandroidlib.HttpResponse;
+import ch.boye.httpclientandroidlib.HttpStatus;
+import ch.boye.httpclientandroidlib.util.EntityUtils;
 import static com.appshed.appstore.utils.SystemUtils.APPS_URL;
 import static com.appshed.appstore.utils.SystemUtils.MAPPER;
 
@@ -40,7 +37,7 @@ public class RetrieveSearchApps extends BaseTask {
 			String resultUrl = APPS_URL;
 			resultUrl += "?search="+query;
 			Log.i(TAG, resultUrl);
-			HttpResponse response = RequestUtils.getHttpResponse(resultUrl);
+			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {

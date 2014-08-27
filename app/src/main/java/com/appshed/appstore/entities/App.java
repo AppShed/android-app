@@ -1,5 +1,7 @@
 package com.appshed.appstore.entities;
 
+import com.rightutils.rightutils.db.ColumnName;
+
 import java.io.Serializable;
 
 /**
@@ -14,6 +16,8 @@ public class App implements Serializable {
 	private String icon;
 	private boolean ads;
 	private int version;
+	@ColumnName("featured_image")
+	private String featuredImage;
 
 	public App() {
 	}
@@ -22,7 +26,7 @@ public class App implements Serializable {
 		this.id = id;
 	}
 
-	public App(long id, String name, String description, String zip, String icon, boolean ads, int version) {
+	public App(long id, String name, String description, String zip, String icon, boolean ads, int version, String featuredImage) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -30,6 +34,7 @@ public class App implements Serializable {
 		this.icon = icon;
 		this.ads = ads;
 		this.version = version;
+		this.featuredImage = featuredImage;
 	}
 
 	@Override
@@ -59,6 +64,7 @@ public class App implements Serializable {
 				", icon='" + icon + '\'' +
 				", ads=" + ads +
 				", version=" + version +
+				", featuredImage='" + featuredImage + '\'' +
 				'}';
 	}
 
@@ -116,5 +122,13 @@ public class App implements Serializable {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	public String getFeaturedImage() {
+		return featuredImage;
+	}
+
+	public void setFeaturedImage(String featuredImage) {
+		this.featuredImage = featuredImage;
 	}
 }

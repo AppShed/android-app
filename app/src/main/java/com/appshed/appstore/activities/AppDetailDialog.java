@@ -71,7 +71,7 @@ public class AppDetailDialog extends Activity {
 
 		install = (TextView) findViewById(R.id.txt_get_this_app);
 		appLoaderProgress = (ProgressBar) findViewById(R.id.app_loaging_progress_bar);
-		SystemUtils.IMAGELOADER.displayImage(selectedApp.getIcon(), ((ImageView) findViewById(R.id.img_app_icon)));
+		SystemUtils.IMAGELOADER.displayImage(selectedApp.getFeaturedImage(), ((ImageView) findViewById(R.id.img_app_icon)));
 		((TextView) findViewById(R.id.txt_title)).setText(selectedApp.getName());
 		((TextView) findViewById(R.id.txt_description)).setText(selectedApp.getDescription());
 		final String appFolder = SystemUtils.getAppFolder(selectedApp);
