@@ -52,6 +52,7 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 		menu.getMenu().findViewById(R.id.txt_my_saved_apps).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_created_by_me).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_app_creator).setOnClickListener(this);
+		menu.getMenu().findViewById(R.id.btn_qrscaner).setOnClickListener(this);
 		menu.setOnOpenListener(new SlidingMenu.OnOpenListener() {
 			@Override
 			public void onOpen() {
@@ -99,6 +100,9 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 				if (appStartIntent != null) {
 					context.startActivity(appStartIntent);
 				}
+				break;
+			case R.id.btn_qrscaner:
+				startActivity(new Intent(MainActivity.this, QRScanerActivity.class));
 				break;
 		}
 		toggleMenu();

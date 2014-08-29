@@ -7,6 +7,7 @@ import android.view.View;
 import com.appshed.appstore.R;
 
 
+@Deprecated
 public class MyActivity extends RegIdActivity implements View.OnClickListener {
 
 	@Override
@@ -26,7 +27,7 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 				startActivity(new Intent(MyActivity.this, PhonegapActivity.class));
 				break;
 			case R.id.btn_scan:
-				startActivity(new Intent(MyActivity.this, CameraTestActivity.class));
+				startActivity(new Intent(MyActivity.this, QRScanerActivity.class));
 				break;
 			case R.id.btn_open:
 				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://appshed.com/appbuilder/"));

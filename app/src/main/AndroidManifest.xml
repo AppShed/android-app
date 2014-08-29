@@ -69,7 +69,7 @@
 					android:scheme="http"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".activities.CameraTestActivity">
+		<activity android:name=".activities.QRScanerActivity">
 		</activity>
 
 
