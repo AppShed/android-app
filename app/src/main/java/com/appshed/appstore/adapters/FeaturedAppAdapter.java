@@ -13,6 +13,10 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.BitmapUtils;
 import com.appshed.appstore.utils.ImageLoadingListenerImpl;
 import com.appshed.appstore.utils.SystemUtils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.rightutils.rightutils.collections.RightList;
 
 /**
@@ -30,9 +34,9 @@ public class FeaturedAppAdapter extends ArrayAdapter<App> {
 		App app = getItem(position);
 		((TextView) view.findViewById(R.id.txt_title)).setText(app.getName());
 		((TextView) view.findViewById(R.id.txt_description)).setText(app.getDescription());
-		final ImageView appBg = (ImageView) view.findViewById(R.id.img_app_bg);
+		ImageAware appBg = new ImageViewAware((ImageView) view.findViewById(R.id.img_app_bg), false);
 		SystemUtils.IMAGELOADER.displayImage(app.getFeaturedImage(), appBg);
-		final ImageView icon = (ImageView) view.findViewById(R.id.img_icon);
+		final ImageAware icon =  new ImageViewAware((ImageView) view.findViewById(R.id.img_icon), false);
 		SystemUtils.IMAGELOADER.displayImage(app.getIcon(), icon, new ImageLoadingListenerImpl() {
 
 			@Override
@@ -40,7 +44,7 @@ public class FeaturedAppAdapter extends ArrayAdapter<App> {
 				if (loadedImage != null) {
 					icon.setImageBitmap(BitmapUtils.getCroppedRoundBitmap(loadedImage));
 				} else {
-					icon.setImageResource(R.drawable.ic_launcher);
+					icon.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_launcher));
 				}
 			}
 		});

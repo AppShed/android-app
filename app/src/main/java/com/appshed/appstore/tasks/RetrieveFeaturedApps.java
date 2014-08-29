@@ -24,6 +24,8 @@ public class RetrieveFeaturedApps extends BaseTask {
 	private FeaturedFragment fragment;
 	private String error;
 	private AppData appData;
+	private Long sinceId;
+	private Long maxId;
 
 	public RetrieveFeaturedApps(Context context, View progressBar, FeaturedFragment fragment) {
 		super(context, progressBar);
@@ -33,8 +35,15 @@ public class RetrieveFeaturedApps extends BaseTask {
 	@Override
 	protected Boolean doInBackground(String... params) {
 		try {
-			Log.i(TAG, FEATURED_APPS_URL);
-			HttpResponse response = SniRequestUtils.getHttpResponse(FEATURED_APPS_URL);
+			String resultUrl = FEATURED_APPS_URL;
+			if (sinceId != null) {
+				resultUrl += "&since_id=" + sinceId;
+			}
+			if (maxId != null) {
+				resultUrl += "&max_id=" + maxId;
+			}
+			Log.i(TAG, resultUrl);
+			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {
@@ -66,5 +75,15 @@ public class RetrieveFeaturedApps extends BaseTask {
 			}
 		}
 		super.onPostExecute(result);
+	}
+
+	public RetrieveFeaturedApps setSinceId(Long sinceId) {
+		this.sinceId = sinceId;
+		return this;
+	}
+
+	public RetrieveFeaturedApps setMaxId(Long maxId) {
+		this.maxId = maxId;
+		return this;
 	}
 }

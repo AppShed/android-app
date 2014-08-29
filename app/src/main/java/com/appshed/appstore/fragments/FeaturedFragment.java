@@ -44,7 +44,6 @@ public class FeaturedFragment extends Fragment {
 	private ListView actualListView;
 	private FeaturedAppAdapter adapter;
 	private View progressBar;
-	private View appDetailView;
 
 
 
@@ -61,10 +60,18 @@ public class FeaturedFragment extends Fragment {
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new RetrieveFeaturedApps(getActivity(), null, FeaturedFragment.this).execute();
+				RetrieveFeaturedApps retrieveFeaturedApps = new RetrieveFeaturedApps(getActivity(), null, FeaturedFragment.this);
+				if (!apps.isEmpty()) {
+					if (refreshView.getCurrentMode().showHeaderLoadingLayout()) {
+						retrieveFeaturedApps.setSinceId(apps.get(0).getId());
+					} else {
+						retrieveFeaturedApps.setMaxId(apps.get(apps.size() - 1).getId());
+					}
+				}
+				retrieveFeaturedApps.execute();
 			}
 		});
-		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+		pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
 
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
@@ -83,7 +90,7 @@ public class FeaturedFragment extends Fragment {
 		return view;
 	}
 
-	public void addApps(RightList<App> newApps) {
+	public void addApps(final RightList<App> newApps) {
 		if (newApps.size() > 0) {
 			apps.addAll(newApps);
 			Collections.sort(this.apps, new Comparator<App>() {
@@ -96,7 +103,9 @@ public class FeaturedFragment extends Fragment {
 		pullToRefreshListView.post(new Runnable() {
 			@Override
 			public void run() {
-				adapter.notifyDataSetChanged();
+				if (!newApps.isEmpty()) {
+					adapter.notifyDataSetChanged();
+				}
 				pullToRefreshListView.onRefreshComplete();
 			}
 		});

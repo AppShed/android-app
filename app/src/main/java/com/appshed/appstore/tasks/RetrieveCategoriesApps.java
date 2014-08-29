@@ -27,6 +27,8 @@ public class RetrieveCategoriesApps extends BaseTask {
 	private String error;
 	private AppData appData;
 	private String category;
+	private Long sinceId;
+	private Long maxId;
 
 	public RetrieveCategoriesApps(Context context, View progressBar, AppsByCategoryFragment fragment) {
 		super(context, progressBar);
@@ -39,6 +41,12 @@ public class RetrieveCategoriesApps extends BaseTask {
 			String resultUrl = APPS_URL;
 			if (!category.equals(SystemUtils.GENERAL)) {
 				resultUrl += "?category="+category;
+			}
+			if (sinceId != null) {
+				resultUrl += "&since_id=" + sinceId;
+			}
+			if (maxId != null) {
+				resultUrl += "&max_id=" + maxId;
 			}
 			Log.i(TAG, resultUrl);
 			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
@@ -77,6 +85,16 @@ public class RetrieveCategoriesApps extends BaseTask {
 
 	public RetrieveCategoriesApps setCategory(String category) {
 		this.category = category;
+		return this;
+	}
+
+	public RetrieveCategoriesApps setSinceId(Long sinceId) {
+		this.sinceId = sinceId;
+		return this;
+	}
+
+	public RetrieveCategoriesApps setMaxId(Long maxId) {
+		this.maxId = maxId;
 		return this;
 	}
 }

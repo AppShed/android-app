@@ -64,10 +64,18 @@ public class AppsByCategoryFragment extends Fragment {
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new RetrieveCategoriesApps(getActivity(), null, AppsByCategoryFragment.this).setCategory(category).execute();
+				RetrieveCategoriesApps retrieveCategoriesApps = new RetrieveCategoriesApps(getActivity(), null, AppsByCategoryFragment.this).setCategory(category);
+				if (!apps.isEmpty()) {
+					if (refreshView.getCurrentMode().showHeaderLoadingLayout()) {
+						retrieveCategoriesApps.setSinceId(apps.get(0).getId());
+					} else {
+						retrieveCategoriesApps.setMaxId(apps.get(apps.size()-1).getId());
+					}
+				}
+				retrieveCategoriesApps.execute();
 			}
 		});
-		pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+		pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
 
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
@@ -86,7 +94,7 @@ public class AppsByCategoryFragment extends Fragment {
 		return view;
 	}
 
-	public void addApps(RightList<App> newApps) {
+	public void addApps(final RightList<App> newApps) {
 		if (newApps.size() > 0) {
 			apps.addAll(newApps);
 			Collections.sort(this.apps, new Comparator<App>() {
@@ -99,7 +107,9 @@ public class AppsByCategoryFragment extends Fragment {
 		pullToRefreshListView.post(new Runnable() {
 			@Override
 			public void run() {
-				adapter.notifyDataSetChanged();
+				if (!newApps.isEmpty()) {
+					adapter.notifyDataSetChanged();
+				}
 				pullToRefreshListView.onRefreshComplete();
 			}
 		});

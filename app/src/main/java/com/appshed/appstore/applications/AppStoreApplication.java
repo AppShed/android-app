@@ -28,7 +28,9 @@ public class AppStoreApplication extends Application {
 
 	private void initImageLoader() {
 		SystemUtils.IMAGELOADER = ImageLoader.getInstance();
-		DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisc(true).displayer(new FadeInBitmapDisplayer(500)).build();
+		DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisc(true)
+				.displayer(new FadeInBitmapDisplayer(500))
+				.build();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
 				.discCacheExtraOptions(480, 800, Bitmap.CompressFormat.PNG, 75, null).denyCacheImageMultipleSizesInMemory()
 				.memoryCache(new LruMemoryCache(2 * 1024 * 1024)).memoryCacheSize(2 * 1024 * 1024)
