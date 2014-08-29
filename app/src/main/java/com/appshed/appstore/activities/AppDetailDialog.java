@@ -66,7 +66,9 @@ public class AppDetailDialog extends Activity {
 		selectedApp = (App) getIntent().getExtras().getSerializable(App.class.getSimpleName());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_app_detail);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		if (getIntent().getExtras().getBoolean(Boolean.class.getSimpleName(), true)) {
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		}
 		getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 		install = (TextView) findViewById(R.id.txt_get_this_app);
