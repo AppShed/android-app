@@ -7,13 +7,13 @@
 package com.appshed.appstore.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Log;
 import android.widget.FrameLayout;
-import android.widget.Button;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.AutoFocusCallback;
@@ -28,12 +28,13 @@ import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 
 public class QRScanerActivity extends Activity {
+
+	private static final String TAG = QRScanerActivity.class.getSimpleName();
 	private Camera mCamera;
 	private CameraPreview mPreview;
 	private Handler autoFocusHandler;
 
 	TextView scanText;
-	Button scanButton;
 
 	ImageScanner scanner;
 
@@ -47,7 +48,7 @@ public class QRScanerActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.main);
+		setContentView(R.layout.activity_qr_scaner);
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -65,20 +66,20 @@ public class QRScanerActivity extends Activity {
 
 		scanText = (TextView) findViewById(R.id.scanText);
 
-		scanButton = (Button) findViewById(R.id.ScanButton);
-
-		scanButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				if (barcodeScanned) {
-					barcodeScanned = false;
-					scanText.setText("Scanning...");
-					mCamera.setPreviewCallback(previewCb);
-					mCamera.startPreview();
-					previewing = true;
-					mCamera.autoFocus(autoFocusCB);
-				}
-			}
-		});
+//		scanButton = (Button) findViewById(R.id.ScanButton);
+//
+//		scanButton.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {
+//				if (barcodeScanned) {
+//					barcodeScanned = false;
+//					scanText.setText("Scanning...");
+//					mCamera.setPreviewCallback(previewCb);
+//					mCamera.startPreview();
+//					previewing = true;
+//					mCamera.autoFocus(autoFocusCB);
+//				}
+//			}
+//		});
 	}
 
 	public void onPause() {
@@ -132,8 +133,14 @@ public class QRScanerActivity extends Activity {
 				SymbolSet syms = scanner.getResults();
 				for (Symbol sym : syms) {
 					scanText.setText("barcode result " + sym.getData());
+					Log.i(TAG, sym.getData());
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(sym.getData()));
+					browserIntent.putExtra(Boolean.class.getSimpleName(), true);
+					startActivity(browserIntent);
 					barcodeScanned = true;
+					break;
 				}
+				finish();
 			}
 		}
 	};

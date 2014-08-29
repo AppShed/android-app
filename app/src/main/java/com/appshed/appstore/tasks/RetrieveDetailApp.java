@@ -35,7 +35,9 @@ public class RetrieveDetailApp extends BaseTask {
 	@Override
 	protected Boolean doInBackground(String... params) {
 		try {
-			HttpResponse response = SniRequestUtils.getHttpResponse(String.format(SystemUtils.APP_DETAIL_URL, appId));
+			String resultUrl = String.format(SystemUtils.APP_DETAIL_URL, appId);
+			Log.i(TAG, resultUrl);
+			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {

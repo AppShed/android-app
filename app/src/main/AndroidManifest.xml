@@ -54,7 +54,10 @@
 			android:exported="true"
 			android:screenOrientation="portrait"/>
 
-		<activity android:name=".activities.LaunchActivity" android:theme="@style/Theme.UserDialog" android:exported="true">
+		<activity android:name=".activities.LaunchActivity"
+				  android:screenOrientation="portrait"
+				  android:theme="@style/Theme.UserDialog"
+				  android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW"/>
 				<category android:name="android.intent.category.DEFAULT"/>
@@ -69,9 +72,10 @@
 					android:scheme="http"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".activities.QRScanerActivity">
+		<activity android:name=".activities.QRScanerActivity"
+				  android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+				  android:screenOrientation="portrait">
 		</activity>
-
 
 		<receiver
 			android:name=".services.GcmBroadcastReceiver"
