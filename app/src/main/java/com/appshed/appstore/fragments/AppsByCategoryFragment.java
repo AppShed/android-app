@@ -44,13 +44,15 @@ public class AppsByCategoryFragment extends Fragment {
 	private AppAdapter adapter;
 	private View progressBar;
 	private int bgDrawable;
+	private int miniIcon;
 	private String category;
 
 
-	public static AppsByCategoryFragment newInstance(int bgDrawable, String category) {
+	public static AppsByCategoryFragment newInstance(int bgDrawable, String category, int miniIcon) {
 		AppsByCategoryFragment fragment = new AppsByCategoryFragment();
 		fragment.setBgDrawable(bgDrawable);
 		fragment.setCategory(category);
+		fragment.setMiniIcon(miniIcon);
 		return fragment;
 	}
 
@@ -58,6 +60,9 @@ public class AppsByCategoryFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_by_category, null);
 		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
+		if (miniIcon != 0) {
+			((ImageView) view.findViewById(R.id.img_mini_icon)).setImageResource(miniIcon);
+		}
 		((TextView) view.findViewById(R.id.txt_category)).setText(category);
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
@@ -121,5 +126,9 @@ public class AppsByCategoryFragment extends Fragment {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public void setMiniIcon(int miniIcon) {
+		this.miniIcon = miniIcon;
 	}
 }

@@ -18,9 +18,10 @@ public class AppsByCategoryActivity extends RightFragmentActivityNew {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		int categoryIcon = getIntent().getExtras().getInt(Integer.class.getSimpleName());
-		String categoryName = getIntent().getExtras().getString(String.class.getSimpleName());
-		initActivity(R.id.fragment_container, AppsByCategoryFragment.newInstance(categoryIcon, categoryName));
+		int categoryIcon = getIntent().getIntExtra(Integer.class.getSimpleName(), 0);
+		String categoryName = getIntent().getStringExtra(String.class.getSimpleName());
+		int miniIcon = getIntent().getIntExtra(Long.class.getSimpleName(), 0);
+		initActivity(R.id.fragment_container, AppsByCategoryFragment.newInstance(categoryIcon, categoryName, miniIcon));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_apps);
 	}

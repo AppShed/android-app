@@ -20,11 +20,12 @@
 
 	<RelativeLayout
 		android:layout_alignParentBottom="true"
-		android:layout_marginLeft="20dp"
-		android:layout_marginBottom="10dp"
+		android:layout_marginLeft="10dp"
+		android:padding="10dp"
 		android:id="@+id/img_icon_container"
-		android:layout_width="51dp"
-		android:layout_height="51dp">
+		android:layout_width="71dp"
+		android:layout_height="71dp">
+
 		<ImageView
 			android:scaleType="centerCrop"
 			android:layout_centerInParent="true"
@@ -36,8 +37,8 @@
 			android:layout_centerInParent="true"
 			android:id="@+id/img_icon_bg"
 			android:src="@drawable/black_circle"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
+			android:layout_width="51dp"
+			android:layout_height="51dp"/>
 
 	</RelativeLayout>
 
@@ -45,7 +46,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_width="match_parent"
 		android:orientation="vertical"
-		android:layout_marginLeft="20dp"
+		android:layout_marginLeft="10dp"
 		android:paddingBottom="10dp"
 		android:layout_toRightOf="@+id/img_icon_container"
 		android:layout_height="wrap_content">
@@ -68,7 +69,7 @@
 		<com.rightutils.rightutils.widgets.TypefacedTextView
 			android:text="Description"
 			android:id="@+id/txt_description"
-			android:textSize="14sp"
+			android:textSize="12sp"
 			android:singleLine="true"
 			android:ellipsize="end"
 			android:textColor="@android:color/white"

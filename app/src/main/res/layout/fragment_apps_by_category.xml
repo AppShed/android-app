@@ -94,13 +94,23 @@
 				android:layout_height="3dp"
 				android:background="@drawable/top_action_bar_shadow"/>
 
-			<ImageView
+			<RelativeLayout
+				android:layout_below="@+id/top_container"
 				android:layout_marginLeft="21dp"
 				android:layout_marginTop="-25dp"
-				android:layout_below="@+id/top_container"
 				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:src="@drawable/category_mini_icon_bg"/>
+				android:layout_height="50dp">
+
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:src="@drawable/category_mini_icon_bg"/>
+				<ImageView
+					android:id="@+id/img_mini_icon"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"/>
+			</RelativeLayout>
 		</RelativeLayout>
 	</LinearLayout>
 

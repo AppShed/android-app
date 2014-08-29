@@ -40,26 +40,32 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 			case R.id.general_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.general_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.GENERAL);
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.general_mini_icon);
 				break;
 			case R.id.education_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.education_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.EDUCATION);
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.education_mini_icon);
 				break;
 			case R.id.business_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.business_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.BUSINESS);
+				//todo
 				break;
 			case R.id.fun_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.fun_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.FUN);
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.fun_mini_icon);
 				break;
 			case R.id.events_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.events_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.EVENTS);
+				//todo
 				break;
 			case R.id.other_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.other_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.OTHER);
+				//todo
 				break;
 		}
 		startActivity(intent);
