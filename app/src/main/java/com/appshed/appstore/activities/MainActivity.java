@@ -73,7 +73,7 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 		Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
-		return size.x / 4;
+		return size.x / 5;
 	}
 
 	@Override
