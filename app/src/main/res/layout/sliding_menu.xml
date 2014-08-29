@@ -3,14 +3,27 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@android:color/white"
-	xmlns:android="http://schemas.android.com/apk/res/android">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:font="http://schemas.android.com/apk/res-auto">
 
 	<View
+		android:id="@+id/top_bar"
 		android:layout_width="match_parent"
 		android:layout_height="20dp"
 		android:background="#3462D7"/>
 
+	<RelativeLayout
+		android:id="@+id/top_container"
+		android:layout_below="@+id/top_bar"
+		android:layout_width="match_parent"
+		android:background="#EEEEEE"
+		android:layout_height="150dp">
+
+	</RelativeLayout>
+
 	<ScrollView
+		android:layout_below="@+id/top_container"
+		android:layout_above="@+id/txt_qrscaner"
 		android:layout_centerVertical="true"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
@@ -20,46 +33,73 @@
 			android:orientation="vertical"
 			android:layout_height="wrap_content">
 
-
-			<TextView
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:background="@drawable/menu_item_selector"
 				style="@style/menu_text_style"
-				android:layout_marginLeft="15dp"
-				android:layout_centerVertical="true"
 				android:id="@+id/txt_appshed_gallery"
 				android:text="Appshed App Galery"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
 
-			<TextView
+			<View android:layout_marginLeft="15dp"
+				  android:layout_marginRight="15dp"
+				  android:layout_width="match_parent"
+				  android:layout_height="1dp"
+				  android:background="#EEEEEE"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
 				style="@style/menu_text_style"
-				android:layout_marginLeft="15dp"
-				android:layout_centerVertical="true"
+				android:background="@drawable/menu_item_selector"
 				android:id="@+id/txt_my_saved_apps"
 				android:text="My Saved Apps"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
 
-			<TextView
-				android:layout_marginLeft="15dp"
-				android:layout_centerVertical="true"
+			<View android:layout_marginLeft="15dp"
+				  android:layout_marginRight="15dp"
+				  android:layout_width="match_parent"
+				  android:layout_height="1dp"
+				  android:background="#EEEEEE"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:background="@drawable/menu_item_selector"
 				android:id="@+id/txt_created_by_me"
 				android:text="Apps Createed by Me"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				style="@style/menu_text_style"/>
-
-			<TextView
 				style="@style/menu_text_style"
-				android:layout_marginLeft="15dp"
-				android:layout_centerVertical="true"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+
+			<View android:layout_marginLeft="15dp"
+				  android:layout_marginRight="15dp"
+				  android:layout_width="match_parent"
+				  android:layout_height="1dp"
+				  android:background="#EEEEEE"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:background="@drawable/menu_item_selector"
+				style="@style/menu_text_style"
 				android:id="@+id/txt_app_creator"
 				android:text="Appshed App Creator"
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
-			<Button
-				android:id="@+id/btn_qrscaner"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" android:text="Scan QR code"/>
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
 		</LinearLayout>
 	</ScrollView>
+
+	<com.rightutils.rightutils.widgets.TypefacedTextView
+		android:layout_alignParentBottom="true"
+		android:gravity="center"
+		android:layout_margin="15dp"
+		android:padding="10dp"
+		android:textSize="20sp"
+		android:textColor="@android:color/black"
+		android:background="@drawable/scan_code_selector"
+		android:id="@+id/txt_qrscaner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Scan QR code"
+		font:typeface="fonts/Roboto-Regular.ttf"/>
 </RelativeLayout>
