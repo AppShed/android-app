@@ -8,7 +8,9 @@ import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
+import android.view.DragEvent;
 import android.view.View;
 
 import com.appshed.appstore.R;
@@ -22,24 +24,26 @@ import com.rightutils.rightutils.activities.RightFragmentActivityNew;
  */
 public class MainActivity extends RightFragmentActivityNew implements View.OnClickListener {
 
+	private static final String TAG = MainActivity.class.getSimpleName();
 	private SlidingMenu menu;
+	private View menuContentOverlay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		initActivity(R.id.fragment_container, new AppGalleryFragment());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		menuContentOverlay = findViewById(R.id.menu_content_overlay);
 		setUpMenu();
 	}
 
 	public void setUpMenu() {
 		menu = new SlidingMenu(this);
 		menu.setMode(SlidingMenu.LEFT);
-//		menu.setShadowWidthRes(R.dimen.shadow_width);
+//		menu.setShadowWidth(-200);
 		menu.setShadowDrawable(android.R.color.transparent);
 		menu.setBehindOffset(countWidth(context));
 		menu.setFadeEnabled(false);
-//		menu.setShadowDrawable(R.drawable.menu_shadow);
 		menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
 		menu.setMenu(R.layout.sliding_menu);
 		menu.setSlidingEnabled(true);
@@ -48,7 +52,18 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 		menu.getMenu().findViewById(R.id.txt_my_saved_apps).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_created_by_me).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_app_creator).setOnClickListener(this);
-
+		menu.setOnOpenListener(new SlidingMenu.OnOpenListener() {
+			@Override
+			public void onOpen() {
+				menuContentOverlay.setVisibility(View.VISIBLE);
+			}
+		});
+		menu.setOnCloseListener(new SlidingMenu.OnCloseListener() {
+			@Override
+			public void onClose() {
+				menuContentOverlay.setVisibility(View.GONE);
+			}
+		});
 	}
 
 	private static int countWidth(Context context) {
