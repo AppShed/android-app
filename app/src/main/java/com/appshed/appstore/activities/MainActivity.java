@@ -4,25 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
-import android.view.DragEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.fragments.AppGalleryFragment;
-import com.appshed.appstore.fragments.PlaceholderFragment;
+import com.appshed.appstore.fragments.AppsCreatedByMeFragment;
+import com.appshed.appstore.fragments.MySavedAppsFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.rightutils.rightutils.activities.RightFragmentActivityNew;
+import com.rightutils.rightutils.activities.SupportRightFragmentActivity;
 
 /**
  * Created by Anton Maniskevich on 8/20/14.
  */
-public class MainActivity extends RightFragmentActivityNew implements View.OnClickListener {
+public class MainActivity extends SupportRightFragmentActivity implements View.OnClickListener {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 	private SlidingMenu menu;
@@ -30,7 +29,7 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		initActivity(R.id.fragment_container, new AppGalleryFragment());
+		initActivity(R.id.fragment_container, AppGalleryFragment.newInstance());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		menuContentOverlay = findViewById(R.id.menu_content_overlay);
@@ -89,16 +88,27 @@ public class MainActivity extends RightFragmentActivityNew implements View.OnCli
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.txt_appshed_gallery:
+				if (!(getLastFragment() instanceof AppGalleryFragment)) {
+					pushFragment(AppGalleryFragment.newInstance());
+				}
 				break;
 			case R.id.txt_my_saved_apps:
+				if (!(getLastFragment() instanceof MySavedAppsFragment)) {
+					pushFragment(MySavedAppsFragment.newInstance());
+				}
 				break;
 			case R.id.txt_created_by_me:
+				if (!(getLastFragment() instanceof AppsCreatedByMeFragment)) {
+					pushFragment(AppsCreatedByMeFragment.newInstance());
+				}
 				break;
 			case R.id.txt_app_creator:
 				PackageManager pm = context.getPackageManager();
 				Intent appStartIntent = pm.getLaunchIntentForPackage("com.ekreative.appcreator");
 				if (appStartIntent != null) {
 					context.startActivity(appStartIntent);
+				} else {
+					Toast.makeText(MainActivity.this, "AppCreator not found", Toast.LENGTH_LONG).show();
 				}
 				break;
 			case R.id.txt_qrscaner:

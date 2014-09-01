@@ -1,8 +1,8 @@
 package com.appshed.appstore.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +50,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 			case R.id.business_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.business_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.BUSINESS);
-				//todo
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.business_mini_icon);
 				break;
 			case R.id.fun_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.fun_icon);
@@ -60,12 +60,12 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 			case R.id.events_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.events_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.EVENTS);
-				//todo
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.events_mini_icon);
 				break;
 			case R.id.other_container:
 				intent.putExtra(Integer.class.getSimpleName(), R.drawable.other_icon);
 				intent.putExtra(String.class.getSimpleName(), SystemUtils.OTHER);
-				//todo
+				intent.putExtra(Long.class.getSimpleName(), R.drawable.other_mini_icon);
 				break;
 		}
 		startActivity(intent);

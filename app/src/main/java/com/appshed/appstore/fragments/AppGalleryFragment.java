@@ -1,14 +1,13 @@
 package com.appshed.appstore.fragments;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.MainActivity;
 import com.viewpagerindicator.UnderlinePageIndicator;
@@ -21,10 +20,15 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 	private FragmentPagerAdapter adapter;
 	private ViewPager pager;
 
+	public static AppGalleryFragment newInstance() {
+		AppGalleryFragment fragment = new AppGalleryFragment();
+		return fragment;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_app_gallery, null);
-		adapter = new GoogleMusicAdapter(getFragmentManager());
+		adapter = new ViewPagerAdapter(getChildFragmentManager());
 		pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.setAdapter(adapter);
 
@@ -40,6 +44,12 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		view.findViewById(R.id.rbtn_search).setOnClickListener(this);
 		view.findViewById(R.id.img_menu).setOnClickListener(this);
 		return view;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -75,8 +85,8 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		}
 	}
 
-	class GoogleMusicAdapter extends FragmentPagerAdapter {
-		public GoogleMusicAdapter(FragmentManager fm) {
+	class ViewPagerAdapter extends FragmentPagerAdapter {
+		public ViewPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
 
@@ -97,5 +107,6 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		public int getCount() {
 			return 3;
 		}
+
 	}
 }

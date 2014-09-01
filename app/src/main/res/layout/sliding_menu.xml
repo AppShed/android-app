@@ -83,7 +83,7 @@
 				style="@style/menu_text_style"
 				android:id="@+id/txt_app_creator"
 				android:text="Appshed App Creator"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				font:typeface="fonts/Roboto-Regular.ttf"/>
 		</LinearLayout>
