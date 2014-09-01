@@ -31,6 +31,7 @@ public class AppGalleryFragment extends Fragment implements View.OnClickListener
 		adapter = new ViewPagerAdapter(getChildFragmentManager());
 		pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.setAdapter(adapter);
+		pager.setOffscreenPageLimit(3);
 
 		UnderlinePageIndicator indicator = (UnderlinePageIndicator)view.findViewById(R.id.indicator);
 		indicator.setViewPager(pager);
