@@ -41,12 +41,18 @@ public class RetrieveCategoriesApps extends BaseTask {
 			String resultUrl = APPS_URL;
 			if (!category.equals(SystemUtils.GENERAL)) {
 				resultUrl += "?category="+category;
-			}
-			if (sinceId != null) {
-				resultUrl += "&since_id=" + sinceId;
-			}
-			if (maxId != null) {
-				resultUrl += "&max_id=" + maxId;
+				if (sinceId != null) {
+					resultUrl += "&since_id=" + sinceId;
+				}
+				if (maxId != null) {
+					resultUrl += "&max_id=" + maxId;
+				}
+			} else {
+				if (sinceId != null) {
+					resultUrl += "?since_id=" + sinceId;
+				} else if (maxId != null) {
+					resultUrl += "?max_id=" + maxId;
+				}
 			}
 			Log.i(TAG, resultUrl);
 			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);

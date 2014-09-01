@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:font="http://schemas.android.com/apk/res-auto"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+
+	<RelativeLayout android:layout_width="match_parent"
+					android:paddingRight="20dp"
+					android:paddingLeft="20dp"
+					android:paddingTop="20dp"
+					android:paddingBottom="20dp"
+					android:layout_centerInParent="true"
+					android:background="@drawable/dialog_shadow"
+					android:layout_height="wrap_content">
+
+		<RelativeLayout
+			android:layout_marginBottom="10dp"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/dialog_bg">
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:scaleType="centerCrop"
+				android:src="@drawable/splash_grid"/>
+
+			<LinearLayout
+				android:layout_centerInParent="true"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+				<ImageView
+					android:layout_gravity="center"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/splash_logo"
+					android:paddingBottom="80dp"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedEditText
+					android:hint="Login"
+					android:singleLine="true"
+					android:background="@drawable/apptheme_edit_text_holo_light"
+					android:textSize="22sp"
+					android:gravity="center"
+					android:textColor="#555555"
+					android:textColorHint="#555555"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					font:typeface="fonts/Roboto-Regular.ttf"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedEditText
+					android:layout_marginTop="20dp"
+					android:hint="Password"
+					android:singleLine="true"
+					android:background="@drawable/apptheme_edit_text_holo_light"
+					android:textSize="22sp"
+					android:gravity="center"
+					android:inputType="textPassword"
+					android:textColor="#555555"
+					android:textColorHint="#555555"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					font:typeface="fonts/Roboto-Regular.ttf"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedTextView
+					android:layout_marginTop="20dp"
+					android:singleLine="true"
+					android:gravity="center"
+					android:padding="13dp"
+					android:background="@drawable/login_btn_selector"
+					android:textSize="22sp"
+					android:text="LOGIN"
+					android:textColor="@android:color/white"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					font:typeface="fonts/Roboto-Medium.ttf"/>
+			</LinearLayout>
+		</RelativeLayout>
+	</RelativeLayout>
+
+
+</RelativeLayout>

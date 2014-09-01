@@ -23,8 +23,15 @@
 		android:layout_marginLeft="10dp"
 		android:padding="10dp"
 		android:id="@+id/img_icon_container"
-		android:layout_width="71dp"
-		android:layout_height="71dp">
+		android:layout_width="81dp"
+		android:layout_height="81dp">
+
+		<ImageView
+			android:src="@drawable/circle_shadow"
+			android:scaleType="centerCrop"
+			android:layout_centerInParent="true"
+			android:layout_width="60dp"
+			android:layout_height="60dp"/>
 
 		<ImageView
 			android:scaleType="centerCrop"
