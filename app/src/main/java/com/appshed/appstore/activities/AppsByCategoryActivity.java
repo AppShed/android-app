@@ -1,12 +1,8 @@
 package com.appshed.appstore.activities;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.appshed.appstore.R;
 import com.appshed.appstore.fragments.AppsByCategoryFragment;
-import com.appshed.appstore.fragments.OnBackPressed;
 import com.rightutils.rightutils.activities.RightFragmentActivityNew;
 
 /**
@@ -26,16 +22,4 @@ public class AppsByCategoryActivity extends RightFragmentActivityNew {
 		setContentView(R.layout.activity_apps);
 	}
 
-	@Override
-	public void onBackPressed() {
-		Fragment lastFragment = getLastFragment();
-		if (lastFragment instanceof OnBackPressed) {
-			boolean result = ((OnBackPressed) lastFragment).onBackPressed();
-			if (result) {
-				super.onBackPressed();
-			}
-		} else {
-			super.onBackPressed();
-		}
-	}
 }

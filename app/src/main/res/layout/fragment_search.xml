@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:orientation="vertical"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
 
-	<EditText
-		android:id="@+id/f_search"
+	<RelativeLayout
+		android:padding="10dp"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
-	<ListView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/list_view"/>
+		android:layout_height="wrap_content">
+
+		<EditText
+			android:background="@drawable/apptheme_edit_text_holo_light"
+			android:maxLength="255"
+			android:singleLine="true"
+			android:id="@+id/f_search"
+			android:textSize="20sp"
+			android:padding="10dp"
+			android:textColor="@android:color/black"
+			android:imeOptions="actionSearch"
+			android:layout_alignParentLeft="true"
+			android:layout_toLeftOf="@+id/img_search"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+		<ImageView
+			android:id="@+id/img_search"
+			android:padding="10dp"
+			android:layout_alignParentRight="true"
+			android:src="@drawable/search_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="match_parent"
+					android:layout_height="match_parent">
+		<ListView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/list_view"/>
+		<ProgressBar
+			android:visibility="gone"
+			android:layout_centerInParent="true"
+			android:id="@+id/progress_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+	</RelativeLayout>
 </LinearLayout>

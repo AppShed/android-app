@@ -34,6 +34,8 @@
 			android:layout_height="wrap_content">
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:drawableLeft="@drawable/menu_app_galery_selector"
+				android:drawablePadding="10dp"
 				android:background="@drawable/menu_item_selector"
 				style="@style/menu_text_style"
 				android:id="@+id/txt_appshed_gallery"
@@ -49,6 +51,8 @@
 				  android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:drawableLeft="@drawable/menu_saved_apps_selector"
+				android:drawablePadding="10dp"
 				style="@style/menu_text_style"
 				android:background="@drawable/menu_item_selector"
 				android:id="@+id/txt_my_saved_apps"
@@ -64,6 +68,8 @@
 				  android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:drawableLeft="@drawable/menu_created_apps_selector"
+				android:drawablePadding="10dp"
 				android:background="@drawable/menu_item_selector"
 				android:id="@+id/txt_created_by_me"
 				android:text="Apps Createed by Me"
@@ -79,6 +85,8 @@
 				  android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:drawableLeft="@drawable/menu_app_creator_selector"
+				android:drawablePadding="10dp"
 				android:background="@drawable/menu_item_selector"
 				style="@style/menu_text_style"
 				android:id="@+id/txt_app_creator"
