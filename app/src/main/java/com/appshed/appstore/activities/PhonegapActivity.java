@@ -3,9 +3,13 @@ package com.appshed.appstore.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.applications.AppStoreApplication;
 import com.appshed.appstore.entities.App;
+import com.appshed.appstore.utils.SystemUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -28,14 +32,19 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 	protected boolean activityResultKeepRunning;
 	protected boolean keepRunning = true;
 	private final ExecutorService threadPool = Executors.newCachedThreadPool();
+	private App selectedApp;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_phonegap);
-		String url = "file:///sdcard/download/www/www/index.html";
+		String url = null;
 		if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(App.class.getSimpleName())) {
-			url = "file:///sdcard/download/appstore/"+getIntent().getExtras().getLong(App.class.getSimpleName())+"/index.html";
+			long appId = getIntent().getExtras().getLong(App.class.getSimpleName());
+			Log.i(TAG, ""+appId);
+			selectedApp = AppStoreApplication.dbUtils.getAllWhere(String.format("id = %d", appId), App.class).getFirst();
+			Log.i(TAG, ""+selectedApp);
+			url = "file:"+SystemUtils.getAppFolder(appId)+"/index.html";
 		}
 		cordovaWebView = (CordovaWebView) findViewById(R.id.tutorialView);
 		Config.init(this);
@@ -43,8 +52,12 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		cordovaWebView.loadUrl(url);
 
 		AdView adView = (AdView)this.findViewById(R.id.adView);
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.loadAd(adRequest);
+		if (selectedApp.isAds()) {
+			AdRequest adRequest = new AdRequest.Builder().build();
+			adView.loadAd(adRequest);
+		} else {
+			findViewById(R.id.bottom_bar).setVisibility(View.GONE);
+		}
 	}
 
 	@Override

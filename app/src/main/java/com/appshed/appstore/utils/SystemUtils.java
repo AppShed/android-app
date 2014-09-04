@@ -95,13 +95,12 @@ public class SystemUtils {
 	public static void addAppShortcut(Context context, String name, long appId) {
 		Intent shortcutIntent = new Intent(context, PhonegapActivity.class);
 		shortcutIntent.putExtra(App.class.getSimpleName(), appId);
-
 		shortcutIntent.setAction(Intent.ACTION_MAIN);
 
 		Intent addIntent = new Intent();
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
 		addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
-		Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/download/appstore/"+appId+"/icon.png");
+		Bitmap bitmap = BitmapFactory.decodeFile(getAppFolder(appId)+"/icon.png");
 		if (bitmap != null) {
 			addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, Bitmap.createScaledBitmap(bitmap, 128, 128, true));
 		}
@@ -123,7 +122,11 @@ public class SystemUtils {
 		context.sendBroadcast(addIntent);
 	}
 
-	public  static String getAppFolder(App app) {
-		return Environment.getExternalStorageDirectory() + "/download/appstore/"+app.getId();
+	public  static String getAppFolder(long appId) {
+		return getSaveFolder()+appId;
+	}
+
+	public static String getSaveFolder() {
+		return Environment.getExternalStorageDirectory() + "/Android/data/com.appshed.appstore/appstore/";
 	}
 }

@@ -69,7 +69,7 @@ public class RetrieveAppService extends IntentService {
 					Log.i(TAG, "status " + status);
 					Log.i(TAG, "length " + response.getEntity().getContentLength());
 					InputStream is = response.getEntity().getContent();
-					String PATH = Environment.getExternalStorageDirectory() + "/download/appstore/";
+					String PATH = SystemUtils.getSaveFolder();
 					File file = new File(PATH);
 					file.mkdirs();
 					File outputFile = new File(file, appsPool.get(0).getId() + ".zip");

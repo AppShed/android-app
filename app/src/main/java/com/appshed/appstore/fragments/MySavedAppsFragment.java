@@ -3,6 +3,7 @@ package com.appshed.appstore.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.rightutils.rightutils.collections.RightList;
  */
 public class MySavedAppsFragment extends Fragment implements View.OnClickListener {
 
+	private static final String TAG = MySavedAppsFragment.class.getSimpleName();
 	private ListView listView;
 	private View progressBar;
 	private AppAdapter adapter;
@@ -55,6 +57,7 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 
 
 	public void addApps(RightList<App> apps) {
+		Log.i(TAG, apps.convertToString());
 		if (apps.isEmpty()) {
 			emptyList.setVisibility(View.VISIBLE);
 		} else {

@@ -47,7 +47,7 @@ public class AppDetailDialog extends Activity {
 				install.setVisibility(View.INVISIBLE);
 			} else {
 				appLoaderProgress.setVisibility(View.INVISIBLE);
-				final String appFolder = SystemUtils.getAppFolder(selectedApp);
+				final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
 				if (new File(appFolder).exists()) {
 					install.setText(LAUNCH_APP);
 				} else {
@@ -76,7 +76,7 @@ public class AppDetailDialog extends Activity {
 		SystemUtils.IMAGELOADER.displayImage(selectedApp.getFeaturedImage(), ((ImageView) findViewById(R.id.img_app_icon)));
 		((TextView) findViewById(R.id.txt_title)).setText(selectedApp.getName());
 		((TextView) findViewById(R.id.txt_description)).setText(selectedApp.getDescription());
-		final String appFolder = SystemUtils.getAppFolder(selectedApp);
+		final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
 		install.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
