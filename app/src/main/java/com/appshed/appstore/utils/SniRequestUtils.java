@@ -45,8 +45,16 @@ public class SniRequestUtils {
 		PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
 		connectionManager.setMaxTotal(3);
 		connectionManager.setDefaultMaxPerRoute(2);
+		HttpClient httpClient = HttpClientBuilder.create().setConnectionManager(connectionManager).build();
+		return httpClient.execute(get);
+	}
 
-
+	public static HttpResponse getHttpResponse(String url, String basicAuth) throws Exception {
+		HttpGet get = new HttpGet(url);
+		get.setHeader("Authorization", basicAuth);
+		PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+		connectionManager.setMaxTotal(3);
+		connectionManager.setDefaultMaxPerRoute(2);
 		HttpClient httpClient = HttpClientBuilder.create().setConnectionManager(connectionManager).build();
 		return httpClient.execute(get);
 	}

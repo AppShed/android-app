@@ -45,6 +45,7 @@
 					android:paddingBottom="80dp"/>
 
 				<com.rightutils.rightutils.widgets.TypefacedEditText
+					android:id="@+id/f_login"
 					android:hint="Login"
 					android:singleLine="true"
 					android:background="@drawable/apptheme_edit_text_holo_light"
@@ -57,6 +58,7 @@
 					font:typeface="fonts/Roboto-Regular.ttf"/>
 
 				<com.rightutils.rightutils.widgets.TypefacedEditText
+					android:id="@+id/f_password"
 					android:layout_marginTop="20dp"
 					android:hint="Password"
 					android:singleLine="true"
@@ -64,6 +66,20 @@
 					android:textSize="22sp"
 					android:gravity="center"
 					android:inputType="textPassword"
+					android:textColor="#555555"
+					android:textColorHint="#555555"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					font:typeface="fonts/Roboto-Regular.ttf"/>
+
+				<com.rightutils.rightutils.widgets.TypefacedEditText
+					android:id="@+id/f_school_code"
+					android:layout_marginTop="20dp"
+					android:hint="School code"
+					android:singleLine="true"
+					android:background="@drawable/apptheme_edit_text_holo_light"
+					android:textSize="22sp"
+					android:gravity="center"
 					android:textColor="#555555"
 					android:textColorHint="#555555"
 					android:layout_width="match_parent"

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.appshed.appstore.R;
-import com.appshed.appstore.activities.LoginActivity;
+import com.appshed.appstore.activities.LoginDialog;
 import com.appshed.appstore.activities.MainActivity;
 
 /**
@@ -36,7 +36,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				((MainActivity) getActivity()).toggleMenu();
 				break;
 			case R.id.img_login_logout:
-				startActivity(new Intent(getActivity(), LoginActivity.class));
+				startActivity(new Intent(getActivity(), LoginDialog.class));
 				break;
 		}
 	}

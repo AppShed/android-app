@@ -35,6 +35,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	private EditText search;
 	private View progressBar;
 	private AppAdapter adapter;
+	private View emptyList;
 
 	public static SearchFragment newInstance() {
 		SearchFragment fragment = new SearchFragment();
@@ -45,6 +46,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_search, null);
 		listView = (ListView) view.findViewById(R.id.list_view);
+		emptyList = view.findViewById(R.id.img_empty_list);
 		search = (EditText) view.findViewById(R.id.f_search);
 		progressBar = view.findViewById(R.id.progress_bar);
 		search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -62,6 +64,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	}
 
 	public void addApps(RightList<App> apps) {
+		if (apps.isEmpty()) {
+			emptyList.setVisibility(View.VISIBLE);
+		} else {
+			emptyList.setVisibility(View.GONE);
+		}
 		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

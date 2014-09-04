@@ -20,7 +20,7 @@
 
 	<RelativeLayout
 		android:layout_alignParentBottom="true"
-		android:layout_marginLeft="10dp"
+		android:layout_marginLeft="5dp"
 		android:padding="10dp"
 		android:id="@+id/img_icon_container"
 		android:layout_width="81dp"

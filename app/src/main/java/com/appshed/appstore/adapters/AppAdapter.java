@@ -2,6 +2,7 @@ package com.appshed.appstore.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -52,5 +53,10 @@ public class AppAdapter extends ArrayAdapter<App> {
 			}
 		});
 		return view;
+	}
+
+	public void changeLayout(int layout) {
+		this.layout = layout;
+		notifyDataSetInvalidated();
 	}
 }

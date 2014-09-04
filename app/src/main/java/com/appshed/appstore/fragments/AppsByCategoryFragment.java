@@ -132,6 +132,15 @@ public class AppsByCategoryFragment extends Fragment implements View.OnClickList
 			case R.id.img_menu:
 				((MainActivity) getActivity()).toggleMenu();
 				break;
+			case R.id.img_tile:
+				if (SystemUtils.cache.getAppLayout() == R.layout.item_tile_app) {
+					SystemUtils.cache.setAppLayout(R.layout.item_app);
+				} else {
+					SystemUtils.cache.setAppLayout(R.layout.item_tile_app);
+				}
+				SystemUtils.saveCache(getActivity());
+				adapter.changeLayout(SystemUtils.cache.getAppLayout());
+				break;
 		}
 	}
 }
