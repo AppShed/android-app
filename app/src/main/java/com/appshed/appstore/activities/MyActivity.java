@@ -35,7 +35,7 @@ public class MyActivity extends RegIdActivity implements View.OnClickListener {
 				startActivity(browserIntent);
 				break;
 			case R.id.btn_apps:
-				startActivity(new Intent(MyActivity.this, AppsByCategoryActivity.class));
+//				startActivity(new Intent(MyActivity.this, AppsByCategoryActivity.class));
 				break;
 		}
 	}

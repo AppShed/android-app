@@ -23,13 +23,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@drawable/splash_logo"
-			android:paddingBottom="100dp"/>
+			android:paddingBottom="150dp"/>
 
-		<ImageView
-			android:layout_centerInParent="true"
-			android:layout_width="75dp"
-			android:layout_height="75dp"
-			android:id="@+id/myImageView"/>
 	</LinearLayout>
 
 </RelativeLayout>

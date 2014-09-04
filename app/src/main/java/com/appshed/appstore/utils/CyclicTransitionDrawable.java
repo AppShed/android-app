@@ -31,7 +31,7 @@ public class CyclicTransitionDrawable extends LayerDrawable implements Drawable.
 	}
 
 	public void startTransition(int durationMillis, int pauseTimeMillis) {
-		fromAlpha = 125;
+		fromAlpha = 0;
 		toAlpha = 255;
 		duration = durationMillis;
 		pauseDuration = pauseTimeMillis;
@@ -84,9 +84,9 @@ public class CyclicTransitionDrawable extends LayerDrawable implements Drawable.
 			Drawable nextDrawable = getDrawable(nextDrawableIndex);
 
 			// Apply cross fade and draw the current drawable
-			currentDrawable.setAlpha(255 - alpha);
+//			currentDrawable.setAlpha(255 - alpha);
 			currentDrawable.draw(canvas);
-			currentDrawable.setAlpha(0xFF);
+//			currentDrawable.setAlpha(0xFF);
 
 			if (alpha > 0) {
 				nextDrawable.setAlpha(alpha);

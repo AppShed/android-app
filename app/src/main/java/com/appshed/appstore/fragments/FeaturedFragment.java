@@ -10,9 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.AppDetailDialog;
-import com.appshed.appstore.adapters.FeaturedAppAdapter;
+import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveFeaturedApps;
+import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.rightutils.rightutils.collections.RightList;
@@ -28,10 +29,8 @@ public class FeaturedFragment extends Fragment {
 	private RightList<App> apps = new RightList<App>();
 	private PullToRefreshListView pullToRefreshListView;
 	private ListView actualListView;
-	private FeaturedAppAdapter adapter;
+	private AppAdapter adapter;
 	private View progressBar;
-
-
 
 	public static FeaturedFragment newInstance() {
 		FeaturedFragment fragment = new FeaturedFragment();
@@ -62,7 +61,7 @@ public class FeaturedFragment extends Fragment {
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
 
-		adapter = new FeaturedAppAdapter(getActivity(), apps);
+		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
 		actualListView.setAdapter(adapter);
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override

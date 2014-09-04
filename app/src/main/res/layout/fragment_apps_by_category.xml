@@ -16,20 +16,36 @@
 		<RelativeLayout android:layout_width="match_parent"
 						android:layout_height="wrap_content">
 
-			<com.handmark.pulltorefresh.library.PullToRefreshListView
-				android:id="@+id/pull_refresh_list"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_below="@+id/top_container"
-				android:layout_alignParentBottom="true"
-				android:cacheColorHint="#00000000"
-				android:divider="#00000000"
-				android:dividerHeight="3dp"
-				android:fadingEdge="none"
-				android:fastScrollEnabled="false"
-				android:footerDividersEnabled="false"
-				android:headerDividersEnabled="false"
-				android:smoothScrollbar="true"/>
+			<RelativeLayout android:layout_width="match_parent"
+							android:layout_alignParentBottom="true"
+							android:layout_below="@+id/top_container"
+							android:layout_height="wrap_content">
+
+				<com.handmark.pulltorefresh.library.PullToRefreshListView
+					android:id="@+id/pull_refresh_list"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:cacheColorHint="#00000000"
+					android:divider="#00000000"
+					android:dividerHeight="3dp"
+					android:fadingEdge="none"
+					android:fastScrollEnabled="false"
+					android:footerDividersEnabled="false"
+					android:headerDividersEnabled="false"
+					android:smoothScrollbar="true"/>
+
+				<RelativeLayout
+					android:visibility="gone"
+					android:id="@+id/progress_bar"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					<ProgressBar
+						android:layout_centerInParent="true"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"/>
+				</RelativeLayout>
+			</RelativeLayout>
+
 
 			<LinearLayout
 				android:id="@+id/top_container"
@@ -53,6 +69,28 @@
 						android:scaleType="centerCrop"
 						android:layout_height="match_parent"
 						android:src="@drawable/top_net"/>
+
+					<RelativeLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<ImageView
+							android:padding="20dp"
+							android:layout_centerVertical="true"
+							android:id="@+id/img_menu"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:src="@drawable/menu_icon_with_shadow"/>
+
+						<ImageView
+							android:padding="20dp"
+							android:layout_alignParentRight="true"
+							android:layout_centerVertical="true"
+							android:id="@+id/img_tile"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:src="@drawable/tile_icon_with_shadow"/>
+					</RelativeLayout>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:id="@+id/txt_title"
@@ -113,6 +151,4 @@
 			</RelativeLayout>
 		</RelativeLayout>
 	</LinearLayout>
-
-	<include layout="@layout/progress_view"/>
 </RelativeLayout>

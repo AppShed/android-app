@@ -13,6 +13,8 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.BitmapUtils;
 import com.appshed.appstore.utils.ImageLoadingListenerImpl;
 import com.appshed.appstore.utils.SystemUtils;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.rightutils.rightutils.collections.RightList;
 
 /**
@@ -20,16 +22,23 @@ import com.rightutils.rightutils.collections.RightList;
  */
 public class AppAdapter extends ArrayAdapter<App> {
 
-	public AppAdapter(Context context, RightList<App> apps) {
-		super(context, R.layout.item_app, apps);
+	private int layout;
+
+	public AppAdapter(Context context, RightList<App> apps, int layout) {
+		super(context, layout, apps);
+		this.layout = layout;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View view = View.inflate(getContext(), R.layout.item_app, null);
+		View view = View.inflate(getContext(), layout, null);
 		App app = getItem(position);
 		((TextView) view.findViewById(R.id.txt_title)).setText(app.getName());
 		((TextView) view.findViewById(R.id.txt_description)).setText(app.getDescription());
+		if (layout == R.layout.item_tile_app) {
+			ImageAware appBg = new ImageViewAware((ImageView) view.findViewById(R.id.img_app_bg), false);
+			SystemUtils.IMAGELOADER.displayImage(app.getFeaturedImage(), appBg);
+		}
 		final ImageView icon = (ImageView) view.findViewById(R.id.img_icon);
 		SystemUtils.IMAGELOADER.displayImage(app.getIcon(), icon, new ImageLoadingListenerImpl() {
 

@@ -39,7 +39,7 @@
 				android:background="@drawable/menu_item_selector"
 				style="@style/menu_text_style"
 				android:id="@+id/txt_appshed_gallery"
-				android:text="Appshed App Galery"
+				android:text="Appshed App Store"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				font:typeface="fonts/Roboto-Regular.ttf"/>
@@ -72,7 +72,7 @@
 				android:drawablePadding="10dp"
 				android:background="@drawable/menu_item_selector"
 				android:id="@+id/txt_created_by_me"
-				android:text="Apps Createed by Me"
+				android:text="Apps Created by Me"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				style="@style/menu_text_style"

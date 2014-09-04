@@ -1,40 +1,32 @@
 package com.appshed.appstore.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.AppDetailDialog;
-import com.appshed.appstore.activities.PhonegapActivity;
+import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
-import com.appshed.appstore.services.RetrieveAppService;
 import com.appshed.appstore.tasks.RetrieveCategoriesApps;
 import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.rightutils.rightutils.collections.RightList;
-
-import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class AppsByCategoryFragment extends Fragment {
+public class AppsByCategoryFragment extends Fragment implements View.OnClickListener{
 
 	private static final String TAG = AppsByCategoryFragment.class.getSimpleName();
 
@@ -60,6 +52,8 @@ public class AppsByCategoryFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_by_category, null);
 		((ImageView) view.findViewById(R.id.img_category_icon)).setImageResource(bgDrawable);
+		view.findViewById(R.id.img_menu).setOnClickListener(this);
+		view.findViewById(R.id.img_tile).setOnClickListener(this);
 		if (miniIcon != 0) {
 			((ImageView) view.findViewById(R.id.img_mini_icon)).setImageResource(miniIcon);
 		}
@@ -85,7 +79,7 @@ public class AppsByCategoryFragment extends Fragment {
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
 
-		adapter = new AppAdapter(getActivity(), apps);
+		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
 		actualListView.setAdapter(adapter);
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -130,5 +124,14 @@ public class AppsByCategoryFragment extends Fragment {
 
 	public void setMiniIcon(int miniIcon) {
 		this.miniIcon = miniIcon;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.img_menu:
+				((MainActivity) getActivity()).toggleMenu();
+				break;
+		}
 	}
 }

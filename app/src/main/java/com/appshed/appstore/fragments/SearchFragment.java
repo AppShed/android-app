@@ -23,6 +23,7 @@ import com.appshed.appstore.activities.AppDetailDialog;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveSearchApps;
+import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 
 /**
@@ -61,7 +62,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	}
 
 	public void addApps(RightList<App> apps) {
-		adapter = new AppAdapter(getActivity(), apps);
+		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
