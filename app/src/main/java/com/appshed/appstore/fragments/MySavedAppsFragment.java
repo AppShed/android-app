@@ -57,7 +57,6 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 
 
 	public void addApps(RightList<App> apps) {
-		Log.i(TAG, apps.convertToString());
 		if (apps.isEmpty()) {
 			emptyList.setVisibility(View.VISIBLE);
 		} else {

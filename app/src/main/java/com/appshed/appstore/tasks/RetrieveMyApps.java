@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.appshed.appstore.entities.App;
+import com.appshed.appstore.fragments.AppsCreatedByMeFragment;
 import com.appshed.appstore.fragments.MySavedAppsFragment;
 import com.appshed.appstore.utils.SniRequestUtils;
 import com.rightutils.rightutils.collections.RightList;
@@ -23,13 +24,13 @@ import static com.appshed.appstore.utils.SystemUtils.MAPPER;
 public class RetrieveMyApps extends BaseTask {
 
 	private static final String TAG = RetrieveMyApps.class.getSimpleName();
-	private MySavedAppsFragment fragment;
+	private AppsCreatedByMeFragment fragment;
 	private String error;
 	private AppData appData;
 	private Long sinceId;
 	private Long maxId;
 
-	public RetrieveMyApps(Context context, View progressBar, MySavedAppsFragment fragment) {
+	public RetrieveMyApps(Context context, View progressBar, AppsCreatedByMeFragment fragment) {
 		super(context, progressBar);
 		this.fragment = fragment;
 	}
