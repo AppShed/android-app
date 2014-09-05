@@ -96,4 +96,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 			new RetrieveSearchApps(getActivity(), progressBar, SearchFragment.this).setQuery(query).execute();
 		}
 	}
+
+	public void updateListView() {
+		if (adapter != null) {
+			adapter.changeLayout(SystemUtils.cache.getAppLayout());
+		}
+	}
 }

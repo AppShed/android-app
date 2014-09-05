@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.appshed.appstore.R;
-import com.appshed.appstore.fragments.AppGalleryFragment;
+import com.appshed.appstore.fragments.AppStoreFragment;
 import com.appshed.appstore.fragments.AppsCreatedByMeFragment;
 import com.appshed.appstore.fragments.MySavedAppsFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -29,7 +29,7 @@ public class MainActivity extends SupportRightFragmentActivity implements View.O
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		initActivity(R.id.fragment_container, AppGalleryFragment.newInstance());
+		initActivity(R.id.fragment_container, AppStoreFragment.newInstance());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		menuContentOverlay = findViewById(R.id.menu_content_overlay);
@@ -88,8 +88,8 @@ public class MainActivity extends SupportRightFragmentActivity implements View.O
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.txt_appshed_gallery:
-				if (!(getLastFragment() instanceof AppGalleryFragment)) {
-					pushFragment(AppGalleryFragment.newInstance());
+				if (!(getLastFragment() instanceof AppStoreFragment)) {
+					pushFragment(AppStoreFragment.newInstance());
 				}
 				break;
 			case R.id.txt_my_saved_apps:

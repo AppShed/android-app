@@ -96,4 +96,10 @@ public class FeaturedFragment extends Fragment {
 		});
 	}
 
+	public void updateListView() {
+		if (adapter != null) {
+			adapter.changeLayout(SystemUtils.cache.getAppLayout());
+		}
+	}
+
 }

@@ -39,7 +39,7 @@ public class RetrieveMyApps extends BaseTask {
 	protected Boolean doInBackground(String... params) {
 		try {
 			//TODO
-			final String basicAuth = "Basic " + Base64.encodeToString("user:password".getBytes(), Base64.NO_WRAP);
+			final String basicAuth = "Basic " + Base64.encodeToString("lera@ekreative.com:smile2me".getBytes(), Base64.NO_WRAP);
 			String resultUrl = MY_APPS_URL;
 			if (sinceId != null) {
 				resultUrl += "&since_id=" + sinceId;
@@ -69,16 +69,16 @@ public class RetrieveMyApps extends BaseTask {
 
 	@Override
 	protected void onPostExecute(Boolean result) {
-//		if (result) {
-//			fragment.addApps(appData.apps);
-//		} else {
-//			fragment.addApps(new RightList<App>());
-//			if (error != null) {
-//				Toast.makeText(context, error, Toast.LENGTH_LONG).show();
-//			} else {
-//				Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show();
-//			}
-//		}
+		if (result) {
+			fragment.addApps(appData.apps);
+		} else {
+			fragment.addApps(new RightList<App>());
+			if (error != null) {
+				Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show();
+			}
+		}
 		super.onPostExecute(result);
 	}
 

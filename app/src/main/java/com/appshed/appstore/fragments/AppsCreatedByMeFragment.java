@@ -16,6 +16,7 @@ import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveFeaturedApps;
+import com.appshed.appstore.tasks.RetrieveMyApps;
 import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -35,6 +36,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	private ListView actualListView;
 	private AppAdapter adapter;
 	private View progressBar;
+	private View emptyList;
 
 	public static AppsCreatedByMeFragment newInstance() {
 		AppsCreatedByMeFragment fragment = new AppsCreatedByMeFragment();
@@ -46,21 +48,22 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_created_by_me, null);
 		view.findViewById(R.id.img_menu).setOnClickListener(this);
 		view.findViewById(R.id.img_login_logout).setOnClickListener(this);
+		emptyList = view.findViewById(R.id.img_empty_list);
 
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 		pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				RetrieveFeaturedApps retrieveFeaturedApps = new RetrieveFeaturedApps(getActivity(), null, FeaturedFragment.this);
+				RetrieveMyApps retrieveMyApps = new RetrieveMyApps(getActivity(), null, AppsCreatedByMeFragment.this);
 				if (!apps.isEmpty()) {
 					if (refreshView.getCurrentMode().showHeaderLoadingLayout()) {
-						retrieveFeaturedApps.setSinceId(apps.get(0).getId());
+						retrieveMyApps.setSinceId(apps.get(0).getId());
 					} else {
-						retrieveFeaturedApps.setMaxId(apps.get(apps.size() - 1).getId());
+						retrieveMyApps.setMaxId(apps.get(apps.size() - 1).getId());
 					}
 				}
-				retrieveFeaturedApps.execute();
+				retrieveMyApps.execute();
 			}
 		});
 		pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -68,7 +71,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 		actualListView = pullToRefreshListView.getRefreshableView();
 		registerForContextMenu(actualListView);
 
-		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
+		adapter = new AppAdapter(getActivity(), apps, R.layout.item_app);
 		actualListView.setAdapter(adapter);
 		actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -77,7 +80,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			}
 		});
 		if (apps.isEmpty()) {
-//			new RetrieveFeaturedApps(getActivity(), progressBar, FeaturedFragment.this).execute();
+			new RetrieveMyApps(getActivity(), progressBar, AppsCreatedByMeFragment.this).execute();
 		}
 
 		return view;
@@ -104,6 +107,11 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 					return (int) (rhs.getId() - lhs.getId());
 				}
 			});
+		}
+		if (apps.isEmpty()) {
+			emptyList.setVisibility(View.VISIBLE);
+		} else {
+			emptyList.setVisibility(View.GONE);
 		}
 		pullToRefreshListView.post(new Runnable() {
 			@Override

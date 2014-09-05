@@ -62,7 +62,7 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 		} else {
 			emptyList.setVisibility(View.GONE);
 		}
-		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
+		adapter = new AppAdapter(getActivity(), apps, R.layout.item_app);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override

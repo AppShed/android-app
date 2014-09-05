@@ -29,6 +29,15 @@
 			android:layout_height="wrap_content"
 			android:src="@drawable/menu_icon"/>
 
+		<ImageView
+			android:padding="20dp"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:id="@+id/img_tile"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/tile_icon"/>
+
 		<com.rightutils.rightutils.widgets.TypefacedTextView
 			android:layout_toRightOf="@+id/img_menu"
 			android:layout_width="wrap_content"
