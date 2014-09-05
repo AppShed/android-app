@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:font="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools" android:visibility="visible"
+	android:padding="10dp"
+	android:id="@+id/download_container"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	tools:showIn="@layout/dialog_app_detail">
+
+	<LinearLayout
+		android:layout_marginLeft="10dp"
+		android:orientation="vertical"
+		android:layout_toLeftOf="@+id/img_cancel_downloading"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:id="@+id/txt_progress_size"
+				android:text="2mb/5mb"
+				android:singleLine="true"
+				android:textSize="12sp"
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:layout_alignParentRight="true"
+				android:singleLine="true"
+				android:id="@+id/txt_progress_percent"
+				android:text="65.9%"
+				android:textSize="12sp"
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+		</RelativeLayout>
+
+		<ProgressBar
+			android:id="@+id/loading_progress"
+			android:max="100"
+			android:indeterminate="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="?android:attr/progressBarStyleHorizontal"/>
+	</LinearLayout>
+	<ImageView
+		android:paddingRight="10dp"
+		android:paddingLeft="10dp"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:id="@+id/img_cancel_downloading"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/cancel_downloadpng"/>
+
+</RelativeLayout>

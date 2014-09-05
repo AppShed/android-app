@@ -68,7 +68,6 @@
 				<RelativeLayout
 					android:layout_alignParentBottom="true"
 					android:layout_width="match_parent"
-					android:layout_marginLeft="10dp"
 					android:paddingBottom="10dp"
 					android:layout_toRightOf="@+id/img_icon_container"
 					android:layout_alignTop="@+id/img_icon_container"
@@ -93,60 +92,71 @@
 						font:typeface="fonts/Roboto-Medium.ttf"/>
 
 				</RelativeLayout>
+				<ImageView
+					android:id="@+id/img_share"
+					android:layout_alignParentRight="true"
+					android:padding="20dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/share_icon"/>
 			</RelativeLayout>
 
 
-			<LinearLayout
-				android:visibility="visible"
+			<RelativeLayout
+				android:id="@+id/top_container"
 				android:layout_below="@+id/app_icon_container"
-				android:paddingTop="10dp"
-				android:paddingBottom="10dp"
-				android:paddingLeft="20dp"
-				android:paddingRight="20dp"
-				android:id="@+id/download_container"
-				android:orientation="vertical"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
-
-				<RelativeLayout
+				<include layout="@layout/download_progress"/>
+				<LinearLayout
+					android:visibility="gone"
+					android:paddingTop="10dp"
+					android:paddingBottom="10dp"
+					android:paddingRight="20dp"
+					android:paddingLeft="20dp"
+					android:id="@+id/top_button_container"
+					android:orientation="horizontal"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
-					<com.rightutils.rightutils.widgets.TypefacedTextView
-						android:id="@+id/txt_progress_size"
-						android:text="2mb/5mb"
-						android:singleLine="true"
-						android:textSize="12sp"
-						android:textColor="@android:color/black"
-						android:layout_width="wrap_content"
+					<RelativeLayout
+						android:layout_width="0dp"
 						android:layout_height="wrap_content"
-						font:typeface="fonts/Roboto-Regular.ttf"/>
+						android:layout_weight="1">
+						<com.rightutils.rightutils.widgets.TypefacedTextView
+							android:layout_centerInParent="true"
+							android:id="@+id/txt_remove_app"
+							android:textColor="#99CCFF"
+							android:text="REMOVE APP"
+							android:textSize="20sp"
+							android:gravity="start"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							font:typeface="fonts/Roboto-Medium.ttf"/>
+					</RelativeLayout>
 
-					<com.rightutils.rightutils.widgets.TypefacedTextView
-						android:layout_alignParentRight="true"
-						android:singleLine="true"
-						android:id="@+id/txt_progress_percent"
-						android:text="65.9%"
-						android:textSize="12sp"
-						android:textColor="@android:color/black"
-						android:layout_width="wrap_content"
+					<RelativeLayout
+						android:layout_width="0dp"
 						android:layout_height="wrap_content"
-						font:typeface="fonts/Roboto-Regular.ttf"/>
-				</RelativeLayout>
+						android:layout_weight="1">
 
-				<ProgressBar
-					android:id="@+id/loading_progress"
-					android:max="100"
-					android:indeterminate="true"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					style="?android:attr/progressBarStyleHorizontal"/>
-
-			</LinearLayout>
+						<com.rightutils.rightutils.widgets.TypefacedTextView
+							android:id="@+id/txt_update_app"
+							android:textColor="#264FC3"
+							android:textSize="20sp"
+							android:layout_centerInParent="true"
+							android:gravity="end"
+							android:text="UPDATE APP"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							font:typeface="fonts/Roboto-Medium.ttf"/>
+					</RelativeLayout>
+				</LinearLayout>
+			</RelativeLayout>
 
 			<ScrollView
-				android:layout_below="@+id/download_container"
-				android:layout_above="@+id/bottom_container"
+				android:layout_below="@+id/top_container"
+				android:layout_above="@+id/bottom_button_container"
 				android:layout_width="match_parent"
 				android:paddingLeft="20dp"
 				android:paddingRight="20dp"
@@ -168,7 +178,7 @@
 				android:paddingBottom="20dp"
 				android:paddingRight="20dp"
 				android:paddingLeft="20dp"
-				android:id="@+id/bottom_container"
+				android:id="@+id/bottom_button_container"
 				android:orientation="horizontal"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
@@ -179,7 +189,7 @@
 					android:layout_weight="1">
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_centerInParent="true"
-						android:id="@+id/txt_share_app"
+						android:id="@+id/txt_close"
 						android:textColor="#99CCFF"
 						android:text="CANCEL"
 						android:textSize="20sp"

@@ -62,8 +62,9 @@ public class RetrieveAppService extends IntentService {
 				Log.i(TAG, "poolSize"+appsPool.size());
 				try {
 					progress = 0;
-					Log.i(TAG, appsPool.get(0).getZip());
-					HttpGet get = new HttpGet(appsPool.get(0).getZip());
+					App currentLoadingApp = appsPool.get(0);
+					Log.i(TAG, currentLoadingApp.getZip());
+					HttpGet get = new HttpGet(currentLoadingApp.getZip());
 					DefaultHttpClient httpClient = new DefaultHttpClient();
 					HttpResponse response = httpClient.execute(get);
 					int status = response.getStatusLine().getStatusCode();
@@ -74,7 +75,7 @@ public class RetrieveAppService extends IntentService {
 					String PATH = SystemUtils.getSaveFolder();
 					File file = new File(PATH);
 					file.mkdirs();
-					File outputFile = new File(file, appsPool.get(0).getId() + ".zip");
+					File outputFile = new File(file,currentLoadingApp.getId() + ".zip");
 					FileOutputStream fos = new FileOutputStream(outputFile);
 					byte[] buffer = new byte[1024];
 					int count = 0;
@@ -86,10 +87,10 @@ public class RetrieveAppService extends IntentService {
 					fos.close();
 					is.close();
 					//unzip
-					ZipUtils.unZipIt(PATH+appsPool.get(0).getId()+".zip",PATH+appsPool.get(0).getId());
-					AppStoreApplication.dbUtils.add(appsPool.get(0));
+					ZipUtils.unZipIt(PATH+currentLoadingApp.getId()+".zip",PATH+currentLoadingApp.getId());
+					AppStoreApplication.dbUtils.add(currentLoadingApp);
 					//add icon for app
-					SystemUtils.addAppShortcut(getApplicationContext(), appsPool.get(0).getName(), appsPool.get(0).getId());
+					SystemUtils.addAppShortcut(getApplicationContext(),currentLoadingApp.getName(), currentLoadingApp.getId());
 				} catch (IOException e) {
 					Log.e(TAG, "RetrieveFile", e);
 				} finally {
@@ -118,6 +119,10 @@ public class RetrieveAppService extends IntentService {
 			return length;
 		}
 		return -1;
+	}
+
+	public static void cancelLoading(long appId) {
+
 	}
 }
 

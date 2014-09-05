@@ -52,6 +52,7 @@ public class SystemUtils {
 	public static final String PROPERTY_REG_ID = "registration_id";
 	public static final String PROPERTY_APP_VERSION = "appVersion";
 	public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+	public static final String SHARE_URL = "http://appshed.com/%d";
 
 	public static Cache cache;
 	public static String SENDER_ID = "800215983654";
