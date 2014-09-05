@@ -23,28 +23,129 @@
 			android:layout_height="match_parent"
 			android:background="@drawable/dialog_bg">
 
-			<ImageView
-				android:layout_margin="1dp"
-				android:id="@+id/img_app_icon"
-				android:scaleType="centerCrop"
+			<RelativeLayout
+				android:id="@+id/app_icon_container"
 				android:layout_width="match_parent"
-				android:layout_height="150dp"/>
+				android:layout_height="150dp">
 
-			<com.rightutils.rightutils.widgets.TypefacedTextView
-				android:layout_below="@+id/img_app_icon"
-				android:id="@+id/txt_title"
-				android:paddingTop="20dp"
+				<ImageView
+					android:layout_margin="1dp"
+					android:id="@+id/img_app_icon"
+					android:scaleType="centerCrop"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"/>
+
+				<RelativeLayout
+					android:layout_alignParentBottom="true"
+					android:layout_marginLeft="5dp"
+					android:padding="10dp"
+					android:id="@+id/img_icon_container"
+					android:layout_width="81dp"
+					android:layout_height="81dp">
+
+					<ImageView
+						android:src="@drawable/circle_shadow"
+						android:scaleType="centerCrop"
+						android:layout_centerInParent="true"
+						android:layout_width="60dp"
+						android:layout_height="60dp"/>
+
+					<ImageView
+						android:scaleType="centerCrop"
+						android:layout_centerInParent="true"
+						android:id="@+id/img_icon"
+						android:layout_width="50dp"
+						android:layout_height="50dp"/>
+
+					<ImageView
+						android:layout_centerInParent="true"
+						android:id="@+id/img_icon_bg"
+						android:src="@drawable/black_circle"
+						android:layout_width="51dp"
+						android:layout_height="51dp"/>
+
+				</RelativeLayout>
+				<RelativeLayout
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_marginLeft="10dp"
+					android:paddingBottom="10dp"
+					android:layout_toRightOf="@+id/img_icon_container"
+					android:layout_alignTop="@+id/img_icon_container"
+					android:layout_alignBottom="@+id/img_icon_container"
+					android:layout_height="wrap_content">
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:id="@+id/txt_title"
+						android:layout_gravity="center_vertical"
+						android:singleLine="true"
+						android:layout_centerVertical="true"
+						android:ellipsize="end"
+						android:textSize="20sp"
+						android:text="O2 THINK BIG"
+						android:textColor="@android:color/white"
+						android:shadowColor="#A6000000"
+						android:shadowRadius="5"
+						android:shadowDy="5"
+						android:shadowDx="5"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						font:typeface="fonts/Roboto-Medium.ttf"/>
+
+				</RelativeLayout>
+			</RelativeLayout>
+
+
+			<LinearLayout
+				android:visibility="visible"
+				android:layout_below="@+id/app_icon_container"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp"
 				android:paddingLeft="20dp"
 				android:paddingRight="20dp"
+				android:id="@+id/download_container"
+				android:orientation="vertical"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textSize="20sp"
-				android:textColor="@android:color/black"
-				android:text="O2 THINK BIG"
-				font:typeface="fonts/Roboto-Medium.ttf"/>
+				android:layout_height="wrap_content">
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:id="@+id/txt_progress_size"
+						android:text="2mb/5mb"
+						android:singleLine="true"
+						android:textSize="12sp"
+						android:textColor="@android:color/black"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						font:typeface="fonts/Roboto-Regular.ttf"/>
+
+					<com.rightutils.rightutils.widgets.TypefacedTextView
+						android:layout_alignParentRight="true"
+						android:singleLine="true"
+						android:id="@+id/txt_progress_percent"
+						android:text="65.9%"
+						android:textSize="12sp"
+						android:textColor="@android:color/black"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						font:typeface="fonts/Roboto-Regular.ttf"/>
+				</RelativeLayout>
+
+				<ProgressBar
+					android:id="@+id/loading_progress"
+					android:max="100"
+					android:indeterminate="true"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					style="?android:attr/progressBarStyleHorizontal"/>
+
+			</LinearLayout>
 
 			<ScrollView
-				android:layout_below="@+id/txt_title"
+				android:layout_below="@+id/download_container"
 				android:layout_above="@+id/bottom_container"
 				android:layout_width="match_parent"
 				android:paddingLeft="20dp"
@@ -65,6 +166,8 @@
 			<LinearLayout
 				android:layout_alignParentBottom="true"
 				android:paddingBottom="20dp"
+				android:paddingRight="20dp"
+				android:paddingLeft="20dp"
 				android:id="@+id/bottom_container"
 				android:orientation="horizontal"
 				android:layout_width="match_parent"
@@ -74,19 +177,13 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1">
-
-					<ProgressBar
-						android:layout_centerInParent="true"
-						android:visibility="invisible"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_centerInParent="true"
 						android:id="@+id/txt_share_app"
 						android:textColor="#99CCFF"
-						android:text="SHARE APP"
+						android:text="CANCEL"
 						android:textSize="20sp"
-						android:gravity="center"
+						android:gravity="start"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						font:typeface="fonts/Roboto-Medium.ttf"/>
@@ -97,19 +194,12 @@
 					android:layout_height="wrap_content"
 					android:layout_weight="1">
 
-					<ProgressBar
-						android:id="@+id/app_loaging_progress_bar"
-						android:layout_centerInParent="true"
-						android:visibility="invisible"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
-
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:id="@+id/txt_get_this_app"
 						android:textColor="#264FC3"
 						android:textSize="20sp"
 						android:layout_centerInParent="true"
-						android:gravity="center"
+						android:gravity="end"
 						android:text="GET THIS APP"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"

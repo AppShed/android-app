@@ -69,7 +69,7 @@
 			android:shadowRadius="5"
 			android:shadowDy="5"
 			android:shadowDx="5"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			font:typeface="fonts/Roboto-Medium.ttf"/>
 
@@ -80,7 +80,7 @@
 			android:singleLine="true"
 			android:ellipsize="end"
 			android:textColor="@android:color/white"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			font:typeface="fonts/Roboto-Regular.ttf"/>
 	</LinearLayout>

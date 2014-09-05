@@ -32,6 +32,7 @@ public class RetrieveAppService extends IntentService {
 	private static RetrieveFile retrieveFile;
 
 	private static long progress = 0;
+	private static long length = 0;
 
 	public RetrieveAppService() {
 		super(RetrieveAppService.class.getName());
@@ -67,6 +68,7 @@ public class RetrieveAppService extends IntentService {
 					HttpResponse response = httpClient.execute(get);
 					int status = response.getStatusLine().getStatusCode();
 					Log.i(TAG, "status " + status);
+					length = response.getEntity().getContentLength();
 					Log.i(TAG, "length " + response.getEntity().getContentLength());
 					InputStream is = response.getEntity().getContent();
 					String PATH = SystemUtils.getSaveFolder();
@@ -99,14 +101,21 @@ public class RetrieveAppService extends IntentService {
 
 	public static long getProgress(long appId) {
 		Log.i(TAG, "getProgress" + appId);
-//		if (appsPool.isEmpty()) {
-//			return -1;
-//		}
-//		if (appsPool.get(0).getId() == appId) {
-//			return progress;
-//		}
+		if (appsPool.isEmpty()) {
+			return -1;
+		}
+		if (appsPool.get(0).getId() == appId) {
+			return progress;
+		}
 		if (appsPool.contains(new App(appId))) {
 			return 0;
+		}
+		return -1;
+	}
+
+	public static long getLength(long appId) {
+		if (appsPool.get(0).getId() == appId) {
+			return length;
 		}
 		return -1;
 	}

@@ -83,6 +83,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			new RetrieveMyApps(getActivity(), progressBar, AppsCreatedByMeFragment.this).execute();
 		}
 
+		showOrHideEmptyList();
 		return view;
 	}
 
@@ -108,11 +109,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				}
 			});
 		}
-		if (apps.isEmpty()) {
-			emptyList.setVisibility(View.VISIBLE);
-		} else {
-			emptyList.setVisibility(View.GONE);
-		}
+		showOrHideEmptyList();
 		pullToRefreshListView.post(new Runnable() {
 			@Override
 			public void run() {
@@ -122,5 +119,13 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				pullToRefreshListView.onRefreshComplete();
 			}
 		});
+	}
+
+	private void showOrHideEmptyList() {
+		if (apps.isEmpty()) {
+			emptyList.setVisibility(View.VISIBLE);
+		} else {
+			emptyList.setVisibility(View.GONE);
+		}
 	}
 }

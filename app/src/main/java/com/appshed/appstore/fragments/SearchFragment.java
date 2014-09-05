@@ -36,6 +36,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	private View progressBar;
 	private AppAdapter adapter;
 	private View emptyList;
+	private RightList<App> apps = new RightList<App>();
 
 	public static SearchFragment newInstance() {
 		SearchFragment fragment = new SearchFragment();
@@ -60,15 +61,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 			}
 		});
 		view.findViewById(R.id.img_search).setOnClickListener(this);
+		showOrHideEmptyList();
 		return view;
 	}
 
-	public void addApps(RightList<App> apps) {
-		if (apps.isEmpty()) {
-			emptyList.setVisibility(View.VISIBLE);
-		} else {
-			emptyList.setVisibility(View.GONE);
-		}
+	public void addApps(RightList<App> newApps) {
+		this.apps = newApps;
+		showOrHideEmptyList();
 		adapter = new AppAdapter(getActivity(), apps, SystemUtils.cache.getAppLayout());
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,6 +99,14 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 	public void updateListView() {
 		if (adapter != null) {
 			adapter.changeLayout(SystemUtils.cache.getAppLayout());
+		}
+	}
+
+	private void showOrHideEmptyList() {
+		if (apps.isEmpty()) {
+			emptyList.setVisibility(View.VISIBLE);
+		} else {
+			emptyList.setVisibility(View.GONE);
 		}
 	}
 }

@@ -126,7 +126,6 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 				if (currentFragment instanceof SearchFragment) {
 					((SearchFragment) currentFragment).updateListView();
 				}
-//				adapter.changeLayout(SystemUtils.cache.getAppLayout());
 				break;
 		}
 	}

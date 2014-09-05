@@ -26,7 +26,14 @@ public class LaunchActivity extends Activity {
 		isFullScreen = getIntent().getBooleanExtra(Boolean.class.getSimpleName(), false);
 		if (getIntent().getData() != null) {
 			String text = getIntent().getData().toString();
-			new RetrieveDetailApp(LaunchActivity.this, findViewById(R.id.progress_bar), Long.valueOf(text.substring(text.lastIndexOf('/')+1))).execute();
+			long appId = 0;
+			try {
+				appId = Long.valueOf(text.substring(text.lastIndexOf('/')+1));
+			} catch (Exception e) {
+				Toast.makeText(LaunchActivity.this, "Can't get application id", Toast.LENGTH_SHORT).show();
+				finish();
+			}
+			new RetrieveDetailApp(LaunchActivity.this, findViewById(R.id.progress_bar), appId).execute();
 		} else {
 			Toast.makeText(LaunchActivity.this, "Can't get application id", Toast.LENGTH_SHORT).show();
 			finish();
