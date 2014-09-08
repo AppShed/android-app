@@ -2,5 +2,6 @@
 <resources>
 
 	<string name="appstore_app_name">AppShed</string>
+	<string name="login_text">Please, log in!</string>
 
 </resources>

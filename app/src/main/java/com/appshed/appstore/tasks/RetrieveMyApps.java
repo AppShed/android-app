@@ -10,6 +10,7 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.AppsCreatedByMeFragment;
 import com.appshed.appstore.fragments.MySavedAppsFragment;
 import com.appshed.appstore.utils.SniRequestUtils;
+import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 import ch.boye.httpclientandroidlib.HttpResponse;
@@ -39,7 +40,7 @@ public class RetrieveMyApps extends BaseTask {
 	protected Boolean doInBackground(String... params) {
 		try {
 			//TODO
-			final String basicAuth = "Basic " + Base64.encodeToString("lera@ekreative.com:smile2me".getBytes(), Base64.NO_WRAP);
+//			final String basicAuth = "Basic " + Base64.encodeToString("lera@ekreative.com:smile2me".getBytes(), Base64.NO_WRAP);
 			String resultUrl = MY_APPS_URL;
 			if (sinceId != null) {
 				resultUrl += "&since_id=" + sinceId;
@@ -48,7 +49,7 @@ public class RetrieveMyApps extends BaseTask {
 				resultUrl += "&max_id=" + maxId;
 			}
 			Log.i(TAG, resultUrl);
-			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl, basicAuth);
+			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl, SystemUtils.cache.getUser().getBasicAuth());
 			int status = response.getStatusLine().getStatusCode();
 			Log.i(TAG, "status code: " + String.valueOf(status));
 			if (status == HttpStatus.SC_OK) {

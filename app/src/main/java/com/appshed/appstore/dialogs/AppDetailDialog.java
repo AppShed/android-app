@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.PhonegapActivity;
@@ -187,6 +188,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 				break;
 			case R.id.txt_update_app:
 				//TODO
+				Toast.makeText(AppDetailDialog.this, "This functionality not working yet", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.img_cancel_downloading:
 				RetrieveAppService.cancelLoading(selectedApp.getId());

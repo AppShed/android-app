@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.dialogs.AppDetailDialog;
@@ -16,6 +18,7 @@ import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveMyApps;
+import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.rightutils.rightutils.collections.RightList;
@@ -35,6 +38,8 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	private AppAdapter adapter;
 	private View progressBar;
 	private View emptyList;
+	private ImageView loginLogout;
+	private TextView loginState;
 
 	public static AppsCreatedByMeFragment newInstance() {
 		AppsCreatedByMeFragment fragment = new AppsCreatedByMeFragment();
@@ -45,7 +50,9 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_created_by_me, null);
 		view.findViewById(R.id.img_menu).setOnClickListener(this);
-		view.findViewById(R.id.img_login_logout).setOnClickListener(this);
+		loginLogout = (ImageView) view.findViewById(R.id.img_login_logout);
+		loginLogout.setOnClickListener(this);
+		loginState = (TextView) view.findViewById(R.id.txt_login_state);
 		emptyList = view.findViewById(R.id.img_empty_list);
 
 		progressBar = view.findViewById(R.id.progress_bar);
@@ -77,11 +84,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				startActivity(new Intent(getActivity(), AppDetailDialog.class).putExtra(App.class.getSimpleName(), apps.get(position-1)));
 			}
 		});
-		if (apps.isEmpty()) {
-			new RetrieveMyApps(getActivity(), progressBar, AppsCreatedByMeFragment.this).execute();
-		}
 
-		showOrHideEmptyList();
 		return view;
 	}
 
@@ -92,7 +95,15 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				((MainActivity) getActivity()).toggleMenu();
 				break;
 			case R.id.img_login_logout:
-				startActivity(new Intent(getActivity(), LoginDialog.class));
+				if (SystemUtils.cache.getUser() == null) {
+					startActivity(new Intent(getActivity(), LoginDialog.class));
+				} else {
+					SystemUtils.cache.setUser(null);
+					SystemUtils.saveCache(getActivity());
+					apps.clear();
+					adapter.notifyDataSetChanged();
+					onResume();
+				}
 				break;
 		}
 	}
@@ -117,6 +128,22 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 				pullToRefreshListView.onRefreshComplete();
 			}
 		});
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (SystemUtils.cache.getUser() != null) {
+			if (apps.isEmpty()) {
+				new RetrieveMyApps(getActivity(), progressBar, AppsCreatedByMeFragment.this).execute();
+			}
+			loginLogout.setImageResource(R.drawable.logout_icon);
+			loginState.setText(SystemUtils.cache.getUser().getName());
+		} else {
+			loginLogout.setImageResource(R.drawable.login_icon);
+			loginState.setText(getResources().getString(R.string.login_text));
+		}
+		showOrHideEmptyList();
 	}
 
 	private void showOrHideEmptyList() {
