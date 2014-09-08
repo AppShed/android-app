@@ -51,7 +51,7 @@ public class MainActivity extends SupportRightFragmentActivity implements View.O
 		menu.getMenu().findViewById(R.id.txt_my_saved_apps).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_created_by_me).setOnClickListener(this);
 		menu.getMenu().findViewById(R.id.txt_app_creator).setOnClickListener(this);
-		menu.getMenu().findViewById(R.id.txt_qrscaner).setOnClickListener(this);
+		menu.getMenu().findViewById(R.id.qr_scanner_container).setOnClickListener(this);
 		menu.setOnOpenListener(new SlidingMenu.OnOpenListener() {
 			@Override
 			public void onOpen() {
@@ -111,7 +111,7 @@ public class MainActivity extends SupportRightFragmentActivity implements View.O
 					Toast.makeText(MainActivity.this, "AppCreator not found", Toast.LENGTH_LONG).show();
 				}
 				break;
-			case R.id.txt_qrscaner:
+			case R.id.qr_scanner_container:
 				startActivity(new Intent(MainActivity.this, QRScanerActivity.class));
 				break;
 		}

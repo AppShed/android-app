@@ -97,17 +97,34 @@
 		</LinearLayout>
 	</ScrollView>
 
-	<com.rightutils.rightutils.widgets.TypefacedTextView
-		android:layout_alignParentBottom="true"
-		android:gravity="center"
-		android:layout_margin="15dp"
-		android:padding="13dp"
-		android:textSize="20sp"
-		android:textColor="@android:color/black"
-		android:background="@drawable/scan_code_selector"
-		android:id="@+id/txt_qrscaner"
+	<RelativeLayout
+		android:id="@+id/qr_scanner_container"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="Scan QR code"
-		font:typeface="fonts/Roboto-Regular.ttf"/>
+		android:layout_margin="15dp"
+		android:layout_alignParentBottom="true"
+		android:background="@drawable/scan_code_selector"
+		android:layout_height="wrap_content">
+
+		<LinearLayout android:layout_width="wrap_content"
+					  android:orientation="horizontal"
+					  android:layout_centerInParent="true"
+					  android:gravity="center"
+					  android:layout_height="wrap_content">
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/qr_btn_icon"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:gravity="center"
+				android:padding="13dp"
+				android:textSize="20sp"
+				android:textColor="@android:color/black"
+				android:id="@+id/txt_qrscaner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Scan QR code"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+		</LinearLayout>
+	</RelativeLayout>
 </RelativeLayout>
