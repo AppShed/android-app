@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.appshed.appstore.R;
-import com.appshed.appstore.activities.MainActivity;
+import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.viewpagerindicator.UnderlinePageIndicator;
@@ -110,7 +110,7 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 				});
 				break;
 			case R.id.img_menu:
-				((MainActivity) getActivity()).toggleMenu();
+				((MainActivityNew) getActivity()).toggleMenu();
 				break;
 			case R.id.img_tile:
 				if (SystemUtils.cache.getAppLayout() == R.layout.item_tile_app) {
