@@ -96,7 +96,8 @@
 
 		<service android:name=".services.GcmIntentService"/>
 
-		<service android:name=".services.RetrieveAppService"></service>
+		<service android:name=".services.RetrieveAppService"/>
+		<service android:name=".services.DeleteAppService"/>
 
 		<meta-data
 			android:name="com.google.android.gms.version"

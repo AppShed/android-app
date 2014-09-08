@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.entities.App;
+import com.appshed.appstore.services.DeleteAppService;
 import com.appshed.appstore.services.RetrieveAppService;
 import com.appshed.appstore.utils.BitmapUtils;
 import com.appshed.appstore.utils.ImageLoadingListenerImpl;
@@ -53,13 +54,15 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 
 	private void updateAppLoading() {
 		if (selectedApp != null) {
+
+			//is loading?
 			long progress = RetrieveAppService.getProgress(selectedApp.getId());
-			Log.i(TAG, "progress = "+progress);
 			if (progress >= 0) {
 				if (progress == 0) {
 					loadingProgressbar.setIndeterminate(true);
 					progressSize.setText("Loading...");
 					progressPercent.setText("");
+					cancelDownloading.setVisibility(View.VISIBLE);
 				} else {
 					long length = RetrieveAppService.getLength(selectedApp.getId());
 					if (length != progress) {
@@ -78,19 +81,37 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 					}
 				}
 				downloadContainer.setVisibility(View.VISIBLE);
-
 				install.setVisibility(View.INVISIBLE);
 			} else {
-				downloadContainer.setVisibility(View.GONE);
-				final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
-				if (new File(appFolder).exists()) {
-					install.setText(LAUNCH_APP);
-					topButtonContainer.setVisibility(View.VISIBLE);
+				//is removing?
+				long deleteProgress = DeleteAppService.getProgress(selectedApp.getId());
+				if (deleteProgress == 0) {
+					loadingProgressbar.setIndeterminate(true);
+					progressSize.setText("Removing...");
+					progressPercent.setText("");
+					cancelDownloading.setVisibility(View.GONE);
 				} else {
-					install.setText(GET_THIS_APP);
-					topButtonContainer.setVisibility(View.GONE);
+					downloadContainer.setVisibility(View.GONE);
+					final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
+					if (new File(appFolder).exists()) {
+						install.setText(LAUNCH_APP);
+						topButtonContainer.setVisibility(View.VISIBLE);
+					} else {
+						install.setText(GET_THIS_APP);
+						topButtonContainer.setVisibility(View.GONE);
+					}
+					install.setVisibility(View.VISIBLE);
 				}
-				install.setVisibility(View.VISIBLE);
+//				downloadContainer.setVisibility(View.GONE);
+//				final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
+//				if (new File(appFolder).exists()) {
+//					install.setText(LAUNCH_APP);
+//					topButtonContainer.setVisibility(View.VISIBLE);
+//				} else {
+//					install.setText(GET_THIS_APP);
+//					topButtonContainer.setVisibility(View.GONE);
+//				}
+//				install.setVisibility(View.VISIBLE);
 			}
 		}
 	}
@@ -170,7 +191,9 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 				finish();
 				break;
 			case R.id.txt_remove_app:
-				//TODO
+				startService(new Intent(AppDetailDialog.this, DeleteAppService.class)
+						.putExtra(DeleteAppService.DELETE_TYPE, DeleteAppService.DELETE_APP)
+						.putExtra(App.class.getSimpleName(), selectedApp));
 				break;
 			case R.id.txt_update_app:
 				//TODO

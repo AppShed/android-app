@@ -76,14 +76,6 @@ public class RetrieveAppService extends IntentService {
 					length = connection.getContentLength();
 					InputStream is = new BufferedInputStream(connection.getInputStream());
 
-//					HttpGet get = new HttpGet(currentLoadingApp.getZip());
-//					DefaultHttpClient httpClient = new DefaultHttpClient();
-//					HttpResponse response = httpClient.execute(get);
-//					int status = response.getStatusLine().getStatusCode();
-//					Log.i(TAG, "status " + status);
-//					length = response.getEntity().getContentLength();
-//					Log.i(TAG, "length " + response.getEntity().getContentLength());
-//					InputStream is = response.getEntity().getContent();
 					String PATH = SystemUtils.getSaveFolder();
 					File file = new File(PATH);
 					file.mkdirs();
