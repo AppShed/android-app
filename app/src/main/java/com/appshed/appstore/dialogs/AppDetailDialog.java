@@ -1,4 +1,4 @@
-package com.appshed.appstore.activities;
+package com.appshed.appstore.dialogs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -15,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.activities.PhonegapActivity;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.services.DeleteAppService;
 import com.appshed.appstore.services.RetrieveAppService;
@@ -102,16 +102,6 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 					}
 					install.setVisibility(View.VISIBLE);
 				}
-//				downloadContainer.setVisibility(View.GONE);
-//				final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
-//				if (new File(appFolder).exists()) {
-//					install.setText(LAUNCH_APP);
-//					topButtonContainer.setVisibility(View.VISIBLE);
-//				} else {
-//					install.setText(GET_THIS_APP);
-//					topButtonContainer.setVisibility(View.GONE);
-//				}
-//				install.setVisibility(View.VISIBLE);
 			}
 		}
 	}

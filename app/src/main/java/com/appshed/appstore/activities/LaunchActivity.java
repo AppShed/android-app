@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveDetailApp;
 

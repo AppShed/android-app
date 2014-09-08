@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.appshed.appstore.R;
-import com.appshed.appstore.activities.AppDetailDialog;
+import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveFeaturedApps;

@@ -10,14 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.appshed.appstore.R;
-import com.appshed.appstore.activities.AppDetailDialog;
-import com.appshed.appstore.activities.LoginDialog;
+import com.appshed.appstore.dialogs.AppDetailDialog;
+import com.appshed.appstore.dialogs.LoginDialog;
 import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
-import com.appshed.appstore.tasks.RetrieveFeaturedApps;
 import com.appshed.appstore.tasks.RetrieveMyApps;
-import com.appshed.appstore.utils.SystemUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.rightutils.rightutils.collections.RightList;

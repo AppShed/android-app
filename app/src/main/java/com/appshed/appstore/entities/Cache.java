@@ -11,6 +11,7 @@ public class Cache implements Serializable {
 
 	private String regId;
 	private int appLayout;
+	private User user;
 
 	public Cache() {
 		this.appLayout = R.layout.item_tile_app;
@@ -21,6 +22,7 @@ public class Cache implements Serializable {
 		return "Cache{" +
 				"regId='" + regId + '\'' +
 				", appLayout=" + appLayout +
+				", user=" + user +
 				'}';
 	}
 
@@ -38,5 +40,13 @@ public class Cache implements Serializable {
 
 	public void setAppLayout(int appLayout) {
 		this.appLayout = appLayout;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

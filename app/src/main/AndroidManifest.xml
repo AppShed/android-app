@@ -45,10 +45,10 @@
 			android:label="@string/appstore_app_name">
 		</activity>
 
-		<activity android:name=".activities.AppDetailDialog"
+		<activity android:name=".dialogs.AppDetailDialog"
 				  android:theme="@style/Theme.UserDialog"/>
 
-		<activity android:name=".activities.LoginDialog"
+		<activity android:name=".dialogs.LoginDialog"
 				  android:theme="@style/Theme.UserDialog"/>
 
 		<activity

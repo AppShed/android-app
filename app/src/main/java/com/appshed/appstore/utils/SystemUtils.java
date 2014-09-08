@@ -58,10 +58,12 @@ public class SystemUtils {
 	public static String SENDER_ID = "800215983654";
 //	private static final String BASE_URL = "http://appshed-api.fred.ekreative.com/";
 	private static final String BASE_URL = "https://api.appshed.com/";
+
 	public static final String APPS_URL = BASE_URL + "apps";
 	public static final String FEATURED_APPS_URL = BASE_URL + "apps?featured=1";
 	public static final String MY_APPS_URL = BASE_URL + "apps/me?1=1";
 	public static final String APP_DETAIL_URL = BASE_URL + "apps/%d";
+	public static final String LOGIN_URL =BASE_URL + "users/me";
 
 	public static final ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	public static ImageLoader IMAGELOADER;
