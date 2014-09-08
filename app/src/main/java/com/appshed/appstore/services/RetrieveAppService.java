@@ -15,10 +15,13 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.
@@ -33,6 +36,7 @@ public class RetrieveAppService extends IntentService {
 
 	private static long progress = 0;
 	private static long length = 0;
+	private static boolean cancelCurrent = false;
 
 	public RetrieveAppService() {
 		super(RetrieveAppService.class.getName());
@@ -64,14 +68,22 @@ public class RetrieveAppService extends IntentService {
 					progress = 0;
 					App currentLoadingApp = appsPool.get(0);
 					Log.i(TAG, currentLoadingApp.getZip());
-					HttpGet get = new HttpGet(currentLoadingApp.getZip());
-					DefaultHttpClient httpClient = new DefaultHttpClient();
-					HttpResponse response = httpClient.execute(get);
-					int status = response.getStatusLine().getStatusCode();
-					Log.i(TAG, "status " + status);
-					length = response.getEntity().getContentLength();
-					Log.i(TAG, "length " + response.getEntity().getContentLength());
-					InputStream is = response.getEntity().getContent();
+
+					URL url = new URL(currentLoadingApp.getZip());
+					URLConnection connection = url.openConnection();
+					connection.connect();
+					// this will be useful so that you can show a typical 0-100% progress bar
+					length = connection.getContentLength();
+					InputStream is = new BufferedInputStream(connection.getInputStream());
+
+//					HttpGet get = new HttpGet(currentLoadingApp.getZip());
+//					DefaultHttpClient httpClient = new DefaultHttpClient();
+//					HttpResponse response = httpClient.execute(get);
+//					int status = response.getStatusLine().getStatusCode();
+//					Log.i(TAG, "status " + status);
+//					length = response.getEntity().getContentLength();
+//					Log.i(TAG, "length " + response.getEntity().getContentLength());
+//					InputStream is = response.getEntity().getContent();
 					String PATH = SystemUtils.getSaveFolder();
 					File file = new File(PATH);
 					file.mkdirs();
@@ -79,29 +91,42 @@ public class RetrieveAppService extends IntentService {
 					FileOutputStream fos = new FileOutputStream(outputFile);
 					byte[] buffer = new byte[1024];
 					int count = 0;
-					while ((count = is.read(buffer)) != -1) {
+					while ((count = is.read(buffer)) != -1 && !cancelCurrent) {
 						fos.write(buffer, 0, count);
 						Log.i(TAG, "Loading..." + progress);
 						progress += count;
 					}
+					Log.i(TAG, "1");
 					fos.close();
+					Log.i(TAG, "2");
 					is.close();
-					//unzip
-					ZipUtils.unZipIt(PATH+currentLoadingApp.getId()+".zip",PATH+currentLoadingApp.getId());
-					AppStoreApplication.dbUtils.add(currentLoadingApp);
-					//add icon for app
-					SystemUtils.addAppShortcut(getApplicationContext(),currentLoadingApp.getName(), currentLoadingApp.getId());
+					Log.i(TAG, "3");
+					if (cancelCurrent) {
+						new File(PATH+currentLoadingApp.getId()+".zip").delete();
+						cancelCurrent = false;
+						Log.i(TAG, "3.1");
+					} else {
+						//unzip
+						ZipUtils.unZipIt(PATH + currentLoadingApp.getId() + ".zip", PATH + currentLoadingApp.getId());
+						AppStoreApplication.dbUtils.add(currentLoadingApp);
+						//add icon for app
+						SystemUtils.addAppShortcut(getApplicationContext(), currentLoadingApp.getName(), currentLoadingApp.getId());
+					}
 				} catch (IOException e) {
 					Log.e(TAG, "RetrieveFile", e);
 				} finally {
+					Log.i(TAG, "4");
 					appsPool.remove(0);
+					Log.i(TAG, "5");
 				}
 			}
 		}
 	}
 
 	public static long getProgress(long appId) {
-		Log.i(TAG, "getProgress" + appId);
+		if (cancelCurrent) {
+			return -1;
+		}
 		if (appsPool.isEmpty()) {
 			return -1;
 		}
@@ -122,7 +147,11 @@ public class RetrieveAppService extends IntentService {
 	}
 
 	public static void cancelLoading(long appId) {
-
+		if (appsPool.get(0).getId() == appId) {
+			cancelCurrent = true;
+		} else {
+			appsPool.remove(new App(appId));
+		}
 	}
 }
 

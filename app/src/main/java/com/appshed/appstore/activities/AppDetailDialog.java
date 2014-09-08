@@ -41,6 +41,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 	private App selectedApp;
 	private TextView progressSize;
 	private TextView progressPercent;
+	private View cancelDownloading;
 
 	private Handler progressHandler = new Handler() {
 		@Override
@@ -53,6 +54,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 	private void updateAppLoading() {
 		if (selectedApp != null) {
 			long progress = RetrieveAppService.getProgress(selectedApp.getId());
+			Log.i(TAG, "progress = "+progress);
 			if (progress >= 0) {
 				if (progress == 0) {
 					loadingProgressbar.setIndeterminate(true);
@@ -66,10 +68,13 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 						loadingProgressbar.setProgress((int) Math.round(percentProgress * 100));
 						progressPercent.setText(String.format("%.1f%%", percentProgress * 100));
 						progressSize.setText(String.format("%s/%s", FileUtils.byteCountToDisplaySize(progress), FileUtils.byteCountToDisplaySize(length)));
+						cancelDownloading.setVisibility(View.VISIBLE);
 					} else {
+						cancelDownloading.setVisibility(View.GONE);
 						loadingProgressbar.setIndeterminate(true);
 						progressSize.setText("Installing...");
 						progressPercent.setText("");
+
 					}
 				}
 				downloadContainer.setVisibility(View.VISIBLE);
@@ -107,7 +112,8 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 		loadingProgressbar = (ProgressBar) findViewById(R.id.loading_progress);
 		progressSize = (TextView) findViewById(R.id.txt_progress_size);
 		progressPercent = (TextView) findViewById(R.id.txt_progress_percent);
-		findViewById(R.id.img_cancel_downloading).setOnClickListener(this);
+		cancelDownloading = findViewById(R.id.img_cancel_downloading);
+		cancelDownloading.setOnClickListener(this);
 
 		install = (TextView) findViewById(R.id.txt_get_this_app);
 
@@ -170,7 +176,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 				//TODO
 				break;
 			case R.id.img_cancel_downloading:
-
+				RetrieveAppService.cancelLoading(selectedApp.getId());
 				break;
 			case R.id.img_share:
 				Intent sendIntent = new Intent();
