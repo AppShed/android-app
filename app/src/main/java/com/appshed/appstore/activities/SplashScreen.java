@@ -34,6 +34,6 @@ public class SplashScreen extends RightSplashActivity {
 
 	@Override
 	public void doStart() {
-		startActivity(new Intent(SplashScreen.this, MainActivity.class));
+		startActivity(new Intent(SplashScreen.this, MainActivityNew.class));
 	}
 }

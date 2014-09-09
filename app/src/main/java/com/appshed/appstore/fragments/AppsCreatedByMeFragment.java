@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.dialogs.LoginDialog;
-import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveMyApps;
@@ -92,7 +92,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.img_menu:
-				((MainActivity) getActivity()).toggleMenu();
+				((MainActivityNew) getActivity()).toggleMenu();
 				break;
 			case R.id.img_login_logout:
 				if (SystemUtils.cache.getUser() == null) {

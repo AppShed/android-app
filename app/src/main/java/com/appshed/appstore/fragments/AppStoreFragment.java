@@ -5,11 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.appshed.appstore.R;
-import com.appshed.appstore.activities.MainActivity;
+import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.viewpagerindicator.UnderlinePageIndicator;
@@ -19,6 +20,7 @@ import com.viewpagerindicator.UnderlinePageIndicator;
  */
 public class AppStoreFragment extends Fragment implements View.OnClickListener{
 
+	private static final String TAG = AppStoreFragment.class.getSimpleName();
 	private FragmentPagerAdapter adapter;
 	private ViewPager pager;
 	private View tileView;
@@ -30,13 +32,18 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_app_store, null);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		fragments = RightList.asRightList(
 				FeaturedFragment.newInstance(),
 				CategoriesFragment.newInstance(),
 				SearchFragment.newInstance()
 		);
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_app_store, null);
 		adapter = new ViewPagerAdapter(getChildFragmentManager());
 		pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.setAdapter(adapter);
@@ -110,7 +117,7 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 				});
 				break;
 			case R.id.img_menu:
-				((MainActivity) getActivity()).toggleMenu();
+				((MainActivityNew) getActivity()).toggleMenu();
 				break;
 			case R.id.img_tile:
 				if (SystemUtils.cache.getAppLayout() == R.layout.item_tile_app) {
@@ -121,9 +128,11 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 				SystemUtils.saveCache(getActivity());
 				Fragment currentFragment = fragments.get(pager.getCurrentItem());
 				if (currentFragment instanceof FeaturedFragment) {
+					Log.i(TAG, FeaturedFragment.class.getSimpleName());
 					((FeaturedFragment) currentFragment).updateListView();
 				}
 				if (currentFragment instanceof SearchFragment) {
+					Log.i(TAG, SearchFragment.class.getSimpleName());
 					((SearchFragment) currentFragment).updateListView();
 				}
 				break;
@@ -137,14 +146,6 @@ public class AppStoreFragment extends Fragment implements View.OnClickListener{
 
 		@Override
 		public Fragment getItem(int position) {
-//			switch (position) {
-//				case 0:
-//					return FeaturedFragment.newInstance();
-//				case 1:
-//					return CategoriesFragment.newInstance();
-//				case 2:
-//					return SearchFragment.newInstance();
-//			}
 			return fragments.get(position);
 		}
 

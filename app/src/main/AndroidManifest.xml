@@ -40,7 +40,7 @@
 
 		<activity
 			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
-			android:name=".activities.MainActivity"
+			android:name=".activities.MainActivityNew"
 			android:screenOrientation="portrait"
 			android:label="@string/appstore_app_name">
 		</activity>

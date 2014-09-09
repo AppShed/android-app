@@ -20,7 +20,9 @@ import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import android.widget.TextView;
+
 import com.appshed.appstore.R;
+
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
@@ -33,11 +35,7 @@ public class QRScanerActivity extends Activity {
 	private Camera mCamera;
 	private CameraPreview mPreview;
 	private Handler autoFocusHandler;
-
-	TextView scanText;
-
 	ImageScanner scanner;
-
 	private boolean barcodeScanned = false;
 	private boolean previewing = true;
 
@@ -63,23 +61,6 @@ public class QRScanerActivity extends Activity {
 		mPreview = new CameraPreview(this, mCamera, previewCb, autoFocusCB);
 		FrameLayout preview = (FrameLayout) findViewById(R.id.cameraPreview);
 		preview.addView(mPreview);
-
-		scanText = (TextView) findViewById(R.id.scanText);
-
-//		scanButton = (Button) findViewById(R.id.ScanButton);
-//
-//		scanButton.setOnClickListener(new OnClickListener() {
-//			public void onClick(View v) {
-//				if (barcodeScanned) {
-//					barcodeScanned = false;
-//					scanText.setText("Scanning...");
-//					mCamera.setPreviewCallback(previewCb);
-//					mCamera.startPreview();
-//					previewing = true;
-//					mCamera.autoFocus(autoFocusCB);
-//				}
-//			}
-//		});
 	}
 
 	public void onPause() {
@@ -132,7 +113,7 @@ public class QRScanerActivity extends Activity {
 
 				SymbolSet syms = scanner.getResults();
 				for (Symbol sym : syms) {
-					scanText.setText("barcode result " + sym.getData());
+//					scanText.setText("barcode result " + sym.getData());
 					Log.i(TAG, sym.getData());
 					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(sym.getData()));
 					browserIntent.putExtra(Boolean.class.getSimpleName(), true);

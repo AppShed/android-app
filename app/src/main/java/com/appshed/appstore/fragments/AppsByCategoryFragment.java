@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.appshed.appstore.R;
+import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.dialogs.AppDetailDialog;
-import com.appshed.appstore.activities.MainActivity;
 import com.appshed.appstore.adapters.AppAdapter;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.tasks.RetrieveCategoriesApps;
@@ -130,7 +130,7 @@ public class AppsByCategoryFragment extends Fragment implements View.OnClickList
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.img_menu:
-				((MainActivity) getActivity()).toggleMenu();
+				((MainActivityNew) getActivity()).toggleMenu();
 				break;
 			case R.id.img_tile:
 				if (SystemUtils.cache.getAppLayout() == R.layout.item_tile_app) {
