@@ -6,15 +6,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:font="http://schemas.android.com/apk/res-auto">
 
-	<View
-		android:id="@+id/top_bar"
-		android:layout_width="match_parent"
-		android:layout_height="20dp"
-		android:background="#3462D7"/>
-
 	<RelativeLayout
 		android:id="@+id/top_container"
-		android:layout_below="@+id/top_bar"
 		android:layout_width="match_parent"
 		android:background="#EEEEEE"
 		android:layout_height="150dp">

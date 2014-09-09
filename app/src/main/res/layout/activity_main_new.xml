@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.DrawerLayout
-	android:id="@+id/drawer_layout"
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	<FrameLayout
-		android:id="@+id/fragment_container"
+	android:orientation="vertical"
+	android:layout_height="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<View
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_alignParentTop="true">
-	</FrameLayout>
-	<RelativeLayout
-		android:id="@+id/menu_container"
-		android:layout_width="300dp"
-		android:layout_height="match_parent"
-		android:layout_gravity="start">
+		android:layout_height="20dp"
+		android:background="#3462D7"/>
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/drawer_layout"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<FrameLayout
+			android:id="@+id/fragment_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignParentTop="true">
+		</FrameLayout>
+		<RelativeLayout
+			android:id="@+id/menu_container"
+			android:layout_width="300dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="start">
 
-		<include layout="@layout/sliding_menu"/>
-	</RelativeLayout>
+			<include layout="@layout/sliding_menu"/>
+		</RelativeLayout>
 
-</android.support.v4.widget.DrawerLayout>
+	</android.support.v4.widget.DrawerLayout>
+</LinearLayout>

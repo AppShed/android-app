@@ -3,6 +3,7 @@ package com.appshed.appstore.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class FeaturedFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.i(TAG, "onCreateView");
 		View view = View.inflate(getActivity(), R.layout.fragment_featured, null);
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
@@ -99,6 +101,8 @@ public class FeaturedFragment extends Fragment {
 	public void updateListView() {
 		if (adapter != null) {
 			adapter.changeLayout(SystemUtils.cache.getAppLayout());
+		} else {
+			Log.i(TAG, "adapter null");
 		}
 	}
 
