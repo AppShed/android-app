@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.utils.SystemUtils;
@@ -12,7 +13,7 @@ import com.appshed.appstore.utils.SystemUtils;
 /**
  * Created by Anton Maniskevich on 8/21/14.
  */
-public class CategoriesFragment extends Fragment implements View.OnClickListener{
+public class CategoriesFragment extends Fragment implements View.OnClickListener {
 
 	public static CategoriesFragment newInstance() {
 		CategoriesFragment fragment = new CategoriesFragment();
@@ -33,25 +34,29 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 
 	@Override
 	public void onClick(View v) {
+		AppsByCategoryFragment fragment = null;
 		switch (v.getId()) {
 			case R.id.general_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.general_icon, SystemUtils.GENERAL, R.drawable.general_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.general_bg, SystemUtils.GENERAL, R.drawable.general_mini_icon);
 				break;
 			case R.id.education_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.education_icon, SystemUtils.EDUCATION, R.drawable.education_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.education_bg, SystemUtils.EDUCATION, R.drawable.education_mini_icon);
 				break;
 			case R.id.business_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.business_icon, SystemUtils.BUSINESS, R.drawable.business_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.business_bg, SystemUtils.BUSINESS, R.drawable.business_mini_icon);
 				break;
 			case R.id.fun_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.fun_icon, SystemUtils.FUN, R.drawable.fun_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.fun_bg, SystemUtils.FUN, R.drawable.fun_mini_icon);
 				break;
 			case R.id.events_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.events_icon, SystemUtils.EVENTS, R.drawable.events_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.events_bg, SystemUtils.EVENTS, R.drawable.events_mini_icon);
 				break;
 			case R.id.other_container:
-				((MainActivityNew) getActivity()).pushFragment(AppsByCategoryFragment.newInstance(R.drawable.other_icon, SystemUtils.OTHER, R.drawable.other_mini_icon));
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.other_bg, SystemUtils.OTHER, R.drawable.other_mini_icon);
 				break;
+		}
+		if (fragment != null) {
+			((MainActivityNew) getActivity()).pushFragment(fragment);
 		}
 	}
 }

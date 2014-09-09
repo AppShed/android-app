@@ -9,8 +9,21 @@
 	<RelativeLayout
 		android:id="@+id/top_container"
 		android:layout_width="match_parent"
-		android:background="#EEEEEE"
+		android:background="#80CBF1"
 		android:layout_height="150dp">
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:scaleType="centerCrop"
+			android:layout_height="match_parent"
+			android:src="@drawable/top_net"/>
+		<ImageView
+			android:paddingLeft="40dp"
+			android:paddingRight="40dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:src="@drawable/splash_logo"/>
 
 	</RelativeLayout>
 
