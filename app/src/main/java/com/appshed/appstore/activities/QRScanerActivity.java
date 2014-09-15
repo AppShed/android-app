@@ -113,10 +113,8 @@ public class QRScanerActivity extends Activity {
 
 				SymbolSet syms = scanner.getResults();
 				for (Symbol sym : syms) {
-//					scanText.setText("barcode result " + sym.getData());
-					Log.i(TAG, sym.getData());
-					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(sym.getData()));
-					browserIntent.putExtra(Boolean.class.getSimpleName(), true);
+					Intent browserIntent = new Intent(QRScanerActivity.this, LaunchActivity.class);
+					browserIntent.setData(Uri.parse(sym.getData()));
 					startActivity(browserIntent);
 					barcodeScanned = true;
 					break;

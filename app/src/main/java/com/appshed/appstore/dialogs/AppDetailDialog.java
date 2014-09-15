@@ -71,6 +71,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 					//id updating
 					long updateProgress = UpdateAppService.getProgress(selectedApp.getId());
 					if (updateProgress >= 0) {
+						topButtonContainer.setVisibility(View.INVISIBLE);
 						updatingApp(updateProgress);
 					} else {
 						downloadContainer.setVisibility(View.GONE);

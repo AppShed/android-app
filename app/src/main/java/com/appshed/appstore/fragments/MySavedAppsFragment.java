@@ -1,6 +1,7 @@
 package com.appshed.appstore.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.appshed.appstore.R;
+import com.appshed.appstore.activities.LaunchActivity;
 import com.appshed.appstore.activities.MainActivityNew;
 import com.appshed.appstore.dialogs.AppDetailDialog;
 import com.appshed.appstore.adapters.AppAdapter;
@@ -69,7 +71,9 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				startActivity(new Intent(getActivity(), AppDetailDialog.class).putExtra(App.class.getSimpleName(), adapter.getItem(position)));
+				Intent browserIntent = new Intent(getActivity(), LaunchActivity.class);
+				browserIntent.setData(Uri.parse("/"+adapter.getItem(position).getId()));
+				startActivity(browserIntent);
 			}
 		});
 	}

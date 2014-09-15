@@ -17,6 +17,7 @@ import org.apache.cordova.Config;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.LOG;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -100,6 +101,14 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		CordovaPlugin callback = this.activityResultCallback;
 		if (callback != null) {
 			callback.onActivityResult(requestCode, resultCode, intent);
+		}
+	}
+
+	public void onDestroy() {
+		super.onDestroy();
+
+		if (this.cordovaWebView != null) {
+			this.cordovaWebView.handleDestroy();
 		}
 	}
 }

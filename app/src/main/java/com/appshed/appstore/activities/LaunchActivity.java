@@ -3,6 +3,7 @@ package com.appshed.appstore.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class LaunchActivity extends Activity {
 		isFullScreen = getIntent().getBooleanExtra(Boolean.class.getSimpleName(), false);
 		if (getIntent().getData() != null) {
 			String text = getIntent().getData().toString();
+			Log.i(TAG, text);
 			long appId = 0;
 			try {
 				appId = Long.valueOf(text.substring(text.lastIndexOf('/')+1));
