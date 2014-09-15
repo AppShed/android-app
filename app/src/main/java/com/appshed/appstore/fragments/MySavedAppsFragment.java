@@ -40,7 +40,6 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 		listView = (ListView) view.findViewById(R.id.list_view);
 		emptyList = view.findViewById(R.id.img_empty_list);
 		progressBar = view.findViewById(R.id.progress_bar);
-		new RetrieveSavedApps(getActivity(), progressBar, MySavedAppsFragment.this).execute();
 		return view;
 	}
 
@@ -53,6 +52,11 @@ public class MySavedAppsFragment extends Fragment implements View.OnClickListene
 		}
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		new RetrieveSavedApps(getActivity(), progressBar, MySavedAppsFragment.this).execute();
+	}
 
 	public void addApps(RightList<App> apps) {
 		if (apps.isEmpty()) {

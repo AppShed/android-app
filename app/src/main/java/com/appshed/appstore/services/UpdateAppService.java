@@ -2,7 +2,6 @@ package com.appshed.appstore.services;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.os.Environment;
 import android.util.Log;
 
 import com.appshed.appstore.applications.AppStoreApplication;
@@ -10,10 +9,6 @@ import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SystemUtils;
 import com.appshed.appstore.utils.ZipUtils;
 import com.rightutils.rightutils.collections.RightList;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -26,39 +21,39 @@ import java.net.URLConnection;
 /**
  * Created by Anton Maniskevich on 8/8/14.
  */
-public class RetrieveAppService extends IntentService {
+public class UpdateAppService extends IntentService {
 
-	private static final String TAG = RetrieveAppService.class.getSimpleName();
-	public static final String RETRIEVE_TYPE = "retrieve_type";
-	public static final int LOAD_APP = 100;
+	private static final String TAG = UpdateAppService.class.getSimpleName();
+	public static final String UPDATE_TYPE = "update_type";
+	public static final int UPDATE_APP = 100;
 	private static RightList<App> appsPool = new RightList<App>();
-	private static RetrieveFile retrieveFile;
+	private static UpdateAppFiles updateAppFiles;
 
 	private static long progress = 0;
 	private static long length = 0;
 	private static boolean cancelCurrent = false;
 
-	public RetrieveAppService() {
-		super(RetrieveAppService.class.getName());
-		retrieveFile = new RetrieveFile();
+	public UpdateAppService() {
+		super(UpdateAppService.class.getName());
+		updateAppFiles = new UpdateAppFiles();
 	}
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		if (intent.getExtras() != null) {
-			int retrativeType = intent.getExtras().getInt(RETRIEVE_TYPE);
-			switch (retrativeType) {
-				case LOAD_APP:
+			int updateType = intent.getExtras().getInt(UPDATE_TYPE);
+			switch (updateType) {
+				case UPDATE_APP:
 					appsPool.add((App) intent.getSerializableExtra(App.class.getSimpleName()));
 					if (appsPool.size() == 1) {
-						retrieveFile.start();
+						updateAppFiles.start();
 					}
 					break;
 			}
 		}
 	}
 
-	private class RetrieveFile extends Thread {
+	private class UpdateAppFiles extends Thread {
 
 		@Override
 		public void run() {
@@ -88,12 +83,22 @@ public class RetrieveAppService extends IntentService {
 						Log.i(TAG, "Loading..." + progress);
 						progress += count;
 					}
+					Log.i(TAG, "1");
 					fos.close();
+					Log.i(TAG, "2");
 					is.close();
+					Log.i(TAG, "3");
 					if (cancelCurrent) {
 						new File(PATH+currentLoadingApp.getId()+".zip").delete();
 						cancelCurrent = false;
+						Log.i(TAG, "3.1");
 					} else {
+						//delete app
+						AppStoreApplication.dbUtils.deleteWhere(App.class, String.format("id = %d", currentLoadingApp.getId()));
+						deleteRecursive(new File(PATH + currentLoadingApp.getId()));
+						//remove icon for app
+						SystemUtils.removeAppShortcut(getApplicationContext(), currentLoadingApp.getName(), currentLoadingApp.getId());
+
 						//unzip
 						ZipUtils.unZipIt(PATH + currentLoadingApp.getId() + ".zip", PATH + currentLoadingApp.getId());
 						AppStoreApplication.dbUtils.add(currentLoadingApp);
@@ -101,12 +106,22 @@ public class RetrieveAppService extends IntentService {
 						SystemUtils.addAppShortcut(getApplicationContext(), currentLoadingApp.getName(), currentLoadingApp.getId());
 					}
 				} catch (IOException e) {
-					Log.e(TAG, "RetrieveFile", e);
+					Log.e(TAG, "UpdateAppFiles", e);
 				} finally {
+					Log.i(TAG, "4");
 					appsPool.remove(0);
+					Log.i(TAG, "5");
 				}
 			}
 		}
+	}
+
+	void deleteRecursive(File fileOrDirectory) {
+		if (fileOrDirectory.isDirectory())
+			for (File child : fileOrDirectory.listFiles())
+				deleteRecursive(child);
+
+		fileOrDirectory.delete();
 	}
 
 	public static long getProgress(long appId) {

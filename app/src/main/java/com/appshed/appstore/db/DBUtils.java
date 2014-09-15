@@ -2,6 +2,8 @@ package com.appshed.appstore.db;
 
 import android.content.Context;
 
+import com.appshed.appstore.entities.App;
+import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.db.RightDBUtils;
 
 /**
@@ -13,6 +15,14 @@ public class DBUtils extends RightDBUtils {
 		DBUtils dbUtils = new DBUtils();
 		dbUtils.setDBContext(context, name, version);
 		return dbUtils;
+	}
+
+	public int getAppVersion(long appId) {
+		RightList<App> apps = getAllWhere(String.format("id = %d limit 1", appId), App.class);
+		if (!apps.isEmpty()) {
+			return apps.get(0).getVersion();
+		}
+		return 0;
 	}
 
 

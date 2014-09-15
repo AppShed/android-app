@@ -16,9 +16,11 @@ import android.widget.Toast;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.PhonegapActivity;
+import com.appshed.appstore.applications.AppStoreApplication;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.services.DeleteAppService;
 import com.appshed.appstore.services.RetrieveAppService;
+import com.appshed.appstore.services.UpdateAppService;
 import com.appshed.appstore.utils.BitmapUtils;
 import com.appshed.appstore.utils.ImageLoadingListenerImpl;
 import com.appshed.appstore.utils.SystemUtils;
@@ -44,6 +46,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 	private TextView progressSize;
 	private TextView progressPercent;
 	private View cancelDownloading;
+	private View updateApp;
 
 	private Handler progressHandler = new Handler() {
 		@Override
@@ -55,56 +58,100 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 
 	private void updateAppLoading() {
 		if (selectedApp != null) {
-
 			//is loading?
 			long progress = RetrieveAppService.getProgress(selectedApp.getId());
 			if (progress >= 0) {
-				if (progress == 0) {
-					loadingProgressbar.setIndeterminate(true);
-					progressSize.setText("Loading...");
-					progressPercent.setText("");
-					cancelDownloading.setVisibility(View.VISIBLE);
-				} else {
-					long length = RetrieveAppService.getLength(selectedApp.getId());
-					if (length != progress) {
-						double percentProgress = ((double) progress) / ((double) length);
-						loadingProgressbar.setIndeterminate(false);
-						loadingProgressbar.setProgress((int) Math.round(percentProgress * 100));
-						progressPercent.setText(String.format("%.1f%%", percentProgress * 100));
-						progressSize.setText(String.format("%s/%s", FileUtils.byteCountToDisplaySize(progress), FileUtils.byteCountToDisplaySize(length)));
-						cancelDownloading.setVisibility(View.VISIBLE);
-					} else {
-						cancelDownloading.setVisibility(View.GONE);
-						loadingProgressbar.setIndeterminate(true);
-						progressSize.setText("Installing...");
-						progressPercent.setText("");
-
-					}
-				}
-				downloadContainer.setVisibility(View.VISIBLE);
-				install.setVisibility(View.INVISIBLE);
+				loadingApp(progress);
 			} else {
 				//is removing?
 				long deleteProgress = DeleteAppService.getProgress(selectedApp.getId());
 				if (deleteProgress == 0) {
-					loadingProgressbar.setIndeterminate(true);
-					progressSize.setText("Removing...");
-					progressPercent.setText("");
-					cancelDownloading.setVisibility(View.GONE);
+					removingApp();
 				} else {
-					downloadContainer.setVisibility(View.GONE);
-					final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
-					if (new File(appFolder).exists()) {
-						install.setText(LAUNCH_APP);
-						topButtonContainer.setVisibility(View.VISIBLE);
+					//id updating
+					long updateProgress = UpdateAppService.getProgress(selectedApp.getId());
+					if (updateProgress >= 0) {
+						updatingApp(updateProgress);
 					} else {
-						install.setText(GET_THIS_APP);
-						topButtonContainer.setVisibility(View.GONE);
+						downloadContainer.setVisibility(View.GONE);
+						final String appFolder = SystemUtils.getAppFolder(selectedApp.getId());
+						if (new File(appFolder).exists()) {
+							install.setText(LAUNCH_APP);
+							topButtonContainer.setVisibility(View.VISIBLE);
+							int dbAppVersion = AppStoreApplication.dbUtils.getAppVersion(selectedApp.getId());
+							if (dbAppVersion != 0 && dbAppVersion < selectedApp.getVersion()) {
+								updateApp.setVisibility(View.VISIBLE);
+							} else {
+								updateApp.setVisibility(View.INVISIBLE);
+							}
+						} else {
+							install.setText(GET_THIS_APP);
+							topButtonContainer.setVisibility(View.GONE);
+						}
+						install.setVisibility(View.VISIBLE);
 					}
-					install.setVisibility(View.VISIBLE);
 				}
 			}
 		}
+	}
+
+	private void removingApp() {
+		loadingProgressbar.setIndeterminate(true);
+		progressSize.setText("Removing...");
+		progressPercent.setText("");
+		cancelDownloading.setVisibility(View.GONE);
+	}
+
+	private void loadingApp(long progress) {
+		if (progress == 0) {
+			loadingProgressbar.setIndeterminate(true);
+			progressSize.setText("Loading...");
+			progressPercent.setText("");
+			cancelDownloading.setVisibility(View.VISIBLE);
+		} else {
+			long length = RetrieveAppService.getLength(selectedApp.getId());
+			if (length != progress) {
+				double percentProgress = ((double) progress) / ((double) length);
+				loadingProgressbar.setIndeterminate(false);
+				loadingProgressbar.setProgress((int) Math.round(percentProgress * 100));
+				progressPercent.setText(String.format("%.1f%%", percentProgress * 100));
+				progressSize.setText(String.format("%s/%s", FileUtils.byteCountToDisplaySize(progress), FileUtils.byteCountToDisplaySize(length)));
+				cancelDownloading.setVisibility(View.VISIBLE);
+			} else {
+				cancelDownloading.setVisibility(View.GONE);
+				loadingProgressbar.setIndeterminate(true);
+				progressSize.setText("Installing...");
+				progressPercent.setText("");
+			}
+		}
+		downloadContainer.setVisibility(View.VISIBLE);
+		install.setVisibility(View.INVISIBLE);
+	}
+
+	private void updatingApp(long progress) {
+		if (progress == 0) {
+			loadingProgressbar.setIndeterminate(true);
+			progressSize.setText("Loading new version...");
+			progressPercent.setText("");
+			cancelDownloading.setVisibility(View.VISIBLE);
+		} else {
+			long length = UpdateAppService.getLength(selectedApp.getId());
+			if (length != progress) {
+				double percentProgress = ((double) progress) / ((double) length);
+				loadingProgressbar.setIndeterminate(false);
+				loadingProgressbar.setProgress((int) Math.round(percentProgress * 100));
+				progressPercent.setText(String.format("%.1f%%", percentProgress * 100));
+				progressSize.setText(String.format("%s/%s", FileUtils.byteCountToDisplaySize(progress), FileUtils.byteCountToDisplaySize(length)));
+				cancelDownloading.setVisibility(View.VISIBLE);
+			} else {
+				cancelDownloading.setVisibility(View.GONE);
+				loadingProgressbar.setIndeterminate(true);
+				progressSize.setText("Updating...");
+				progressPercent.setText("");
+			}
+		}
+		downloadContainer.setVisibility(View.VISIBLE);
+		install.setVisibility(View.INVISIBLE);
 	}
 
 	private TextView install;
@@ -114,9 +161,6 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 		selectedApp = (App) getIntent().getExtras().getSerializable(App.class.getSimpleName());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_app_detail);
-		if (getIntent().getExtras().getBoolean(Boolean.class.getSimpleName(), true)) {
-//			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		}
 		getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 		downloadContainer = findViewById(R.id.download_container);
@@ -132,7 +176,8 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 		findViewById(R.id.txt_close).setOnClickListener(this);
 		findViewById(R.id.img_share).setOnClickListener(this);
 		findViewById(R.id.txt_remove_app).setOnClickListener(this);
-		findViewById(R.id.txt_update_app).setOnClickListener(this);
+		updateApp = findViewById(R.id.txt_update_app);
+		updateApp.setOnClickListener(this);
 
 		SystemUtils.IMAGELOADER.displayImage(selectedApp.getFeaturedImage(), ((ImageView) findViewById(R.id.img_app_icon)));
 		final ImageView icon = (ImageView) findViewById(R.id.img_icon);
@@ -187,8 +232,9 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 						.putExtra(App.class.getSimpleName(), selectedApp));
 				break;
 			case R.id.txt_update_app:
-				//TODO
-				Toast.makeText(AppDetailDialog.this, "This functionality not working yet", Toast.LENGTH_SHORT).show();
+				startService(new Intent(AppDetailDialog.this, UpdateAppService.class)
+						.putExtra(UpdateAppService.UPDATE_TYPE, UpdateAppService.UPDATE_APP)
+						.putExtra(App.class.getSimpleName(), selectedApp));
 				break;
 			case R.id.img_cancel_downloading:
 				RetrieveAppService.cancelLoading(selectedApp.getId());
@@ -200,7 +246,6 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 				sendIntent.setType("text/plain");
 				startActivity(sendIntent);
 				break;
-
 		}
 	}
 }
