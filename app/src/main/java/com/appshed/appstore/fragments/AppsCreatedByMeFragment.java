@@ -139,9 +139,11 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			}
 			loginLogout.setImageResource(R.drawable.logout_icon);
 			loginState.setText(SystemUtils.cache.getUser().getName());
+			pullToRefreshListView.setVisibility(View.VISIBLE);
 		} else {
 			loginLogout.setImageResource(R.drawable.login_icon);
 			loginState.setText(getResources().getString(R.string.login_text));
+			pullToRefreshListView.setVisibility(View.INVISIBLE);
 		}
 		showOrHideEmptyList();
 	}

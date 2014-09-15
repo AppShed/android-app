@@ -115,7 +115,7 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_app_detail);
 		if (getIntent().getExtras().getBoolean(Boolean.class.getSimpleName(), true)) {
-			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		}
 		getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -160,9 +160,9 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 	}
 
 	@Override
-	protected void onPause() {
+	protected void onStop() {
 		progressHandler.removeMessages(0);
-		super.onPause();
+		super.onStop();
 	}
 
 	@Override

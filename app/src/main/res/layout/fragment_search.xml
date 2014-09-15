@@ -20,6 +20,7 @@
 			android:imeOptions="actionSearch"
 			android:layout_alignParentLeft="true"
 			android:layout_toLeftOf="@+id/img_search"
+			android:textCursorDrawable="@null"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 

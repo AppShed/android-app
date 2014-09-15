@@ -27,7 +27,7 @@
 		android:theme="@style/AppTheme">
 
 		<activity
-			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+			android:theme="@android:style/Theme.Holo.NoActionBar"
 			android:name=".activities.SplashScreen"
 			android:screenOrientation="portrait"
 			android:label="@string/appstore_app_name">
@@ -39,7 +39,7 @@
 		</activity>
 
 		<activity
-			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+			android:theme="@android:style/Theme.Holo.NoActionBar"
 			android:name=".activities.MainActivityNew"
 			android:screenOrientation="portrait"
 			android:label="@string/appstore_app_name">
@@ -56,7 +56,7 @@
 			android:label="@string/appstore_app_name">
 		</activity>
 		<activity
-			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+			android:theme="@android:style/Theme.Holo.NoActionBar"
 			android:name=".activities.PhonegapActivity"
 			android:exported="true"
 			android:screenOrientation="portrait"/>
@@ -80,7 +80,7 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".activities.QRScanerActivity"
-				  android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+				  android:theme="@android:style/Theme.Holo.NoActionBar"
 				  android:screenOrientation="portrait">
 		</activity>
 
