@@ -1,6 +1,7 @@
 package com.appshed.appstore.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	private AppAdapter adapter;
 	private View progressBar;
 	private View emptyList;
+	private View registrationContainer;
 	private ImageView loginLogout;
 	private TextView loginState;
 
@@ -53,7 +55,9 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 		loginLogout = (ImageView) view.findViewById(R.id.img_login_logout);
 		loginLogout.setOnClickListener(this);
 		loginState = (TextView) view.findViewById(R.id.txt_login_state);
+		view.findViewById(R.id.txt_registration).setOnClickListener(this);
 		emptyList = view.findViewById(R.id.img_empty_list);
+		registrationContainer = view.findViewById(R.id.register_container);
 
 		progressBar = view.findViewById(R.id.progress_bar);
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
@@ -105,6 +109,9 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 					onResume();
 				}
 				break;
+			case R.id.txt_registration:
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://appshed.com/create/register")));
+				break;
 		}
 	}
 
@@ -140,12 +147,15 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			loginLogout.setImageResource(R.drawable.logout_icon);
 			loginState.setText(SystemUtils.cache.getUser().getName());
 			pullToRefreshListView.setVisibility(View.VISIBLE);
+			registrationContainer.setVisibility(View.GONE);
+			showOrHideEmptyList();
 		} else {
 			loginLogout.setImageResource(R.drawable.login_icon);
 			loginState.setText(getResources().getString(R.string.login_text));
 			pullToRefreshListView.setVisibility(View.INVISIBLE);
+			registrationContainer.setVisibility(View.VISIBLE);
+			emptyList.setVisibility(View.GONE);
 		}
-		showOrHideEmptyList();
 	}
 
 	private void showOrHideEmptyList() {

@@ -41,7 +41,7 @@
 			android:textSize="22sp"
 			android:layout_centerVertical="true"
 			android:textColor="@android:color/white"
-			android:text="Appshed App Store"
+			android:text="AppShed Store"
 			font:typeface="fonts/Roboto-Regular.ttf"/>
 
 	</RelativeLayout>

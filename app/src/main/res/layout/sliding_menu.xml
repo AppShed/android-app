@@ -45,7 +45,7 @@
 				android:background="@drawable/menu_item_selector"
 				style="@style/menu_text_style"
 				android:id="@+id/txt_appshed_gallery"
-				android:text="AppShed App Store"
+				android:text="AppShed Store"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				font:typeface="fonts/Roboto-Regular.ttf"/>

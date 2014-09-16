@@ -45,7 +45,6 @@ public class DeleteAppService extends IntentService {
 		@Override
 		public void run() {
 			while (!appsPool.isEmpty()) {
-				Log.i(TAG, "poolSize"+appsPool.size());
 				try {
 					App currentLoadingApp = appsPool.get(0);
 					String PATH = SystemUtils.getSaveFolder();

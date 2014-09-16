@@ -95,6 +95,43 @@
 			android:layout_height="wrap_content"
 			android:src="@drawable/empty_list"/>
 
+		<LinearLayout
+			android:id="@+id/register_container"
+			android:layout_centerInParent="true"
+			android:paddingStart="40dp"
+			android:paddingEnd="40dp"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:clickable="true"
+				android:singleLine="true"
+				android:gravity="center"
+				android:padding="13dp"
+				android:textSize="20sp"
+				android:text="Go to appshed.com for"
+				android:textColor="#999999"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:id="@+id/txt_registration"
+				android:clickable="true"
+				android:layout_marginTop="20dp"
+				android:singleLine="true"
+				android:gravity="center"
+				android:padding="13dp"
+				android:background="@drawable/login_btn_selector"
+				android:textSize="22sp"
+				android:text="REGISTRATION"
+				android:textColor="@android:color/white"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Medium.ttf"/>
+			</LinearLayout>
+
 		<ProgressBar
 			android:visibility="gone"
 			android:layout_centerInParent="true"
