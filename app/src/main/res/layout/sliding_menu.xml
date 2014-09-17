@@ -9,21 +9,26 @@
 	<RelativeLayout
 		android:id="@+id/top_container"
 		android:layout_width="match_parent"
-		android:background="#80CBF1"
 		android:layout_height="150dp">
+
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:scaleType="centerCrop"
+			android:layout_height="match_parent"
+			android:src="@drawable/menu_top_bg"/>
 
 		<ImageView
 			android:layout_width="match_parent"
 			android:scaleType="centerCrop"
 			android:layout_height="match_parent"
 			android:src="@drawable/top_net"/>
+
 		<ImageView
-			android:paddingLeft="40dp"
-			android:paddingRight="40dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="true"
-			android:src="@drawable/splash_logo"/>
+			android:src="@drawable/menu_logo"/>
 
 	</RelativeLayout>
 
@@ -50,11 +55,12 @@
 				android:layout_height="wrap_content"
 				font:typeface="fonts/Roboto-Regular.ttf"/>
 
-			<View android:layout_marginLeft="15dp"
-				  android:layout_marginRight="15dp"
-				  android:layout_width="match_parent"
-				  android:layout_height="1dp"
-				  android:background="#EEEEEE"/>
+			<View
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
 				android:drawableLeft="@drawable/menu_saved_apps_selector"
@@ -67,11 +73,12 @@
 				android:layout_height="wrap_content"
 				font:typeface="fonts/Roboto-Regular.ttf"/>
 
-			<View android:layout_marginLeft="15dp"
-				  android:layout_marginRight="15dp"
-				  android:layout_width="match_parent"
-				  android:layout_height="1dp"
-				  android:background="#EEEEEE"/>
+			<View
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
 				android:drawableLeft="@drawable/menu_created_apps_selector"
@@ -84,11 +91,12 @@
 				style="@style/menu_text_style"
 				font:typeface="fonts/Roboto-Regular.ttf"/>
 
-			<View android:layout_marginLeft="15dp"
-				  android:layout_marginRight="15dp"
-				  android:layout_width="match_parent"
-				  android:layout_height="1dp"
-				  android:background="#EEEEEE"/>
+			<View
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="#EEEEEE"/>
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
 				android:drawableLeft="@drawable/menu_app_creator_selector"
@@ -111,11 +119,13 @@
 		android:background="@drawable/scan_code_selector"
 		android:layout_height="wrap_content">
 
-		<LinearLayout android:layout_width="wrap_content"
-					  android:orientation="horizontal"
-					  android:layout_centerInParent="true"
-					  android:gravity="center"
-					  android:layout_height="wrap_content">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:orientation="horizontal"
+			android:layout_centerInParent="true"
+			android:gravity="center"
+			android:layout_height="wrap_content">
+
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
