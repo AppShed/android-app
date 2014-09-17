@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
-				xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				  xmlns:font="http://schemas.android.com/apk/res-auto"
 				  android:orientation="vertical"
@@ -9,37 +12,104 @@
 				  android:layout_width="match_parent"
 				  android:layout_height="match_parent">
 
-		<RelativeLayout android:layout_width="match_parent"
-						android:layout_height="wrap_content">
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 
-			<RelativeLayout android:layout_width="match_parent"
-							android:layout_alignParentBottom="true"
-							android:layout_below="@+id/top_container"
-							android:layout_height="wrap_content">
-
-				<com.handmark.pulltorefresh.library.PullToRefreshListView
-					android:id="@+id/pull_refresh_list"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:cacheColorHint="#00000000"
-					android:divider="#00000000"
-					android:dividerHeight="3dp"
-					android:fadingEdge="none"
-					android:fastScrollEnabled="false"
-					android:footerDividersEnabled="false"
-					android:headerDividersEnabled="false"
-					android:smoothScrollbar="true"/>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_alignParentBottom="true"
+				android:layout_below="@+id/top_container"
+				android:layout_height="wrap_content">
 
 				<RelativeLayout
-					android:visibility="gone"
-					android:id="@+id/progress_bar"
+					android:id="@+id/search_container"
 					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<RelativeLayout
+						android:visibility="gone"
+						android:layout_marginTop="20dp"
+						android:id="@+id/search_inner_container"
+						android:padding="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<EditText
+							android:background="@drawable/apptheme_edit_text_holo_light"
+							android:maxLength="255"
+							android:singleLine="true"
+							android:id="@+id/f_search"
+							android:textSize="20sp"
+							android:padding="10dp"
+							android:textColor="@android:color/black"
+							android:imeOptions="actionSearch"
+							android:layout_alignParentLeft="true"
+							android:layout_toLeftOf="@+id/img_search_btn"
+							android:textCursorDrawable="@null"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<ImageView
+							android:id="@+id/img_hide_search"
+							android:layout_centerVertical="true"
+							android:layout_alignRight="@+id/f_search"
+							android:padding="10dp"
+							android:src="@drawable/cancel_downloadpng"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<ImageView
+							android:id="@+id/img_search_btn"
+							android:padding="10dp"
+							android:layout_alignParentRight="true"
+							android:src="@drawable/search_icon"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+					</RelativeLayout>
+
+				</RelativeLayout>
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_below="@+id/search_container"
 					android:layout_height="match_parent">
-					<ProgressBar
+
+					<com.handmark.pulltorefresh.library.PullToRefreshListView
+						android:id="@+id/pull_refresh_list"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:cacheColorHint="#00000000"
+						android:divider="#00000000"
+						android:dividerHeight="3dp"
+						android:fadingEdge="none"
+						android:fastScrollEnabled="false"
+						android:footerDividersEnabled="false"
+						android:headerDividersEnabled="false"
+						android:smoothScrollbar="true"/>
+
+
+					<ImageView
+						android:id="@+id/img_empty_list"
 						android:layout_centerInParent="true"
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
+						android:layout_height="wrap_content"
+						android:src="@drawable/empty_list"/>
+
+					<RelativeLayout
+						android:visibility="gone"
+						android:id="@+id/progress_bar"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+
+						<ProgressBar
+							android:layout_centerInParent="true"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+					</RelativeLayout>
 				</RelativeLayout>
+
 			</RelativeLayout>
 
 
@@ -48,6 +118,7 @@
 				android:layout_width="match_parent"
 				android:orientation="vertical"
 				android:layout_height="170dp">
+
 				<RelativeLayout
 					android:layout_width="match_parent"
 					android:background="#2C81FF"
@@ -77,6 +148,15 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:src="@drawable/menu_icon_with_shadow"/>
+
+						<ImageView
+							android:padding="20dp"
+							android:layout_centerVertical="true"
+							android:id="@+id/img_show_search"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_toLeftOf="@+id/img_tile"
+							android:src="@drawable/search_icon_with_shadow"/>
 
 						<ImageView
 							android:padding="20dp"
@@ -122,6 +202,7 @@
 						font:typeface="fonts/Roboto-Medium.ttf"/>
 				</RelativeLayout>
 			</LinearLayout>
+
 			<RelativeLayout
 				android:layout_below="@+id/top_container"
 				android:layout_width="match_parent"
@@ -139,6 +220,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:src="@drawable/category_mini_icon_bg"/>
+
 				<ImageView
 					android:id="@+id/img_mini_icon"
 					android:layout_width="wrap_content"
