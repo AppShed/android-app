@@ -32,7 +32,7 @@
 			android:textSize="22sp"
 			android:layout_centerVertical="true"
 			android:textColor="@android:color/white"
-			android:text="Apps Created by me"
+			android:text="Apps Created by Me"
 			font:typeface="fonts/Roboto-Regular.ttf"/>
 
 	</RelativeLayout>
@@ -51,7 +51,7 @@
 			android:textSize="22sp"
 			android:singleLine="true"
 			android:layout_width="match_parent"
-			android:layout_toLeftOf="@+id/img_login_logout"
+			android:layout_toLeftOf="@+id/img_logout"
 			android:layout_height="wrap_content"
 			font:typeface="fonts/Roboto-Regular.ttf"/>
 
@@ -60,10 +60,10 @@
 			android:paddingLeft="20dp"
 			android:layout_centerVertical="true"
 			android:layout_alignParentRight="true"
-			android:id="@+id/img_login_logout"
+			android:id="@+id/img_logout"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/login_icon"/>
+			android:src="@drawable/logout_icon"/>
 
 	</RelativeLayout>
 
@@ -105,6 +105,22 @@
 			android:layout_height="wrap_content">
 
 			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:id="@+id/txt_login"
+				android:clickable="true"
+				android:singleLine="true"
+				android:gravity="center"
+				android:padding="13dp"
+				android:background="@drawable/scan_code_selector"
+				android:textSize="22sp"
+				android:text="LOGIN"
+				android:textColor="@android:color/black"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Medium.ttf"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
 				android:clickable="true"
 				android:singleLine="true"
 				android:gravity="center"
@@ -119,7 +135,6 @@
 			<com.rightutils.rightutils.widgets.TypefacedTextView
 				android:id="@+id/txt_registration"
 				android:clickable="true"
-				android:layout_marginTop="20dp"
 				android:singleLine="true"
 				android:gravity="center"
 				android:padding="13dp"

@@ -40,7 +40,7 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	private View progressBar;
 	private View emptyList;
 	private View registrationContainer;
-	private ImageView loginLogout;
+	private ImageView logout;
 	private TextView loginState;
 
 	public static AppsCreatedByMeFragment newInstance() {
@@ -52,9 +52,10 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = View.inflate(getActivity(), R.layout.fragment_apps_created_by_me, null);
 		view.findViewById(R.id.img_menu).setOnClickListener(this);
-		loginLogout = (ImageView) view.findViewById(R.id.img_login_logout);
-		loginLogout.setOnClickListener(this);
+		logout = (ImageView) view.findViewById(R.id.img_logout);
+		logout.setOnClickListener(this);
 		loginState = (TextView) view.findViewById(R.id.txt_login_state);
+		view.findViewById(R.id.txt_login).setOnClickListener(this);
 		view.findViewById(R.id.txt_registration).setOnClickListener(this);
 		emptyList = view.findViewById(R.id.img_empty_list);
 		registrationContainer = view.findViewById(R.id.register_container);
@@ -98,19 +99,18 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			case R.id.img_menu:
 				((MainActivityNew) getActivity()).toggleMenu();
 				break;
-			case R.id.img_login_logout:
-				if (SystemUtils.cache.getUser() == null) {
-					startActivity(new Intent(getActivity(), LoginDialog.class));
-				} else {
-					SystemUtils.cache.setUser(null);
-					SystemUtils.saveCache(getActivity());
-					apps.clear();
-					adapter.notifyDataSetChanged();
-					onResume();
-				}
+			case R.id.img_logout:
+				SystemUtils.cache.setUser(null);
+				SystemUtils.saveCache(getActivity());
+				apps.clear();
+				adapter.notifyDataSetChanged();
+				onResume();
 				break;
 			case R.id.txt_registration:
 				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://appshed.com/create/register")));
+				break;
+			case R.id.txt_login:
+				startActivity(new Intent(getActivity(), LoginDialog.class));
 				break;
 		}
 	}
@@ -144,13 +144,13 @@ public class AppsCreatedByMeFragment extends Fragment implements View.OnClickLis
 			if (apps.isEmpty()) {
 				new RetrieveMyApps(getActivity(), progressBar, AppsCreatedByMeFragment.this).execute();
 			}
-			loginLogout.setImageResource(R.drawable.logout_icon);
+			logout.setVisibility(View.VISIBLE);
 			loginState.setText(SystemUtils.cache.getUser().getName());
 			pullToRefreshListView.setVisibility(View.VISIBLE);
 			registrationContainer.setVisibility(View.GONE);
 			showOrHideEmptyList();
 		} else {
-			loginLogout.setImageResource(R.drawable.login_icon);
+			logout.setVisibility(View.INVISIBLE);
 			loginState.setText(getResources().getString(R.string.login_text));
 			pullToRefreshListView.setVisibility(View.INVISIBLE);
 			registrationContainer.setVisibility(View.VISIBLE);
