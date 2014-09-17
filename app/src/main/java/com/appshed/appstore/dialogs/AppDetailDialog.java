@@ -243,9 +243,13 @@ public class AppDetailDialog extends Activity implements View.OnClickListener {
 			case R.id.img_share:
 				Intent sendIntent = new Intent();
 				sendIntent.setAction(Intent.ACTION_SEND);
-				sendIntent.putExtra(Intent.EXTRA_TEXT, String.format(SystemUtils.SHARE_URL,selectedApp.getId()));
 				sendIntent.setType("text/plain");
-				startActivity(sendIntent);
+				String shareText = "Check out this app created using AppShed:\n"
+						+selectedApp.getName()+"\n"
+						+String.format(SystemUtils.SHARE_URL,selectedApp.getId())
+						+"\nTo view the app first download \"AppShed\" from Google Play and then click the link. You can also view the app in your web browser.";
+				sendIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+				startActivity(Intent.createChooser(sendIntent,"Share using"));
 				break;
 		}
 	}
