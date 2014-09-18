@@ -3,59 +3,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				xmlns:font="http://schemas.android.com/apk/res-auto"
 				android:layout_width="match_parent"
+				android:paddingBottom="14dp"
+				android:paddingTop="26dp"
 				android:layout_height="match_parent">
 
 	<RelativeLayout
-		android:layout_marginLeft="20dp"
-		android:id="@+id/img_icon_container"
-		android:layout_width="51dp"
-		android:layout_centerVertical="true"
-		android:layout_height="51dp">
-		<ImageView
-			android:scaleType="centerCrop"
-			android:layout_centerInParent="true"
-			android:id="@+id/img_icon"
-			android:layout_width="50dp"
-			android:layout_height="50dp"/>
-
-		<ImageView
-			android:layout_centerInParent="true"
-			android:id="@+id/img_icon_bg"
-			android:src="@drawable/black_circle"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
-
-	</RelativeLayout>
-
-	<LinearLayout
 		android:layout_width="match_parent"
-		android:orientation="vertical"
-		android:padding="20dp"
-		android:layout_centerVertical="true"
-		android:layout_toRightOf="@+id/img_icon_container"
 		android:layout_height="wrap_content">
 
-		<com.rightutils.rightutils.widgets.TypefacedTextView
-			android:text="Hello"
-			android:id="@+id/txt_title"
-			android:textColor="#4D4D4D"
-			android:textSize="18sp"
-			android:singleLine="true"
-			android:ellipsize="end"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			font:typeface="fonts/Roboto-Medium.ttf"/>
+		<RelativeLayout
+			android:layout_marginLeft="20dp"
+			android:id="@+id/img_icon_container"
+			android:layout_width="51dp"
+			android:layout_centerVertical="true"
+			android:layout_height="51dp">
 
-		<com.rightutils.rightutils.widgets.TypefacedTextView
-			android:text="hello"
-			android:textColor="#9A9A9A"
-			android:id="@+id/txt_description"
-			android:textSize="18sp"
-			android:singleLine="true"
-			android:ellipsize="end"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			font:typeface="fonts/Roboto-Regular.ttf"/>
-	</LinearLayout>
+			<ImageView
+				android:scaleType="centerCrop"
+				android:layout_centerInParent="true"
+				android:id="@+id/img_icon"
+				android:layout_width="50dp"
+				android:layout_height="50dp"/>
+
+			<ImageView
+				android:layout_centerInParent="true"
+				android:id="@+id/img_icon_bg"
+				android:src="@drawable/black_circle"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+
+		</RelativeLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp"
+			android:layout_centerVertical="true"
+			android:layout_toRightOf="@+id/img_icon_container"
+			android:layout_height="wrap_content">
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:text="Hello"
+				android:id="@+id/txt_title"
+				android:textColor="#4D4D4D"
+				android:textSize="18sp"
+				android:singleLine="true"
+				android:ellipsize="end"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Medium.ttf"/>
+
+			<com.rightutils.rightutils.widgets.TypefacedTextView
+				android:text="hello"
+				android:textColor="#9A9A9A"
+				android:id="@+id/txt_description"
+				android:textSize="18sp"
+				android:singleLine="true"
+				android:ellipsize="end"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				font:typeface="fonts/Roboto-Regular.ttf"/>
+		</LinearLayout>
+	</RelativeLayout>
 
 </RelativeLayout>
