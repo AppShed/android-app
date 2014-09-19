@@ -3,5 +3,7 @@
 
 	<string name="appstore_app_name">AppShed</string>
 	<string name="login_text">Please, log in!</string>
+	<string name="unknown_error">An unexpected error occurred</string>
+	<string name="app_not_avaliable">This app is currently unavailable</string>
 
 </resources>

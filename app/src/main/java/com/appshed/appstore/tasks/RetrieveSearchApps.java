@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.appshed.appstore.R;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.fragments.SearchFragment;
 import com.appshed.appstore.utils.SniRequestUtils;
@@ -65,7 +67,7 @@ public class RetrieveSearchApps extends BaseTask {
 			if (error != null) {
 				Toast.makeText(context, error, Toast.LENGTH_LONG).show();
 			} else {
-				Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  context.getString(R.string.unknown_error), Toast.LENGTH_LONG).show();
 			}
 		}
 		super.onPostExecute(result);

@@ -38,6 +38,7 @@ public class MainActivityNew extends SupportRightFragmentActivity implements Vie
 
 	public void setUpMenu() {
 		menu = (RelativeLayout)findViewById(R.id.menu_container);
+		findViewById(R.id.top_container).setOnClickListener(null);
 		drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		menu.findViewById(R.id.txt_appshed_gallery).setOnClickListener(this);
 		menu.findViewById(R.id.txt_my_saved_apps).setOnClickListener(this);

@@ -59,6 +59,7 @@
 						android:gravity="center"
 						android:textColor="#555555"
 						android:textColorHint="#555555"
+						android:textCursorDrawable="@null"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						font:typeface="fonts/Roboto-Regular.ttf"/>
@@ -75,6 +76,7 @@
 						android:inputType="textPassword"
 						android:textColor="#555555"
 						android:textColorHint="#555555"
+						android:textCursorDrawable="@null"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						font:typeface="fonts/Roboto-Regular.ttf"/>
@@ -89,6 +91,7 @@
 						android:gravity="center"
 						android:textColor="#555555"
 						android:textColorHint="#555555"
+						android:textCursorDrawable="@null"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						font:typeface="fonts/Roboto-Regular.ttf"/>

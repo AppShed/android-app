@@ -2,6 +2,8 @@ package com.appshed.appstore.entities;
 
 import com.rightutils.rightutils.db.ColumnName;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +17,7 @@ public class App implements Serializable {
 	private String zip;
 	private String icon;
 	private boolean ads;
+	@JsonProperty("exportVersion")
 	private int version;
 	@ColumnName("featured_image")
 	private String featuredImage;

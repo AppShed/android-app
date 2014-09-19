@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.appshed.appstore.R;
 import com.appshed.appstore.activities.LaunchActivity;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SniRequestUtils;
@@ -60,7 +61,7 @@ public class RetrieveDetailApp extends BaseTask {
 			if (error != null) {
 				Toast.makeText(context, error, Toast.LENGTH_LONG).show();
 			} else {
-				Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, context.getString(R.string.app_not_avaliable), Toast.LENGTH_LONG).show();
 			}
 			((LaunchActivity) context).setApp(null);
 		}
