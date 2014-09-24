@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 
 /**
  * Created by Anton Maniskevich on 8/8/14.
@@ -74,6 +75,7 @@ public class RetrieveAppService extends IntentService {
 					connection.connect();
 					// this will be useful so that you can show a typical 0-100% progress bar
 					length = connection.getContentLength();
+					Log.i(TAG, ""+connection.getHeaderField("Content-Disposition"));
 					InputStream is = new BufferedInputStream(connection.getInputStream());
 
 					String PATH = SystemUtils.getSaveFolder();
@@ -85,7 +87,7 @@ public class RetrieveAppService extends IntentService {
 					int count = 0;
 					while ((count = is.read(buffer)) != -1 && !cancelCurrent) {
 						fos.write(buffer, 0, count);
-						Log.i(TAG, "Loading..." + progress);
+//						Log.i(TAG, "Loading..." + progress);
 						progress += count;
 					}
 					fos.close();

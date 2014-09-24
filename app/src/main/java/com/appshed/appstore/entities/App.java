@@ -17,7 +17,6 @@ public class App implements Serializable {
 	private String zip;
 	private String icon;
 	private boolean ads;
-	@JsonProperty("exportVersion")
 	private int version;
 	@ColumnName("featured_image")
 	private String featuredImage;

@@ -12,6 +12,8 @@ import com.appshed.appstore.utils.SniRequestUtils;
 import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.tasks.BaseTask;
 
+import java.util.Arrays;
+
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.HttpStatus;
 import ch.boye.httpclientandroidlib.util.EntityUtils;

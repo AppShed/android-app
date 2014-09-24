@@ -48,6 +48,7 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 			url = "file:"+SystemUtils.getAppFolder(appId)+"/index.html";
 		}
 		cordovaWebView = (CordovaWebView) findViewById(R.id.tutorialView);
+		cordovaWebView.clearCache(true);
 		Config.init(this);
 		cordovaWebView.loadUrl(Config.getStartUrl());
 		cordovaWebView.loadUrl(url);
