@@ -7,9 +7,11 @@ import android.widget.Toast;
 
 import com.appshed.appstore.R;
 import com.appshed.appstore.activities.LaunchActivity;
+import com.appshed.appstore.applications.AppStoreApplication;
 import com.appshed.appstore.entities.App;
 import com.appshed.appstore.utils.SniRequestUtils;
 import com.appshed.appstore.utils.SystemUtils;
+import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 
 import java.util.Arrays;
@@ -51,6 +53,12 @@ public class RetrieveDetailApp extends BaseTask {
 			}
 		} catch (Exception e) {
 			Log.e(TAG, "run", e);
+		}
+		RightList<App> apps = AppStoreApplication.dbUtils.getAllWhere(String.format("id = %d", appId), App.class);
+		if (!apps.isEmpty()) {
+			appData = new AppData();
+			appData.app = apps.get(0);
+			return true;
 		}
 		return false;
 	}

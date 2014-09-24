@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
@@ -76,11 +77,13 @@ public class MainActivityNew extends SupportRightFragmentActivity implements Vie
 				break;
 			case R.id.txt_app_creator:
 				PackageManager pm = context.getPackageManager();
-				Intent appStartIntent = pm.getLaunchIntentForPackage("com.ekreative.appcreator");
+				Intent appStartIntent = pm.getLaunchIntentForPackage("com.appshed.creator");
 				if (appStartIntent != null) {
 					context.startActivity(appStartIntent);
 				} else {
-					Toast.makeText(MainActivityNew.this, "AppCreator not found", Toast.LENGTH_LONG).show();
+					//TODO
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appshed.creator")));
+//					Toast.makeText(MainActivityNew.this, "AppCreator not found", Toast.LENGTH_LONG).show();
 				}
 				break;
 			case R.id.qr_scanner_container:
