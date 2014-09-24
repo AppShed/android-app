@@ -51,7 +51,6 @@
 
 					<com.rightutils.rightutils.widgets.TypefacedEditText
 						android:id="@+id/f_login"
-						android:text="lera@ekreative.com"
 						android:hint="Login"
 						android:singleLine="true"
 						android:background="@drawable/apptheme_edit_text_holo_light"
@@ -67,7 +66,6 @@
 					<com.rightutils.rightutils.widgets.TypefacedEditText
 						android:id="@+id/f_password"
 						android:layout_marginTop="20dp"
-						android:text="smile2me"
 						android:hint="Password"
 						android:singleLine="true"
 						android:background="@drawable/apptheme_edit_text_holo_light"

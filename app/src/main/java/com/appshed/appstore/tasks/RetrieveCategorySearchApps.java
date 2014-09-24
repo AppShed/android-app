@@ -14,6 +14,8 @@ import com.appshed.appstore.utils.SystemUtils;
 import com.rightutils.rightutils.collections.RightList;
 import com.rightutils.rightutils.tasks.BaseTask;
 
+import java.net.URLEncoder;
+
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.HttpStatus;
 import ch.boye.httpclientandroidlib.util.EntityUtils;
@@ -44,9 +46,9 @@ public class RetrieveCategorySearchApps extends BaseTask {
 			String resultUrl = APPS_URL;
 			if (!category.equals(SystemUtils.GENERAL)) {
 				resultUrl += "?category="+category;
-				resultUrl += "&search=" + query;
+				resultUrl += "&search=" + URLEncoder.encode(query, "UTF-8");
 			} else {
-				resultUrl += "?search=" + query;
+				resultUrl += "?search=" + URLEncoder.encode(query, "UTF-8");
 			}
 			Log.i(TAG, resultUrl);
 			HttpResponse response = SniRequestUtils.getHttpResponse(resultUrl);
