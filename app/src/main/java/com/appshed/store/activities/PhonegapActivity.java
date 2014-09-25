@@ -2,9 +2,12 @@ package com.appshed.store.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.appshed.store.R;
 import com.appshed.store.applications.AppStoreApplication;
@@ -41,10 +44,10 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		String url = null;
 		if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(App.class.getSimpleName())) {
 			long appId = getIntent().getExtras().getLong(App.class.getSimpleName());
-			Log.i(TAG, ""+appId);
+			Log.i(TAG, "" + appId);
 			selectedApp = AppStoreApplication.dbUtils.getAllWhere(String.format("id = %d", appId), App.class).getFirst();
-			Log.i(TAG, ""+selectedApp);
-			url = "file:"+SystemUtils.getAppFolder(appId)+"/index.html";
+			Log.i(TAG, "" + selectedApp);
+			url = "file:" + SystemUtils.getAppFolder(appId) + "/index.html";
 		}
 		cordovaWebView = (CordovaWebView) findViewById(R.id.tutorialView);
 		cordovaWebView.clearCache(true);
@@ -52,7 +55,7 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		cordovaWebView.loadUrl(Config.getStartUrl());
 		cordovaWebView.loadUrl(url);
 
-		AdView adView = (AdView)this.findViewById(R.id.adView);
+		AdView adView = (AdView) this.findViewById(R.id.adView);
 		if (selectedApp.isAds()) {
 			AdRequest adRequest = new AdRequest.Builder().build();
 			adView.loadAd(adRequest);
