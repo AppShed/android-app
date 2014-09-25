@@ -37,22 +37,22 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
 		AppsByCategoryFragment fragment = null;
 		switch (v.getId()) {
 			case R.id.general_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.general_bg, SystemUtils.GENERAL, R.drawable.general_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.general_big, SystemUtils.GENERAL, R.drawable.general_mini_icon);
 				break;
 			case R.id.education_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.education_bg, SystemUtils.EDUCATION, R.drawable.education_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.education_big, SystemUtils.EDUCATION, R.drawable.education_mini_icon);
 				break;
 			case R.id.business_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.business_bg, SystemUtils.BUSINESS, R.drawable.business_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.business_big, SystemUtils.BUSINESS, R.drawable.business_mini_icon);
 				break;
 			case R.id.fun_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.fun_bg, SystemUtils.FUN, R.drawable.fun_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.fun_big, SystemUtils.FUN, R.drawable.fun_mini_icon);
 				break;
 			case R.id.events_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.events_bg, SystemUtils.EVENTS, R.drawable.events_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.events_big, SystemUtils.EVENTS, R.drawable.events_mini_icon);
 				break;
 			case R.id.other_container:
-				fragment = AppsByCategoryFragment.newInstance(R.drawable.other_bg, SystemUtils.OTHER, R.drawable.other_mini_icon);
+				fragment = AppsByCategoryFragment.newInstance(R.drawable.other_big, SystemUtils.OTHER, R.drawable.other_mini_icon);
 				break;
 		}
 		if (fragment != null) {

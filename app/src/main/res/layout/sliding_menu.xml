@@ -16,7 +16,7 @@
 			android:layout_width="match_parent"
 			android:scaleType="centerCrop"
 			android:layout_height="match_parent"
-			android:src="@drawable/menu_top_bg"/>
+			android:src="@drawable/menu_img"/>
 
 		<ImageView
 			android:layout_width="match_parent"

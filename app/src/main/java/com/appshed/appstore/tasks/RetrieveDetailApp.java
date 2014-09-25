@@ -49,7 +49,7 @@ public class RetrieveDetailApp extends BaseTask {
 				appData = MAPPER.readValue(response.getEntity().getContent(), AppData.class);
 				return true;
 			} else {
-				error = EntityUtils.toString(response.getEntity());
+//				error = EntityUtils.toString(response.getEntity());
 			}
 		} catch (Exception e) {
 			Log.e(TAG, "run", e);

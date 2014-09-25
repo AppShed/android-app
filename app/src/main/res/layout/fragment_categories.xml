@@ -31,7 +31,14 @@
 						android:layout_width="match_parent"
 						android:scaleType="centerCrop"
 						android:layout_height="wrap_content"
-						android:src="@drawable/general_icon"/>
+						android:src="@drawable/general_small"/>
+
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_general"
@@ -55,7 +62,13 @@
 						android:scaleType="centerCrop"
 						android:id="@+id/img_education"
 						android:layout_height="wrap_content"
-						android:src="@drawable/education_icon"/>
+						android:src="@drawable/education_small"/>
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_education"
@@ -82,7 +95,13 @@
 						android:layout_width="match_parent"
 						android:scaleType="centerCrop"
 						android:layout_height="wrap_content"
-						android:src="@drawable/business_icon"/>
+						android:src="@drawable/business_small"/>
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_business"
@@ -106,7 +125,13 @@
 						android:scaleType="centerCrop"
 						android:id="@+id/img_fun"
 						android:layout_height="wrap_content"
-						android:src="@drawable/fun_icon"/>
+						android:src="@drawable/fun_small"/>
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_fun"
@@ -133,7 +158,13 @@
 						android:layout_width="match_parent"
 						android:scaleType="centerCrop"
 						android:layout_height="wrap_content"
-						android:src="@drawable/events_icon"/>
+						android:src="@drawable/events_small"/>
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_events"
@@ -157,7 +188,13 @@
 						android:scaleType="centerCrop"
 						android:id="@+id/img_other"
 						android:layout_height="wrap_content"
-						android:src="@drawable/other_icon"/>
+						android:src="@drawable/other_small"/>
+					<ImageView
+						android:layout_alignParentBottom="true"
+						android:layout_width="match_parent"
+						android:scaleType="centerCrop"
+						android:background="@drawable/feature_overlay"
+						android:layout_height="75dp"/>
 
 					<com.rightutils.rightutils.widgets.TypefacedTextView
 						android:layout_alignBottom="@+id/img_other"
