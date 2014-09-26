@@ -111,6 +111,6 @@ public class SystemUtils {
 	}
 
 	public static String getSaveFolder() {
-		return Environment.getExternalStorageDirectory() + "/Android/data/com.appshed.appstore/appstore/";
+		return Environment.getExternalStorageDirectory() + "/Android/data/com.appshed.store/store/";
 	}
 }
