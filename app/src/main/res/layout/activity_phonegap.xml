@@ -30,5 +30,16 @@
 			ads:adSize="BANNER"/>
 
 	</LinearLayout>
+	<RelativeLayout
+		android:id="@+id/splash_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<ImageView
+			android:id="@+id/img_splash"
+			android:scaleType="centerCrop"
+			android:src="@drawable/education_big"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+	</RelativeLayout>
 
 </RelativeLayout>
