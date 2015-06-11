@@ -22,6 +22,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.appshed.ioioplugin/ioio.js",
+        "id": "com.appshed.ioioplugin.IOIO cordova plugin",
+        "merges": [
+            "ioio"
+        ]
+    }
+    {
         "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
         "id": "org.apache.cordova.camera.CameraPopoverHandle",
         "clobbers": [
@@ -32,7 +39,8 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.camera": "0.3.0"
+    "org.apache.cordova.camera": "0.3.0",
+    "com.appshed.ioioplugin": "0.1"
 }
 // BOTTOM OF METADATA
 });

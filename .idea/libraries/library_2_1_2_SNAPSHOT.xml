@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="library-2.1.2-SNAPSHOT">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.chrisbanes.pulltorefresh/library/2.1.2-SNAPSHOT/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.chrisbanes.pulltorefresh/library/2.1.2-SNAPSHOT/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.chrisbanes.pulltorefresh/library/2.1.2-SNAPSHOT/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -2,6 +2,9 @@ package com.appshed.store.applications;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.util.Log;
+import android.webkit.WebView;
 
 import com.appshed.store.db.DBUtils;
 import com.appshed.store.utils.SystemUtils;
@@ -16,6 +19,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
  */
 public class AppStoreApplication extends Application {
 
+	private static final String TAG = AppStoreApplication.class.getSimpleName();
 	public static DBUtils dbUtils;
 
 	@Override
@@ -24,6 +28,11 @@ public class AppStoreApplication extends Application {
 		SystemUtils.getCache(getApplicationContext());
 		initImageLoader();
 		dbUtils = DBUtils.newInstance(this, "appstore.sqlite", 1);
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WebView.setWebContentsDebuggingEnabled(true);
+			Log.i(TAG, "Enabled debugging of webview");
+		}
 	}
 
 	private void initImageLoader() {
