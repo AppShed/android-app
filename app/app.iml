@@ -93,22 +93,20 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 20 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="zbar" level="project" />
-    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
-    <orderEntry type="library" exported="" name="library-2.4.1" level="project" />
-    <orderEntry type="library" exported="" name="ioiolibbt" level="project" />
-    <orderEntry type="library" exported="" name="httpclientandroidlib-1.2.1" level="project" />
-    <orderEntry type="library" exported="" name="jackson-core-asl-1.9.13" level="project" />
-    <orderEntry type="library" exported="" name="universal-image-loader-1.9.1" level="project" />
-    <orderEntry type="library" exported="" name="jackson-mapper-asl-1.9.13" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v13-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="httpclientandroidlib-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="library-1.3" level="project" />
-    <orderEntry type="library" exported="" name="library-2.1.2-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" name="ioioutils" level="project" />
-    <orderEntry type="library" exported="" name="app-1.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="cordova-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-5.0.89" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="library-2.1.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="jackson-core-asl-1.9.13" level="project" />
+    <orderEntry type="library" exported="" name="ioioutils" level="project" />
+    <orderEntry type="library" exported="" name="jackson-mapper-asl-1.9.13" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="universal-image-loader-1.9.1" level="project" />
+    <orderEntry type="library" exported="" name="library-2.4.1" level="project" />
+    <orderEntry type="library" exported="" name="zbar" level="project" />
+    <orderEntry type="library" exported="" name="app-1.1.2-SNAPSHOT" level="project" />
   </component>
 </module>
