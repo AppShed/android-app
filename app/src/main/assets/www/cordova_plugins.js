@@ -27,7 +27,7 @@ module.exports = [
         "merges": [
             "ioio"
         ]
-    }
+    },
     {
         "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
         "id": "org.apache.cordova.camera.CameraPopoverHandle",

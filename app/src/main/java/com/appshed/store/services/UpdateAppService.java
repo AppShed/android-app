@@ -100,8 +100,10 @@ public class UpdateAppService extends IntentService {
 						SystemUtils.removeAppShortcut(getApplicationContext(), currentLoadingApp.getName(), currentLoadingApp.getId());
 
 						//unzip
-						ZipUtils.unZipIt(PATH + currentLoadingApp.getId() + ".zip", PATH + currentLoadingApp.getId());
+						String outputFolder = PATH + currentLoadingApp.getId();
+						ZipUtils.unZipIt(PATH + currentLoadingApp.getId() + ".zip", outputFolder);
 						AppStoreApplication.dbUtils.add(currentLoadingApp);
+						SystemUtils.copyPlugins(getApplicationContext(), outputFolder);
 						//add icon for app
 						SystemUtils.addAppShortcut(getApplicationContext(), currentLoadingApp.getName(), currentLoadingApp.getId());
 					}

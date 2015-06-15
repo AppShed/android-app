@@ -17,6 +17,11 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Created by Anton Maniskevich on 8/7/14.
  */
@@ -112,5 +117,34 @@ public class SystemUtils {
 
 	public static String getSaveFolder() {
 		return Environment.getExternalStorageDirectory() + "/Android/data/com.appshed.store/store/";
+	}
+
+	public static void copyFileFromAssets(Context context, String path, String sourceFileName) throws IOException {
+		String targetFile = sourceFileName.contains("/") ? sourceFileName.substring(sourceFileName.lastIndexOf("/")+1) : sourceFileName;
+		InputStream myInput = context.getAssets().open(sourceFileName);
+		File dir = new File(path);
+		dir.mkdirs();
+		File file = new File(dir, targetFile);
+		FileOutputStream myOutput = new FileOutputStream(file);
+		byte[] buffer = new byte[1024];
+
+		int length;
+		while((length = myInput.read(buffer)) > 0) {
+			myOutput.write(buffer, 0, length);
+		}
+
+		myOutput.flush();
+		myOutput.close();
+		myInput.close();
+	}
+
+	public static void copyPlugins(Context context, String outputFolder) throws IOException {
+		copyFileFromAssets(context, outputFolder + "/plugins/com.appshed.ioioplugin/", "www/plugins/com.appshed.ioioplugin/ioio.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/Camera.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraConstants.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js");
+		copyFileFromAssets(context, outputFolder, "www/cordova.js");
+		copyFileFromAssets(context, outputFolder, "www/cordova_plugins.js");
 	}
 }
