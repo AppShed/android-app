@@ -10,6 +10,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.appshed.store.R;
 import com.appshed.store.applications.AppStoreApplication;
@@ -19,10 +21,18 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import org.apache.cordova.Config;
+import org.apache.cordova.ConfigXmlParser;
 import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaInterfaceImpl;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaPreferences;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaWebViewImpl;
+import org.apache.cordova.PluginEntry;
+import org.apache.cordova.engine.SystemWebView;
+import org.apache.cordova.engine.SystemWebViewClient;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -40,7 +50,7 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 	private final ExecutorService threadPool = Executors.newCachedThreadPool();
 	private App selectedApp;
 	private View splashContainer;
-	private ImageView splashImage;
+	protected CordovaInterfaceImpl cordovaInterface;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +59,7 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 		final long startTime = System.currentTimeMillis();
 		splashContainer = findViewById(R.id.splash_container);
 		splashContainer.setOnClickListener(null);
-		splashImage = (ImageView) findViewById(R.id.img_splash);
+		ImageView splashImage = (ImageView) findViewById(R.id.img_splash);
 		String url = null;
 		if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(App.class.getSimpleName())) {
 			long appId = getIntent().getExtras().getLong(App.class.getSimpleName());
@@ -59,15 +69,26 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 			url = "file:" + SystemUtils.getAppFolder(appId) + "/index.html";
 			splashImage.setImageDrawable(BitmapDrawable.createFromPath(SystemUtils.getAppFolder(appId) + "/Defaulth5682x.png"));
 		}
-		cordovaWebView = (CordovaWebView) findViewById(R.id.tutorialView);
-		cordovaWebView.clearCache(true);
+
+		cordovaInterface =  new CordovaInterfaceImpl(getActivity());
+		if(savedInstanceState != null) {
+			cordovaInterface.restoreInstanceState(savedInstanceState);
+		}
+		cordovaWebView = new CordovaWebViewImpl(CordovaWebViewImpl.createEngine(getActivity(), new CordovaPreferences()));
+		RelativeLayout.LayoutParams wvlp = new RelativeLayout.LayoutParams(
+				RelativeLayout.LayoutParams.MATCH_PARENT,
+				RelativeLayout.LayoutParams.MATCH_PARENT);
+		cordovaWebView.getView().setLayoutParams(wvlp);
+		((LinearLayout) findViewById(R.id.web_view_container)).addView(cordovaWebView.getView());
+
+		cordovaWebView.clearCache();
 		Config.init(this);
-		cordovaWebView.loadUrl(Config.getStartUrl());
+		cordovaWebView.init(this, Config.getPluginEntries(), Config.getPreferences());
 		cordovaWebView.loadUrl(url);
-		cordovaWebView.setWebViewClient(new WebViewClient(){
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				super.onPageFinished(view, url);
+//		cordovaWebView.setWebViewClient(new WebViewClient(){
+//			@Override
+//			public void onPageFinished(WebView view, String url) {
+//				super.onPageFinished(view, url);
 				long endTime = System.currentTimeMillis();
 				splashContainer.postDelayed(new Runnable() {
 					@Override
@@ -75,12 +96,15 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 						splashContainer.setVisibility(View.GONE);
 					}
 				}, endTime - startTime >= SPLASH_DELAY ? 0 : SPLASH_DELAY-(endTime-startTime));
-			}
-		});
+//			}
+//		});
+
 
 		AdView adView = (AdView) this.findViewById(R.id.adView);
 		if (selectedApp.isAds()) {
-			AdRequest adRequest = new AdRequest.Builder().build();
+			AdRequest adRequest = new AdRequest.Builder()
+					.addTestDevice("F868FDCE83251A07F3CC020B9CB199B1")
+					.build();
 			adView.loadAd(adRequest);
 		} else {
 			findViewById(R.id.bottom_bar).setVisibility(View.GONE);
@@ -91,12 +115,10 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 	public void startActivityForResult(CordovaPlugin command, Intent intent, int requestCode) {
 		this.activityResultCallback = command;
 		this.activityResultKeepRunning = this.keepRunning;
-
 		// If multitasking turned on, then disable it for activities that return results
 		if (command != null) {
 			this.keepRunning = false;
 		}
-
 		// Start activity
 		super.startActivityForResult(intent, requestCode);
 	}
@@ -132,9 +154,9 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 
 	public void onDestroy() {
 		super.onDestroy();
-
 		if (this.cordovaWebView != null) {
 			this.cordovaWebView.handleDestroy();
 		}
 	}
+
 }

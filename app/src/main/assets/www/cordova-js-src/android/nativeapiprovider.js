@@ -1,5 +1,4 @@
-cordova.define("org.apache.cordova.camera.CameraPopoverOptions", function(require, exports, module) { /*
- *
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -16,24 +15,22 @@ cordova.define("org.apache.cordova.camera.CameraPopoverOptions", function(requir
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- *
 */
 
-var Camera = require('./Camera');
-
 /**
- * Encapsulates options for iOS Popover image picker
+ * Exports the ExposedJsApi.java object if available, otherwise exports the PromptBasedNativeApi.
  */
-var CameraPopoverOptions = function(x,y,width,height,arrowDir){
-    // information of rectangle that popover should be anchored to
-    this.x = x || 0;
-    this.y = y || 32;
-    this.width = width || 320;
-    this.height = height || 480;
-    // The direction of the popover arrow
-    this.arrowDir = arrowDir || Camera.PopoverArrowDirection.ARROW_ANY;
+
+var nativeApi = this._cordovaNative || require('cordova/android/promptbasednativeapi');
+var currentApi = nativeApi;
+
+module.exports = {
+    get: function() { return currentApi; },
+    setPreferPrompt: function(value) {
+        currentApi = value ? require('cordova/android/promptbasednativeapi') : nativeApi;
+    },
+    // Used only by tests.
+    set: function(value) {
+        currentApi = value;
+    }
 };
-
-module.exports = CameraPopoverOptions;
-
-});

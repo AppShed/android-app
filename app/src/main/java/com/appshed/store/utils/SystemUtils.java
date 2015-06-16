@@ -139,12 +139,17 @@ public class SystemUtils {
 	}
 
 	public static void copyPlugins(Context context, String outputFolder) throws IOException {
-		copyFileFromAssets(context, outputFolder + "/plugins/com.appshed.ioioplugin/", "www/plugins/com.appshed.ioioplugin/ioio.js");
-		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/Camera.js");
-		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraConstants.js");
-		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js");
-		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.camera/www/", "www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js");
 		copyFileFromAssets(context, outputFolder, "www/cordova.js");
 		copyFileFromAssets(context, outputFolder, "www/cordova_plugins.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/com.appshed.ioioplugin/", "www/plugins/com.appshed.ioioplugin/ioio.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-camera/www/", "www/plugins/cordova-plugin-camera/www/Camera.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-camera/www/", "www/plugins/cordova-plugin-camera/www/CameraConstants.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-camera/www/", "www/plugins/cordova-plugin-camera/www/CameraPopoverHandle.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-camera/www/", "www/plugins/cordova-plugin-camera/www/CameraPopoverOptions.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-shake/www/", "www/plugins/cordova-plugin-shake/www/shake.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/cordova-plugin-whitelist/", "www/plugins/cordova-plugin-whitelist/whitelist.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.device-motion/www/", "www/plugins/org.apache.cordova.device-motion/www/Acceleration.js");
+		copyFileFromAssets(context, outputFolder + "/plugins/org.apache.cordova.device-motion/www/", "www/plugins/org.apache.cordova.device-motion/www/accelerometer.js");
+
 	}
 }

@@ -1,23 +1,56 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--<widget id="com.appshed.store" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">-->
+    <!--<preference name="loglevel" value="DEBUG" />-->
+    <!--<preference name="AndroidLaunchMode" value="singleTop" />-->
+    <!--<feature name="App">-->
+        <!--<param name="android-package" value="org.apache.cordova.App" />-->
+    <!--</feature>-->
+    <!--<name>HelloWorld</name>-->
+    <!--<description>-->
+        <!--A sample Apache Cordova application that responds to the deviceready event.-->
+    <!--</description>-->
+    <!--<author email="dev@cordova.apache.org" href="http://cordova.io">-->
+        <!--Apache Cordova Team-->
+    <!--</author>-->
+    <!--<content src="index.html" />-->
+    <!--<access origin="*" />-->
+    <!--<feature name="Camera">-->
+        <!--<param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />-->
+    <!--</feature>-->
+    <!--<feature name="IOIOCommunication">-->
+        <!--<param name="android-package" value="com.appshed.ioioplugin.phonegap.IOIOCommunication" />-->
+    <!--</feature>-->
+<!--</widget>-->
+
 <widget id="com.appshed.store" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <preference name="loglevel" value="DEBUG" />
-    <preference name="AndroidLaunchMode" value="singleTop" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
-    <name>HelloWorld</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
-    <feature name="IOIOCommunication">
-        <param name="android-package" value="com.appshed.ioioplugin.phonegap.IOIOCommunication" />
-    </feature>
+<preference name="loglevel" value="DEBUG" />
+<allow-intent href="market:*" />
+<name>myCordova</name>
+<description>
+    A sample Apache Cordova application that responds to the deviceready event.
+</description>
+<author email="dev@cordova.apache.org" href="http://cordova.io">
+    Apache Cordova Team
+</author>
+<content src="index.html" />
+<access origin="*" />
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+<allow-intent href="tel:*" />
+<allow-intent href="sms:*" />
+<allow-intent href="mailto:*" />
+<allow-intent href="geo:*" />
+<feature name="Whitelist">
+    <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+    <param name="onload" value="true" />
+</feature>
+<feature name="Accelerometer">
+    <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+</feature>
+<feature name="IOIOCommunication">
+    <param name="android-package" value="com.appshed.ioioplugin.phonegap.IOIOCommunication" />
+</feature>
+<feature name="Camera">
+    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+</feature>
 </widget>

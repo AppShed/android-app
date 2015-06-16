@@ -50,7 +50,7 @@ public class ExifHelper {
      * The file before it is compressed
      *
      * @param filePath
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public void createInFile(String filePath) throws IOException {
         this.inFile = new ExifInterface(filePath);
@@ -60,7 +60,7 @@ public class ExifHelper {
      * The file after it has been compressed
      *
      * @param filePath
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public void createOutFile(String filePath) throws IOException {
         this.outFile = new ExifInterface(filePath);
@@ -94,7 +94,7 @@ public class ExifHelper {
     /**
      * Writes the previously stored EXIF data to the output file.
      *
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public void writeExifData() throws IOException {
         // Don't try to write to a null file

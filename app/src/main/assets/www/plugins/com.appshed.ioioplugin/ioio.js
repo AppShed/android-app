@@ -1,4 +1,4 @@
-cordova.define("com.appshed.ioioplugin.IOIO cordova plugin", function(require, exports, module) { var ioio = {
+cordova.define("com.appshed.ioioplugin.IOIO", function(require, exports, module) { var ioio = {
 	PIN_OUTPUT_PWM : "pwmOutput",
 	PIN_OUTPUT_DIGITAL : "digitalOutput",
 	PIN_INPUT_DIGITAL : "digitalInput",
@@ -24,7 +24,11 @@ cordova.define("com.appshed.ioioplugin.IOIO cordova plugin", function(require, e
 				}
 
 				if (allListener) {
-					allListener(vals);
+					try{
+						allListener(vals);
+					}catch(e){
+						console.log('IOIO Callback function error' ,e);
+			                }
 				}
 
 				for(var i=0;i<vals.length;i++){
@@ -125,4 +129,5 @@ cordova.define("com.appshed.ioioplugin.IOIO cordova plugin", function(require, e
 };
 
 window.ioio = ioio;
+
 });

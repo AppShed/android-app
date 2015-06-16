@@ -7,12 +7,14 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<org.apache.cordova.CordovaWebView
-		android:id="@+id/tutorialView"
-		android:layout_width="match_parent"
+	<LinearLayout
+		android:id="@+id/web_view_container"
 		android:layout_alignParentTop="true"
 		android:layout_above="@+id/bottom_bar"
-		android:layout_height="match_parent"/>
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:layout_height="match_parent">
+	</LinearLayout>
 
 	<LinearLayout
 		android:id="@+id/bottom_bar"
