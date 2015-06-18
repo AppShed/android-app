@@ -31,6 +31,8 @@ import org.apache.cordova.CordovaWebViewImpl;
 import org.apache.cordova.PluginEntry;
 import org.apache.cordova.engine.SystemWebView;
 import org.apache.cordova.engine.SystemWebViewClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -134,7 +136,19 @@ public class PhonegapActivity extends Activity implements CordovaInterface {
 	}
 
 	@Override
-	public Object onMessage(String s, Object o) {
+	public Object onMessage(String id, Object data) {
+		Log.i(TAG, "onMessage=" + id);
+		if("onReceivedError".equals(id)) {
+//			JSONObject d = (JSONObject)data;
+//			try {
+//				this.onReceivedError(d.getInt("errorCode"), d.getString("description"), d.getString("url"));
+//			} catch (JSONException var5) {
+//				var5.printStackTrace();
+//			}
+		} else if("exit".equals(id)) {
+			this.finish();
+		}
+
 		return null;
 	}
 
