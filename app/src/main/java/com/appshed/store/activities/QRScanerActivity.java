@@ -72,7 +72,7 @@ public class QRScanerActivity extends Activity {
 	public static Camera getCameraInstance() {
 		Camera c = null;
 		try {
-			c = Camera.open();
+			c = Camera.open(0);
 		} catch (Exception e) {
 		}
 		return c;

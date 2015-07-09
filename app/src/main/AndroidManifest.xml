@@ -19,6 +19,7 @@
 
 	<uses-feature android:name="android.hardware.camera"/>
 	<uses-feature android:name="android.hardware.camera.autofocus"/>
+	<uses-feature android:name="android.hardware.camera.front" android:required="false" />
 
 	<application
 		android:name="com.appshed.store.applications.AppStoreApplication"
