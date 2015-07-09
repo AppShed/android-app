@@ -161,7 +161,7 @@ public class IOIOCOmmunicationService extends IOIOService {
 			            } catch (Exception e) {}
 					}else if(pin instanceof PinDigitalOutput){
 						PinDigitalOutput pinDigitalOutput = (PinDigitalOutput)pin;
-						pinDigitalOutput.digitalOutput.write(!pinDigitalOutput.output); // TODO for some reasons, true is false........
+						pinDigitalOutput.digitalOutput.write(pinDigitalOutput.output); // TODO for some reasons, true is false........
 						try {
 							parameters.put(pinDigitalOutput.getJson());
 			            } catch (Exception e) {}
